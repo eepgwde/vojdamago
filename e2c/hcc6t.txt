@@ -1,0 +1,246 @@
+### Chi-squared test for carriageways
+
+H0: proportions are the same before and after this date: 2016-07-01
+
+r0 and r1: we expect p-value << 0 and H0 can be dismissed
+
+
+H0: proportions are the same before and after this date: 2015-07-01
+when the dataset does not include data after 2016-07-01
+
+s0 and s1: we expect p-value > 0.05 and H0 cannot be dismissed
+
+> r0
+$tbl
+        variable
+regime0  claims repudns
+  before   1254    4654
+  after     559    1234
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 75.125, df = 1, p-value < 2.2e-16
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.09913094
+              N = 7701
+             df = 1
+      sig.level = 0.05
+          power = 1
+
+NOTE: N is the number of observations
+
+
+> r1
+$tbl
+        variable
+regime0  claims  enqs
+  before   1254 64144
+  after     559 16880
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 106.09, df = 1, p-value < 2.2e-16
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.03588746
+              N = 82837
+             df = 1
+      sig.level = 0.05
+          power = 1
+
+NOTE: N is the number of observations
+
+
+> s0
+$tbl
+        variable
+regime0  claims repudns
+  before    912    3198
+  after     342    1456
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 7.3226, df = 1, p-value = 0.006809
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.03565559
+              N = 5908
+             df = 1
+      sig.level = 0.05
+          power = 0.782497
+
+NOTE: N is the number of observations
+
+
+> s1
+$tbl
+        variable
+regime0  claims  enqs
+  before    912 47558
+  after     342 16586
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 1.2115, df = 1, p-value = 0.271
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.004431291
+              N = 65398
+             df = 1
+      sig.level = 0.05
+          power = 0.20518
+
+NOTE: N is the number of observations
+
+### Chi-squared test for footways
+
+H0: proportions are the same before and after this date: 2015-02-01
+
+r0 and r1: we expect p-value << 0 and H0 can be dismissed
+
+
+H0: proportions are the same before and after this date: 2014-06-30
+when the dataset does not include data after 2015-02-01
+
+s0 and s1: we expect p-value > 0.05 and H0 cannot be dismissed
+
+> r0
+$tbl
+        variable
+regime0  claims repudns
+  before     66     160
+  after     135     141
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 19.293, df = 1, p-value = 1.121e-05
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.2001258
+              N = 502
+             df = 1
+      sig.level = 0.05
+          power = 0.9941974
+
+NOTE: N is the number of observations
+
+
+> r1
+$tbl
+        variable
+regime0  claims enqs
+  before     66 6620
+  after     135 4698
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 52.327, df = 1, p-value = 4.698e-13
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.06807139
+              N = 11519
+             df = 1
+      sig.level = 0.05
+          power = 1
+
+NOTE: N is the number of observations
+
+
+> s0
+$tbl
+        variable
+regime0  claims repudns
+  before     45     107
+  after      22      55
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 7.6162e-05, df = 1, p-value = 0.993
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.01073553
+              N = 229
+             df = 1
+      sig.level = 0.05
+          power = 0.05302882
+
+NOTE: N is the number of observations
+
+
+> s1
+$tbl
+        variable
+regime0  claims enqs
+  before     45 5108
+  after      22 1720
+
+$test
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  t0
+X-squared = 1.669, df = 1, p-value = 0.1964
+
+
+$pwr
+
+     Chi squared power calculation 
+
+              w = 0.01725964
+              N = 6895
+             df = 1
+      sig.level = 0.05
+          power = 0.2995153
+
+NOTE: N is the number of observations
+

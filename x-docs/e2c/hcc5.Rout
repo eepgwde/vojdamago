@@ -1,0 +1,84 @@
+
+
+start: repudns, tmax, mm1, tmin, rain, mm1 
+summary: 
+Family: gaussian 
+Link function: log 
+
+Formula:
+value ~ s(repudns, bs = "ps") + s(tmax, bs = "ps") + s(mm1, bs = "ps") + 
+    s(tmin, bs = "ps") + s(rain, bs = "ps") + s(mm1, bs = "ps")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.32535    0.03118   106.6   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+             edf Ref.df      F  p-value    
+s(repudns) 7.920  8.135  8.941 3.53e-07 ***
+s(tmax)    1.412  1.719  7.820  0.00589 ** 
+s(mm1)     8.925  8.987  8.205 6.53e-07 ***
+s(tmin)    6.799  7.269 11.280 2.59e-08 ***
+s(rain)    1.000  1.000  6.258  0.01774 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.971   Deviance explained = 98.4%
+GCV = 18.012  Scale est. = 9.6098    n = 58
+R^2:  0.970933 ; GCV:  18.01225 ; AIC:  387.5873 ; BIC:  445.3955
+
+
+start: te:  mm1 repudns, te:  mm1 tmax 
+summary: 
+Family: gaussian 
+Link function: log 
+
+Formula:
+value ~ te(repudns, mm1, bs = c("ps", "ps")) + te(tmax, mm1, 
+    bs = c("ps", "ps"))
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.30554    0.04444   74.38   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                   edf Ref.df     F  p-value    
+te(repudns,mm1)  7.815  8.153 9.001 9.26e-08 ***
+te(tmax,mm1)    12.136 20.000 4.335 2.89e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.919   Deviance explained = 94.6%
+GCV = 41.399  Scale est. = 26.445    n = 58
+R^2:  0.9192054 ; GCV:  41.39872 ; AIC:  444.5325 ; BIC:  489.761
+
+
+start: te:  mm1 repudns, te:  mm1 tmax 
+summary: 
+Family: gaussian 
+Link function: log 
+
+Formula:
+value ~ te(repudns, mm1, bs = c("ps", "ps")) + te(tmax, mm1, 
+    bs = c("ps", "ps"))
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.30554    0.04444   74.38   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                   edf Ref.df     F  p-value    
+te(repudns,mm1)  7.815  8.153 9.001 9.26e-08 ***
+te(tmax,mm1)    12.136 20.000 4.335 2.89e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.919   Deviance explained = 94.6%
+GCV = 41.399  Scale est. = 26.445    n = 58
+R^2:  0.9192054 ; GCV:  41.39872 ; AIC:  444.5325 ; BIC:  489.761

@@ -1,0 +1,20 @@
+* Analysis
+
+weaves
+
+** Build
+
+Packages for R 3.3.1 are listed in packages.lst
+
+The source file out/xwrkcwy1.csv is available on SFTP
+
+  make -f hcc5.mk S_FILE=/var/btmp/xwrkcwy1.csv all
+
+It build a binary file for loading by the others. hcc1.R
+
+Then hcc3.R analyses days0 from carriageway properties
+
+** hcc3.R
+
+This calculates correlations for the days0. Nothing of use.
+

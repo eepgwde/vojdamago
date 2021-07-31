@@ -1,0 +1,114 @@
+
+
+start: ps: enqs, ps: mm1, ps: tmin, ps: tmax, ps: dtmax 
+summary: 
+Family: gaussian 
+Link function: log 
+
+Formula:
+value ~ s(enqs, bs = "ps") + s(mm1, bs = "ps") + s(tmin, bs = "ps") + 
+    s(tmax, bs = "ps") + s(dtmax, bs = "ps")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.46036    0.02795   159.6   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+           edf Ref.df      F  p-value    
+s(enqs)  4.323  5.005 18.842 1.22e-11 ***
+s(mm1)   2.304  2.789  2.565  0.06707 .  
+s(tmin)  8.031  8.553  3.293  0.00670 ** 
+s(tmax)  1.000  1.000  0.514  0.47766    
+s(dtmax) 2.084  2.485  4.215  0.00896 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.952   Deviance explained = 96.7%
+GCV = 345.86  Scale est. = 234.1     n = 58
+R^2:  0.9515539 ; GCV:  345.8597 ; AIC:  497.8774 ; BIC:  538.5547
+
+
+start: cc: enqs, cc: mm1, cc: tmin, cc: tmax, cc: dtmax 
+summary: 
+Family: gaussian 
+Link function: log 
+
+Formula:
+value ~ s(enqs, bs = "cc") + s(mm1, bs = "cc") + s(tmin, bs = "cc") + 
+    s(tmax, bs = "cc") + s(dtmax, bs = "cc")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.45845    0.03263   136.7   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+           edf Ref.df      F  p-value    
+s(enqs)  5.440      8 16.382  < 2e-16 ***
+s(mm1)   4.159      8  3.488 1.90e-05 ***
+s(tmin)  7.651      8  4.698 6.26e-05 ***
+s(tmax)  4.405      8  1.030 0.059760 .  
+s(dtmax) 5.150      8  2.742 0.000964 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.935   Deviance explained = 96.6%
+GCV = 599.05  Scale est. = 311.87    n = 58
+R^2:  0.9354933 ; GCV:  599.0502 ; AIC:  517.4156 ; BIC:  576.7671
+
+
+start: te:  mm1 enqs, te:  mm1 tmin 
+summary: 
+Family: gaussian 
+Link function: log 
+
+Formula:
+value ~ te(enqs, mm1, bs = c("ps", "ps")) + te(tmin, mm1, bs = c("ps", 
+    "ps"))
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.46505    0.03359   132.9   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+               edf Ref.df      F  p-value    
+te(enqs,mm1) 7.277  8.425 11.958 7.86e-11 ***
+te(tmin,mm1) 7.057 20.000  0.894   0.0107 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.929   Deviance explained = 94.7%
+GCV = 466.42  Scale est. = 343.11    n = 58
+R^2:  0.928983 ; GCV:  466.4163 ; AIC:  518.0631 ; BIC:  551.7173
+
+
+start: te:cc:  mm1 enqs, te:cc:  mm1 tmin 
+summary: 
+Family: gaussian 
+Link function: log 
+
+Formula:
+value ~ te(enqs, mm1, bs = c("cc", "cc")) + te(tmin, mm1, bs = c("cc", 
+    "cc"))
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.48496    0.04585   97.81   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+               edf Ref.df     F p-value    
+te(enqs,mm1) 7.879     15 8.583  <2e-16 ***
+te(tmin,mm1) 4.628     12 0.756  0.0525 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.859   Deviance explained =   89%
+GCV = 887.56  Scale est. = 680.86    n = 58
+R^2:  0.8592618 ; GCV:  887.5578 ; AIC:  556.5893 ; BIC:  586.4808

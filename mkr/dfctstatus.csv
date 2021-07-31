@@ -1,0 +1,41 @@
+statuscode,statusname,status0,status1,phase0
+7800,Job Completed,completed,action,10
+410,zFault Made Safe,safed,action,9
+400,zRepaired/Replaced,repaired,action,10
+8001,Non Financial Job Archived,defer,noaction,2
+7860,Job Comp Further Work Closed,closed,action,10
+7850,Job Comp Further Wrk required,future,action,10
+7845,No fault found,nofault,noaction,9
+7835,Private Property,unable,noaction,9
+7810,Job Finalised Ready to Audit,audit,action,2
+7770,Gang Suspended Job,defer,noaction,5
+7750,Gang Started/On Site,accepted,noaction,5
+7700,Job Programmed,accepted,noaction,2
+7630,Job On Hold,defer,noaction,2
+7550,Job Cancelled,cancel,noaction,2
+7240,Job Raised in Error,superseded,noaction,2
+7208,Possible Duplicate Job,duplicate,noaction,2
+7200,Job Raised,raised,noaction,2
+850,zJob Cancelled,cancel,noaction,2
+620,zInspected and Passed,inspected,noaction,9
+480,zInformation Provided,report,noaction,1
+450,Pending Special Equip,defer,noaction,5
+445,zUnable to Complete,unable,noaction,5
+440,Unable to Locate,unfound,noaction,2
+420,Noted for Future Ref,defer,noaction,2
+250,zSent to Electronic plannin Sy,payment,noaction,2
+225,zJob remvd from Elec Planng Sy,removed,noaction,2
+210,zJob Accepted/Scheduled,accepted,noaction,3
+120,zJob Superseded,superseded,noaction,2
+110,zPossible Duplicate Job,report,noaction,2
+100,zJob Raised,raised,noaction,2
+50,zDesign Process - Do Not Comm,design,noaction,2
+10,zReferred to Client,client,noaction,2
+,No code allocated,nca,noaction,1
+,,report,noaction,1
+7500,Job Received by Ringway,other,permit,3
+7400,Job Committed To Ringway,other,permit,3
+7210,Referred to LNT,refer,permit,3
+7205,Job covered in future scheme,future,permit,3
+7203,Job Classified as future works,future,permit,3
+430,Referred to 3rd Party,refer,permit,3

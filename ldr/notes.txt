@@ -1,0 +1,592 @@
+* Journal
+
+** Rebuilt database
+
+dfcts issue - caused a reload.
+
+Now PoI data is corrupted.
+
+Generally,
+
+ - Don't use a key with the same name as a table
+
+ - Don't pass tables by reference to functions
+
+** Backups
+
+Don't allow "all" to run and reload the source data. Results in double size
+files.
+
+backup of the processed CSV files is in ~/bak as a .tgz
+
+* Systems
+
+** python3 and pandas
+
+Using host system, Python3 is Python 3.5.3. Pandas is 0.19.2.
+
+Just using python for Excel to CSV and date-fixing.
+
+** R
+
+kx now recommend another link to q/kdb
+
+https://github.com/KxSystems/rkdb#installation
+
+Does it work for 32 bit? Too fiddly.
+
+* Backups
+
+The 
+
+* Code flagging
+
+** TODO
+
+Something to look at later.
+
+** IMPUTATION
+
+An assumption made to populate fields.
+
+* Dates
+
+** Claims
+
+Uses dayfirst=True
+
+but all others (confirm) use dayfirst=False
+
+* asset_id and feature_id
+
+** FWY
+
+FWY says that this is the asset id
+
+A41/001
+
+and
+
+so A41 is the feature id?
+
+So call 001 the asset segment
+
+** CWY
+
+Says that asset_id is a different code. And that
+
+A41/001 is a feature_id
+
+roadtype is not as specific as roadtypehw. I'll delete it from cwy0
+
+* ftre
+
+Is a feature table. Joins fwy and cwy asset id. With stems on feature.
+
+You would need to apply it twice to get the feature (road) for a footway.
+
+* Footway Faults - fwyenq0
+
+Is a re-use of Tomasz' data.
+
+* weather
+
+See hcc_.sh for the source.
+
+Odd metric called AF is the average number of days of frost. Very important
+to have.
+
+Uncontrolled text fields in CWY-enquiries.csv 
+
+* enq1 enq2
+
+** enq1
+
+Keyed on enquirynumber as enq0
+
+Good key coverage.
+
+xref0      type0    | assetid assetid1
+--------------------| ----------------
+           unmatched| 374     281     
+nositename unmatched| 17      12      
+null       unmatched| 396     1       
+xcolon     unmatched| 16      6       
+xdash      unmatched| 23      21      
+xslash     unmatched| 281     177     
+colon      matched  | 34      5       
+cwy        matched  | 76946   9720    
+dash       matched  | 1924    1662    
+fiad       matched  | 942     618     
+fwy        matched  | 2507    1751    
+slash      matched  | 394     170
+
+38.6701236538 times more cwy enquiries than fwy.
+
+But only 4 times as many distinct assets (longer roads).
+
+** enq2
+
+Uses foreign key back to enq1, using generic field-names
+
+date0 is enquirytime0 as a date
+ddate0 is days to followup
+ddate1 is days to logging
+
+* Road Conditions
+
+** rci1
+
+Not very good coverage prior to 2016. And featureid has been checked twice.
+
+surveyfeatend0 acode
+--------------------
+2009           1    
+2010           2    
+2011           2    
+2013           41   
+2014           64   
+2015           25   
+2016           1895
+
+** rci1rag
+
+Red-amber-green for road conditions.
+
+I've only calculated these for 2016.
+
+* Claims
+
+** clm1
+
+A "when case notified/started" field would be useful to help work out delays
+
+A "when case settled" field would help with that too.
+
+To make a projection for 2018 now, I can count previous years and
+expect the same.
+
+There are some TODO points in clm1.q these may show how to better
+classify for fwy or cwy asset ids.
+
+** clm2
+
+Is a short form of clm1 with a foreign key back to clm1.
+
+* season0
+
+Using enquiries count logged
+
+wintry peak month 12 1 2 3 4
+
+summery mid month 5 6 7 8
+
+autumny 9 10 11
+
+* Defects
+
+** dfct1 dfct0
+
+dfct -> dfct1 -> dfct0
+
+In dfct0, I make cwy and usrn to foreign keys.
+
+Aggregation is by USRN to match permits
+
+We calculate look backs to see how much trouble they have been: permits and defects
+
+We calculate look forwards to see how much work has been put into them: permits and defects.
+
+*** dfct1 - doesn't reveal inspection time
+
+I was hoping that dfct1 would reveal the time taken to inspect. Because
+of the supersedes records. The first would match an enquiry, and the
+subsequent record would be an inspection.
+
+This isn't so. It looks like I have to do a look-forward in the enquiry
+file to see if a defect action was taken.
+
+** Some priority files
+
+status0, status1 are from statuscode defined in dfctpriority.csv
+
+status0 is simple statusname. status1 is action or noaction or permit
+
+phase0 is what stage of the process are they at.
+
+1 is reporting
+2 is administrative classification
+
+4 is inspected
+
+5 is in progress
+
+9, 10 is done
+
+action0 is Action Required boolean of status = Action Required
+
+ntype1 ntype2 ntype3 are carriageway or other, priority (high = 1), type of report.
+
+** Time aggregation by USRN
+
+
+
+
+* Traffic
+
+** ABC volumes
+
+Some roads are not in the ftre index. viz. A1(M). About 179.
+
+There's a compkey that is an asset identifier. It doesn't match any assets either.
+
+aadtcomb is an adjusted AADT.
+But the percentages don't sum.
+
+hccobjin doesn't see to mean anything.
+
+
+** Comparing to the carriageway information
+
+No: traffic is all "LOCAL 2".
+traffic:hcchier is cwy:hierarchy
+
+But the cwy.hierarchy is more accurate (mis-keyed field?).
+
+
+* salting
+
+A whole inventory dump. Includes cycleways.
+
+* LSOA
+
+** cars pop income imd tcars
+
+This need to be keyed by lsoaname
+
+Then lsoa1 is key by that name.
+
+** IMD
+
+imd1 txf only imd is score, imdk is ranK, wealthK is rankK
+ranks are Hertford only.
+
+A low IMD is bad. 
+
+imd is -ve correlation to imdk - lower the imd, higher the rank
+
+imd is +ve correlation to wealthk - higher the imd, higher the wealth
+
+** Population
+
+Beware age0 age1 age2 age3 age4 are different for male and female
+
+men: cut-offs: 15, 24, 49, 64, 65+
+women: cut-offs: 15, 24, 49, 59, 60+
+
+** cars
+
+This is a distribution. The number of households that have at least N cars
+
+** PoI
+
+The PoI near a feature tell you where it is.
+Near school, shopping centre, etc.
+
+*** Weighting
+
+I've used a delta for each asset to find at which distance a new PoI appears.
+I then weight those by an exponential decay and sum them together.
+
+I had to write a function: poiftr (Point of Interest Feature)
+
+There are some configuration parameters defined in the PoI workspace.
+
+*** Filtering
+
+Also, the PoIs that matter are filtered by the distance of the
+asset. If the road is very short (less than 100m) than only the assets
+up to that are considered.
+
+Very long roads are filtered to just 800m 
+
+*** Classes
+
+I've only covered a few and aggregated them, the tag0 is the name the
+column takes in the samples file. There are 6 PoI classes in all.
+
+tag0      cls0                                       
+
+nbus      Bus Stops                                  
+nhospital Hospitals                                  
+nhospital Accident and Emergency Hospitals           
+nhotel    Hotels, Motels, Country Houses and Inns    
+nhotel    Pubs, Bars and Inns                        
+nrail     Railway Stations, Junctions and Halts      
+nschool   First, Primary and Infant Schools          
+nschool   Broad Age Range and Secondary State Schools
+nschool   Independent and Preparatory Schools        
+nschool   Special Schools and Colleges               
+nsupermkt Supermarket Chains
+
+*** Storage
+
+I've written the PoI to tables0 in its workspace. It is then loaded by
+samples1.q.
+
+** Enquiry stata
+
+Enquiries has more classifications of the enquiry: method, enqstatusname,
+and subjectcode. I had to do some imputing to put these into the Claims and
+samples files.
+
+** Defects: Issues
+
+See 2csv.q xdfctsample0.csv. There are no recorded actions for the years
+2013 and 2014. (Well, one.) hcc states dfctrisk1 as sum of action1.
+
+And action1 is any of 
+
+
+* Method
+
+** Why Enquiries become Claims
+
+Add Claims to Enquiries. Add Outcome = 1b if Claim.
+
+Take a snapshot of the state of all roads. Imagine they will not be
+repaired in the next 30 days.
+
+Which will predict a claim.
+
+*** Predictor
+
+Now try and detect them again.
+
+First, use just a very specific geographic attribute.
+
+Lat and Long may give great accuracy but only T/T 
+
+Remove it and use LSOA, lose accuracy but also v good. Maybe more T/F.
+
+Remove that use characteristics of an LSOA, such IMD, number of cars,
+population.
+
+Then add more PoI, like nearness to bus stops, nearness to railway
+stations, etc.
+
+**** Features
+
+Overall character is made of features
+
+***** Asset
+
+****** Static
+
+Geographic: LSOA, PoI, LSOA-derivatives, 
+
+Structural: object-road-condition, trunk road (aid00), road
+material
+
+****** Locality
+
+Loading-geographic: PoI
+
+Loading-static: road type ABC, AADT and traffic class
+
+
+****** Historic
+
+Structural-historic: defects in last month, enquiries in last month
+
+***** Exogeneous
+
+Environmental: weather, season
+
+***** Enquiry/Claim
+
+Enquiry has-a Outcome:false, Claim is-a Enquiry where Outcome:true
+
+Enquiry has-a Asset
+
+* Modelling
+
+Uses models.mk as its Makefile.
+
+** Data loading
+
+br00.R loads samples1.q and writes to an R binary.
+
+br0.R re-loads and creates variant data-tables and stores. Also sets of
+columns in the list br0.
+
+br1.R does elementary recursive partitioning analysis. Table name is taken as
+args[1], fields to use is args[2].
+
+** Recursive Partitioning - not encouraging
+
+First pass at the data with R partitioning found a 2-to-1 split on distance
+> 500m.
+
+I had to up maxcompete to 8 and complexity to 0.001
+
+*** More data
+
+**** Permits and last month's weather
+
+I think 90 day permits and defects might help. Previous month's weather as well.
+
+No.
+
+**** Future works
+
+Re-jigged dfct and prmt. Added a cwy3 to remove mtraffic as well as
+distance, width, area.
+
+** Models
+
+*** GBM in br7.R
+
+Not good. Very good at predicting noclaim, ie. true negative, but very low
+power (true positive). I want a high false positive rate.
+
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   16086  1018
+   claim         4     7
+                                          
+               Accuracy : 0.9403          
+                 95% CI : (0.9366, 0.9438)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : 0.4698          
+                                          
+                  Kappa : 0.0123          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.0068293       
+            Specificity : 0.9997514       
+         Pos Pred Value : 0.6363636       
+         Neg Pred Value : 0.9404818       
+             Prevalence : 0.0598890       
+         Detection Rate : 0.0004090       
+   Detection Prevalence : 0.0006427       
+      Balanced Accuracy : 0.5032903       
+                                          
+       'Positive' Class : claim           
+
+Variable importance gives distance and width. a0Xwidth, a0Xdistance very
+high up. Others: to drop: a0Xisdist, a0Xarea. area.
+
+*** Different data-sets
+
+samples1d now produces some variants.
+
+xsamples1 - all samples 
+
+xsamples2 - long roads >= 502
+
+xsamples3 - short roads < 502
+
+xsamples4 - rural
+
+xsamples5 - urban
+
+xsamples6 - 1000 records only from urban and long
+
+And within those I can choose different sub-sets
+
+Currently, I'm using xroadsc
+
+   xroadsc - no road conditions
+   xlocalr - xroadsc - no local roads
+   xxwintry - xroadsc - only winter season
+   xenqr - xroadsc - only the claims records
+
+xenqr is very sparse and needs code changes to use it.
+
+**** short roads
+
+short roads has imd as its dominant variable.
+Try dropping the other a0X and removing area.
+
+**** xlocalr
+
+I have evaluated xlocalr - interesting results. mage2 is important in rural
+areas. 
+
+**** xxwintryr
+
+Just GBM results, but suggests road width is key.
+
+
+*** GBM SMOTE in br9.R
+
+build/0/hcc
+
+**** Urban dataset
+
+Good results! Swung it all over to False Positive. Better True
+Positive. Still not out-predicting the False Negative, but erring on the
+side of caution.
+
+*** RF (ranger) SMOTE in br8.R
+
+share/2/build/hcc
+
+**** Urban dataset
+
+xsamples5. Much better - clear hump on the distributions.
+
+*** Imputation on Claims
+
+Enquiries has more classifications of the enquiry: method, enqstatusname,
+and subjectcode.
+
+enqstatusname is prescient. It is the final state of the enquiry and would
+only be available after loggeddate and followupdate.
+
+method is who logged the call. The police or works or the public.
+
+Subjectcode (and subjectname) are coded as urgent/permanent and others.
+And have a response time encoded. These are encoded in cph_weaves.csv.
+
+There is a priority that is derived from the subjectcode too.
+
+Unfortunately, Claims records don't record these values. By a laborious
+process, see br3.R br3a.R br2.R and impute0.q and samples1.q. I've
+generated imputations and loaded them back into the database. It's a 30
+minute job to impute, and it is useful to have the Claims encoded in the
+source.
+
+The priority and the response time do prove to be key indicators.
+
+*** Models: k-fold cross-validation
+
+Yes. I do this. It's part of training control. repeatedcv is 10 with 3
+repeats.
+
+*** Models: prescient variable
+
+estatus0 is a prescient. I remove prescient variables as part of NZV. In
+the file br3a0.R called by br3a.R
+
+xsamples1 is predicting on it's own now.
+
+
+
+
+** This file's Emacs file variables
+
+[  Local Variables: ]
+[  mode:text ]
+[  mode:outline-minor ]
+[  mode:auto-fill ]
+[  fill-column: 75 ]
+[  coding: iso-8859-1-unix ]
+[  comment-column:50 ]
+[  comment-start: "[  "  ]
+[  comment-end:"]" ]
+[  End: ]
+

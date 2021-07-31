@@ -1,0 +1,196 @@
+if ! test -d ../cache/csvdb; then mkdir ../cache/csvdb; fi
+Qp cwyinventory.load.q ../cache/in/CWY-inventory.csv -bl -bs -savedb ../cache/csvdb -savename cwy -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:49 saving <../cache/in/CWY-inventory.csv> to directory ../cache/csvdb/cwy
+12:24:49 done (19509 records; 102141 records/sec; 31 MB/sec)
+12:24:49 loading <../cache/in/CWY-inventory.csv> to variable DATA
+12:24:49 done (19509 records; 214384 records/sec; 65 MB/sec)
+Qp fwyinventory.load.q ../cache/in/FWY-inventory.csv -bl -bs -savedb ../cache/csvdb -savename fwy -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:50 saving <../cache/in/FWY-inventory.csv> to directory ../cache/csvdb/fwy
+12:24:50 done (27004 records; 124442 records/sec; 28 MB/sec)
+12:24:50 loading <../cache/in/FWY-inventory.csv> to variable DATA
+12:24:50 done (27004 records; 296747 records/sec; 66 MB/sec)
+Qp rcia.load.q ../cache/in/RCI-A.csv -bl -bs -savedb ../cache/csvdb -savename rcia -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:50 saving <../cache/in/RCI-A.csv> to directory ../cache/csvdb/rcia
+12:24:51 done (93335 records; 92319 records/sec; 35 MB/sec)
+12:24:51 loading <../cache/in/RCI-A.csv> to variable DATA
+12:24:51 done (93335 records; 214071 records/sec; 82 MB/sec)
+Qp rcia.load.q ../cache/in/RCI-BC.csv -bl -bs -savedb ../cache/csvdb -savename rcib -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:51 saving <../cache/in/RCI-BC.csv> to directory ../cache/csvdb/rcib
+12:24:53 done (138502 records; 84503 records/sec; 32 MB/sec)
+12:24:53 loading <../cache/in/RCI-BC.csv> to variable DATA
+12:24:54 done (138502 records; 206104 records/sec; 78 MB/sec)
+Qp defects.load.q ../cache/in/defects.csv -bl -bs -savedb ../cache/csvdb -savename dfct -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:54 saving <../cache/in/defects.csv> to directory ../cache/csvdb/dfct
+12:24:56 done (247758 records; 125320 records/sec; 29 MB/sec)
+12:24:56 loading <../cache/in/defects.csv> to variable DATA
+12:24:57 done (247758 records; 245304 records/sec; 57 MB/sec)
+Qp cwyenquiries.load.q ../cache/in/CWY-enquiries.csv -bl -bs -savedb ../cache/csvdb -savename enq -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:57 saving <../cache/in/CWY-enquiries.csv> to directory ../cache/csvdb/enq
+12:24:58 done (83854 records; 111656 records/sec; 29 MB/sec)
+12:24:58 loading <../cache/in/CWY-enquiries.csv> to variable DATA
+12:24:58 done (83854 records; 297354 records/sec; 77 MB/sec)
+Qp claims.load.q ../cache/in/claims.csv -bl -bs -savedb ../cache/csvdb -savename clm -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:58 saving <../cache/in/claims.csv> to directory ../cache/csvdb/clm
+12:24:58 done (29954 records; 66416 records/sec; 19 MB/sec)
+12:24:58 loading <../cache/in/claims.csv> to variable DATA
+12:24:59 done (29954 records; 265079 records/sec; 75 MB/sec)
+Qp cars.load.q ../cache/in/cars.csv -bl -bs -savedb ../cache/csvdb -savename cars -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:59 saving <../cache/in/cars.csv> to directory ../cache/csvdb/cars
+12:24:59 done (3440 records; 16000 records/sec; 1 MB/sec)
+12:24:59 loading <../cache/in/cars.csv> to variable DATA
+12:24:59 done (3440 records; 860000 records/sec; 46 MB/sec)
+Qp pop.load.q ../cache/in/pop.csv -bl -bs -savedb ../cache/csvdb -savename pop -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:59 saving <../cache/in/pop.csv> to directory ../cache/csvdb/pop
+12:24:59 done (6870 records; 30945 records/sec; 2 MB/sec)
+12:24:59 loading <../cache/in/pop.csv> to variable DATA
+12:24:59 done (6870 records; 763333 records/sec; 52 MB/sec)
+Qp income.load.q ../cache/in/income.csv -bl -bs -savedb ../cache/csvdb -savename income -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:24:59 saving <../cache/in/income.csv> to directory ../cache/csvdb/income
+12:25:00 done (688 records; 3214 records/sec; 0 MB/sec)
+12:25:00 loading <../cache/in/income.csv> to variable DATA
+12:25:00 done (688 records; 688000 records/sec; 51 MB/sec)
+Qp imd.load.q ../cache/in/imd.csv -bl -bs -savedb ../cache/csvdb -savename imd -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:00 saving <../cache/in/imd.csv> to directory ../cache/csvdb/imd
+12:25:00 done (688 records; 3260 records/sec; 0 MB/sec)
+12:25:00 loading <../cache/in/imd.csv> to variable DATA
+12:25:00 done (688 records; 344000 records/sec; 35 MB/sec)
+Qp tcars.load.q ../cache/in/tcars.csv -bl -bs -savedb ../cache/csvdb -savename tcars -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:00 saving <../cache/in/tcars.csv> to directory ../cache/csvdb/tcars
+12:25:00 done (688 records; 3457 records/sec; 0 MB/sec)
+12:25:00 loading <../cache/in/tcars.csv> to variable DATA
+12:25:00 done (688 records; 688000 records/sec; 36 MB/sec)
+Qp fwylsoa.load.q ../cache/in/fwylsoa.csv -bl -bs -savedb ../cache/csvdb -savename fwylsoa -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:00 saving <../cache/in/fwylsoa.csv> to directory ../cache/csvdb/fwylsoa
+12:25:00 done (26086 records; 110067 records/sec; 3 MB/sec)
+12:25:00 loading <../cache/in/fwylsoa.csv> to variable DATA
+12:25:00 done (26086 records; 2006615 records/sec; 56 MB/sec)
+Qp cwylsoa.load.q ../cache/in/cwylsoa.csv -bl -bs -savedb ../cache/csvdb -savename cwylsoa -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:01 saving <../cache/in/cwylsoa.csv> to directory ../cache/csvdb/cwylsoa
+12:25:01 done (19507 records; 71193 records/sec; 3 MB/sec)
+12:25:01 loading <../cache/in/cwylsoa.csv> to variable DATA
+12:25:01 done (19507 records; 1219187 records/sec; 47 MB/sec)
+Qp poi.load.q ../cache/in/poi.csv -bl -bs -savedb ../cache/csvdb -savename poi -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:01 saving <../cache/in/poi.csv> to directory ../cache/csvdb/poi
+12:25:04 done (645953 records; 215965 records/sec; 28 MB/sec)
+12:25:04 loading <../cache/in/poi.csv> to variable DATA
+12:25:05 done (645953 records; 429204 records/sec; 56 MB/sec)
+Qp workscwy0.load.q ../cache/in/workscwy0.csv -af -savedb ../cache/csvdb -savename workscwy0 -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:05 saving <../cache/in/workscwy0.csv> to file 
+Qp workscwy2.load.q ../cache/in/workscwy2.csv -af -savedb ../cache/csvdb -savename workscwy2 -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:06 saving <../cache/in/workscwy2.csv> to file 
+Qp dfctcwy.load.q ../cache/in/dfctcwy.csv -bl -bs -savedb ../cache/csvdb -savename dfctcwy -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:06 saving <../cache/in/dfctcwy.csv> to directory ../cache/csvdb/dfctcwy
+12:25:08 done (159460 records; 71442 records/sec; 24 MB/sec)
+12:25:08 loading <../cache/in/dfctcwy.csv> to variable DATA
+12:25:09 done (159460 records; 275405 records/sec; 92 MB/sec)
+Qp weather.load.q ../cache/in/weather.csv -af -savedb ../cache/csvdb -savename weather -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:09 saving <../cache/in/weather.csv> to file 
+Qp permits.load.q ../cache/in/permits.csv -bl -bs -savedb ../cache/csvdb -savename permits -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:09 saving <../cache/in/permits.csv> to directory ../cache/csvdb/permits
+12:25:12 done (295109 records; 85094 records/sec; 27 MB/sec)
+12:25:12 loading <../cache/in/permits.csv> to variable DATA
+12:25:13 done (295109 records; 234213 records/sec; 75 MB/sec)
+Qp luton.load.q ../cache/in/luton.csv -af -savedb ../cache/csvdb -savename luton -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:14 saving <../cache/in/luton.csv> to file 
+Qp traffic0.load.q ../cache/in/traffic0.csv -bl -bs -savedb ../cache/csvdb -savename traffic0 -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:14 saving <../cache/in/traffic0.csv> to directory ../cache/csvdb/traffic0
+12:25:14 done (3179 records; 6307 records/sec; 3 MB/sec)
+12:25:14 loading <../cache/in/traffic0.csv> to variable DATA
+12:25:14 done (3179 records; 138217 records/sec; 70 MB/sec)
+Qp salting.load.q ../cache/in/salting.csv -bl -bs -savedb ../cache/csvdb -savename salting -exit
+KDB+ 3.6 2019.04.02 Copyright (C) 1993-2019 Kx Systems
+l32/ 4()core 5930MB weaves emma 192.168.127.21 NONEXPIRE  
+
+"loaded: /home/weaves/share/qsys/trdrc.q"
+12:25:14 saving <../cache/in/salting.csv> to directory ../cache/csvdb/salting
+12:25:15 done (43173 records; 36900 records/sec; 15 MB/sec)
+12:25:15 loading <../cache/in/salting.csv> to variable DATA
+12:25:16 done (43173 records; 157565 records/sec; 65 MB/sec)

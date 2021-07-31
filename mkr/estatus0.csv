@@ -1,0 +1,27 @@
+enqstatusname,n0,estatus0
+Repaired/Replaced,35142,repair
+Fault Made Safe,10503,repair
+Duplicate Report,10432,duplicate
+This Record has been closed,6520,closed
+No Fault Found,5905,nofault
+Noted for Future Ref,5459,defer
+Public Contacted - FREE TEXT,5331,nofault
+Unable to Locate,1729,unfound
+Enquiry Raised,616,defer
+Pending Special Equip,545,defer
+Private Property,438,nofault
+Noted- works planned-FREE TEXT,390,defer
+Referred to 3rd Party,359,defer
+Progress for action,223,defer
+Scheduled,104,defer
+Inspected,52,defer
+Referred to District & Borough,48,defer
+Pends UK Power Network Cnnectn,38,defer
+ROW - Problem not Found,4,defer
+Replacement on Order,4,defer
+Arrival On Site,3,defer
+Enquiry Reported Again,2,defer
+Crew Off Site,2,defer
+Converted from Cat1 to Cat2,2,defer
+Claim Re-directed,2,defer
+Lowest Priority assessed fault,1,defer
