@@ -17,6 +17,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+# No change
 
 title: Carriageways Project - Damage to Vehicles from Roads
 email: walter.eaves@bigfoot.com
@@ -29,7 +30,7 @@ twitter_username: jekyllrb
 github_username:  eepgwde
 
 # Build settings
-theme: jekyll-theme-minimal
+theme: minima
 plugins:
   - jekyll-feed
 
