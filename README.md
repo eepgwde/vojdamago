@@ -19,22 +19,64 @@ It then uses GNU-R for the analysis; there are three forms of analysis:
 
  - A fault prediction classifier using operational features.
 
- - Regression analysis to predict Mean Time Between Failure for
+ - Regression analysis to predict Mean Time Between Failure for carriageways
+
+## Extraction
+
+This has been done for us. The dataset consists of broadly two categories:
+Descriptive and Operational.
+
+### Descriptive Information for the Assets
+
+The assets are the road (or carriageways) under management. They are keyed
+by the asset code.
+
+ - Inventory files: these list the roads managed by the organization
+ 
+ - Properties: lots of reference files for the roads, these include speed
+   limits, length, width, road material
+ 
+ - Environment: more reference files that describe socio-demographic data
+   for the roads
+
+### Operational Information for the actions on the Assets
+
+These are Event files, keyed by asset code and date and time.
+
+  - These list the insurance claims on the roads
+  - The faults reported
+  - The repairs carried out
 
 ## Loading
+
+The source data is copyrighted to its owners. You may be able to get copies
+if you were to ask them. That means that there is no data in this distribution.
 
 ### top.mk
 
 The top-level directory is this one. It has a helper script hcc.sh and uses
-a script file hcc
+a script file hcc. (This script is a script loader. It is available from
+another repository.)
 
 The source files are stored in cache/bak. The top.mk file calls the other
-make files.
+make files. These two operations do all the work.
 
- make -f top.mk all
- make -f top.mk install
+```
+  make -f top.mk all
+  make -f top.mk install
+```
 
-do all the work
+That is with the proviso that you have the data and a working environment.
+
+To set up a working environment, there are README files in each of the
+directories.
+
+The data flow is from the cache/bak/ directory, to the cache/in/ directory.
+The q/kdb+ database is loaded and its table appear in cache/csvdb/. These
+are then output as CSV files to cache/out/.
+
+R then performs its analyses using the CSV files in cache/out/. The results
+of the analyses are stored in the directories where the analysis is done.
 
 #### trns/ and ldr/ and defs.mk
 
@@ -82,12 +124,13 @@ The three pieces of analysis are then run from these directory:
 
 This uses GAM to evaluate differently constructed models.
 
+```
  make -C e2c -f e2c.mk all
+```
 
 ### Fault Prediction
 
 This performs some recursive partition tree analysis.
-
 
 ## Notes
 
@@ -101,13 +144,11 @@ samples1.q and then samples1c.q. .dfct.status1 didn't exist. Re-ran dfct1.q
 
 ### This file's Emacs file variables
 
-[  Local Variables: ]
-[  mode:text ]
-[  mode:outline-minor ]
-[  mode:auto-fill ]
-[  fill-column: 75 ]
-[  coding: iso-8859-1-unix ]
-[  comment-column:50 ]
-[  comment-start: "[  "  ]
-[  comment-end:"]" ]
-[  End: ]
+;; Local Variables:
+;; mode:markdown
+;; mode:auto-fill
+;; fill-column: 75
+;; coding: iso-8859-1-unix
+;; comment-column:50
+;; comment-start: ";; " 
+;; End:

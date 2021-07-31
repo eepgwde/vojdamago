@@ -1,0 +1,1041 @@
+make MAKEFLAGS="" -f rp.mk ppl00.dat
+make[1]: Entering directory '/home/build/0/pyeg0/hcc/br'
+make[1]: 'ppl00.dat' is up to date.
+make[1]: Leaving directory '/home/build/0/pyeg0/hcc/br'
+make MAKEFLAGS="" -f rp.mk ppl0.dat
+make[1]: Entering directory '/home/build/0/pyeg0/hcc/br'
+make[1]: 'ppl0.dat' is up to date.
+make[1]: Leaving directory '/home/build/0/pyeg0/hcc/br'
+Rscript br7.R xroadsc-5.dat
+Loading required package: lattice
+Loading required package: ggplot2
+Registered S3 methods overwritten by 'tibble':
+  method     from  
+  format.tbl pillar
+  print.tbl  pillar
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Type 'citation("pROC")' for a citation.
+
+Attaching package: 'pROC'
+
+The following objects are masked from 'package:stats':
+
+    cov, smooth, var
+
+Loaded gbm 2.1.5
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+[1] 74418   124
+[1] "source: ../cache/out/xsamples1.csv"
+trainClass
+   noclaim      claim 
+0.94007295 0.05992705 
+[1] 57303   123
+testClass
+   noclaim      claim 
+0.94011101 0.05988899 
+[1] 17115   123
+Warning messages:
+1: In load(system.file("models", "models.RData", package = "caret")) :
+  strings not representable in native encoding will be translated to UTF-8
+2: In train.default(trainDescr, trainClass, method = "gbm", trControl = fitControl,  :
+  The metric "Kappa" was not in the result set. ROC will be used instead.
+Stochastic Gradient Boosting 
+
+57303 samples
+  123 predictor
+    2 classes: 'noclaim', 'claim' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold, repeated 5 times) 
+Summary of sample sizes: 45842, 45842, 45843, 45842, 45843, 45842, ... 
+Resampling results across tuning parameters:
+
+  interaction.depth  n.trees  ROC        Sens       Spec     
+  1                   10      0.6844782  1.0000000  0.3092579
+  1                   20      0.8369395  1.0000000  0.3092579
+  1                   30      0.8799889  1.0000000  0.3156070
+  1                   40      0.8857209  1.0000000  0.3401256
+  1                   50      0.8877053  1.0000000  0.3634803
+  1                   60      0.8907678  1.0000000  0.3687235
+  1                   70      0.8933141  1.0000000  0.3689564
+  1                   80      0.8954440  1.0000000  0.3689564
+  1                   90      0.8970503  1.0000000  0.3689564
+  1                  100      0.8984874  1.0000000  0.3689564
+  1                  110      0.8994679  1.0000000  0.3689564
+  1                  120      0.9004486  1.0000000  0.3689564
+  1                  130      0.9012141  0.9999963  0.3690146
+  1                  140      0.9020950  0.9999963  0.3690146
+  1                  150      0.9031361  0.9999926  0.3692475
+  1                  160      0.9043231  0.9999703  0.3698298
+  1                  170      0.9054503  0.9999629  0.3701210
+  1                  180      0.9063866  0.9999554  0.3709945
+  1                  190      0.9076156  0.9999480  0.3711110
+  1                  200      0.9088035  0.9999257  0.3718680
+  2                   10      0.8602093  1.0000000  0.3644149
+  2                   20      0.8863051  1.0000000  0.3689564
+  2                   30      0.8979809  1.0000000  0.3689564
+  2                   40      0.9057478  1.0000000  0.3690729
+  2                   50      0.9098855  0.9999554  0.3704124
+  2                   60      0.9146594  0.9998960  0.3725089
+  2                   70      0.9182697  0.9998441  0.3757124
+  2                   80      0.9217198  0.9997958  0.3782162
+  2                   90      0.9246839  0.9997215  0.3804879
+  2                  100      0.9279783  0.9996621  0.3841570
+  2                  110      0.9307434  0.9995582  0.3859625
+  2                  120      0.9326744  0.9994171  0.3914963
+  2                  130      0.9344660  0.9992537  0.3975533
+  2                  140      0.9361517  0.9990681  0.4019215
+  2                  150      0.9376915  0.9989345  0.4058818
+  2                  160      0.9387579  0.9987488  0.4107742
+  2                  170      0.9401915  0.9986300  0.4141522
+  2                  180      0.9411819  0.9984629  0.4177047
+  2                  190      0.9420698  0.9982996  0.4224218
+  2                  200      0.9430056  0.9982327  0.4250433
+  3                   10      0.8969522  1.0000000  0.3689564
+  3                   20      0.9144500  1.0000000  0.3689564
+  3                   30      0.9222946  0.9999926  0.3701213
+  3                   40      0.9270365  0.9999035  0.3739656
+  3                   50      0.9304294  0.9997067  0.3796142
+  3                   60      0.9333899  0.9995322  0.3848558
+  3                   70      0.9358039  0.9993577  0.3902736
+  3                   80      0.9381421  0.9991609  0.3965058
+  3                   90      0.9401476  0.9989010  0.4044261
+  3                  100      0.9416486  0.9986894  0.4135702
+  3                  110      0.9430468  0.9984555  0.4202682
+  3                  120      0.9442642  0.9982327  0.4264412
+  3                  130      0.9456438  0.9980137  0.4308086
+  3                  140      0.9467867  0.9978912  0.4358758
+  3                  150      0.9477952  0.9976721  0.4396027
+  3                  160      0.9487400  0.9975942  0.4435047
+  3                  170      0.9492891  0.9974197  0.4476986
+  3                  180      0.9498968  0.9972860  0.4515426
+  3                  190      0.9506613  0.9971523  0.4541631
+  3                  200      0.9510967  0.9970298  0.4573678
+
+Tuning parameter 'shrinkage' was held constant at a value of 0.1
+
+Tuning parameter 'n.minobsinnode' was held constant at a value of 20
+ROC was used to select the optimal model using the largest value.
+The final values used for the model were n.trees = 200, interaction.depth =
+ 3, shrinkage = 0.1 and n.minobsinnode = 20.
+'envir' chosen:<environment: R_GlobalEnv>
+encoding = "native.enc" chosen
+--> parsed 28 expressions; now eval(.)ing them:
+
+>>>> eval(expression_nr. 1 )
+		 =================
+
+> trainPred <- predict(fit1, trainDescr)
+curr.fun: symbol <-
+ .. after 'expression(trainPred <- predict(fit1, trainDescr))'
+
+>>>> eval(expression_nr. 2 )
+		 =================
+
+> postResample(trainPred, trainClass)
+Error: package e1071 is required
+Execution halted
+make: *** [br.mk:84: xroadsc-7.dat] Error 1
+make MAKEFLAGS="" -f rp.mk ppl00.dat
+make[1]: Entering directory '/home/build/0/pyeg0/hcc/br'
+make[1]: 'ppl00.dat' is up to date.
+make[1]: Leaving directory '/home/build/0/pyeg0/hcc/br'
+make MAKEFLAGS="" -f rp.mk ppl0.dat
+make[1]: Entering directory '/home/build/0/pyeg0/hcc/br'
+make[1]: 'ppl0.dat' is up to date.
+make[1]: Leaving directory '/home/build/0/pyeg0/hcc/br'
+Rscript br7.R xroadsc-5.dat
+Loading required package: lattice
+Loading required package: ggplot2
+Registered S3 methods overwritten by 'tibble':
+  method     from  
+  format.tbl pillar
+  print.tbl  pillar
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Type 'citation("pROC")' for a citation.
+
+Attaching package: 'pROC'
+
+The following objects are masked from 'package:stats':
+
+    cov, smooth, var
+
+Loaded gbm 2.1.5
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+[1] 74418   124
+[1] "source: ../cache/out/xsamples1.csv"
+trainClass
+   noclaim      claim 
+0.94007295 0.05992705 
+[1] 57303   123
+testClass
+   noclaim      claim 
+0.94011101 0.05988899 
+[1] 17115   123
+Warning messages:
+1: In load(system.file("models", "models.RData", package = "caret")) :
+  strings not representable in native encoding will be translated to UTF-8
+2: In train.default(trainDescr, trainClass, method = "gbm", trControl = fitControl,  :
+  The metric "Kappa" was not in the result set. ROC will be used instead.
+Stochastic Gradient Boosting 
+
+57303 samples
+  123 predictor
+    2 classes: 'noclaim', 'claim' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold, repeated 5 times) 
+Summary of sample sizes: 45842, 45842, 45843, 45842, 45843, 45842, ... 
+Resampling results across tuning parameters:
+
+  interaction.depth  n.trees  ROC        Sens       Spec     
+  1                   10      0.6844782  1.0000000  0.3092579
+  1                   20      0.8369395  1.0000000  0.3092579
+  1                   30      0.8799889  1.0000000  0.3156070
+  1                   40      0.8857209  1.0000000  0.3401256
+  1                   50      0.8877053  1.0000000  0.3634803
+  1                   60      0.8907678  1.0000000  0.3687235
+  1                   70      0.8933141  1.0000000  0.3689564
+  1                   80      0.8954440  1.0000000  0.3689564
+  1                   90      0.8970503  1.0000000  0.3689564
+  1                  100      0.8984874  1.0000000  0.3689564
+  1                  110      0.8994679  1.0000000  0.3689564
+  1                  120      0.9004486  1.0000000  0.3689564
+  1                  130      0.9012141  0.9999963  0.3690146
+  1                  140      0.9020950  0.9999963  0.3690146
+  1                  150      0.9031361  0.9999926  0.3692475
+  1                  160      0.9043231  0.9999703  0.3698298
+  1                  170      0.9054503  0.9999629  0.3701210
+  1                  180      0.9063866  0.9999554  0.3709945
+  1                  190      0.9076156  0.9999480  0.3711110
+  1                  200      0.9088035  0.9999257  0.3718680
+  2                   10      0.8602093  1.0000000  0.3644149
+  2                   20      0.8863051  1.0000000  0.3689564
+  2                   30      0.8979809  1.0000000  0.3689564
+  2                   40      0.9057478  1.0000000  0.3690729
+  2                   50      0.9098855  0.9999554  0.3704124
+  2                   60      0.9146594  0.9998960  0.3725089
+  2                   70      0.9182697  0.9998441  0.3757124
+  2                   80      0.9217198  0.9997958  0.3782162
+  2                   90      0.9246839  0.9997215  0.3804879
+  2                  100      0.9279783  0.9996621  0.3841570
+  2                  110      0.9307434  0.9995582  0.3859625
+  2                  120      0.9326744  0.9994171  0.3914963
+  2                  130      0.9344660  0.9992537  0.3975533
+  2                  140      0.9361517  0.9990681  0.4019215
+  2                  150      0.9376915  0.9989345  0.4058818
+  2                  160      0.9387579  0.9987488  0.4107742
+  2                  170      0.9401915  0.9986300  0.4141522
+  2                  180      0.9411819  0.9984629  0.4177047
+  2                  190      0.9420698  0.9982996  0.4224218
+  2                  200      0.9430056  0.9982327  0.4250433
+  3                   10      0.8969522  1.0000000  0.3689564
+  3                   20      0.9144500  1.0000000  0.3689564
+  3                   30      0.9222946  0.9999926  0.3701213
+  3                   40      0.9270365  0.9999035  0.3739656
+  3                   50      0.9304294  0.9997067  0.3796142
+  3                   60      0.9333899  0.9995322  0.3848558
+  3                   70      0.9358039  0.9993577  0.3902736
+  3                   80      0.9381421  0.9991609  0.3965058
+  3                   90      0.9401476  0.9989010  0.4044261
+  3                  100      0.9416486  0.9986894  0.4135702
+  3                  110      0.9430468  0.9984555  0.4202682
+  3                  120      0.9442642  0.9982327  0.4264412
+  3                  130      0.9456438  0.9980137  0.4308086
+  3                  140      0.9467867  0.9978912  0.4358758
+  3                  150      0.9477952  0.9976721  0.4396027
+  3                  160      0.9487400  0.9975942  0.4435047
+  3                  170      0.9492891  0.9974197  0.4476986
+  3                  180      0.9498968  0.9972860  0.4515426
+  3                  190      0.9506613  0.9971523  0.4541631
+  3                  200      0.9510967  0.9970298  0.4573678
+
+Tuning parameter 'shrinkage' was held constant at a value of 0.1
+
+Tuning parameter 'n.minobsinnode' was held constant at a value of 20
+ROC was used to select the optimal model using the largest value.
+The final values used for the model were n.trees = 200, interaction.depth =
+ 3, shrinkage = 0.1 and n.minobsinnode = 20.
+'envir' chosen:<environment: R_GlobalEnv>
+encoding = "native.enc" chosen
+--> parsed 28 expressions; now eval(.)ing them:
+
+>>>> eval(expression_nr. 1 )
+		 =================
+
+> trainPred <- predict(fit1, trainDescr)
+curr.fun: symbol <-
+ .. after 'expression(trainPred <- predict(fit1, trainDescr))'
+
+>>>> eval(expression_nr. 2 )
+		 =================
+
+> postResample(trainPred, trainClass)
+curr.fun: symbol postResample
+ Accuracy     Kappa 
+0.9659355 0.6073015 
+ .. after 'expression(postResample(trainPred, trainClass))'
+
+>>>> eval(expression_nr. 3 )
+		 =================
+
+> br0[["confusion.train"]] <- confusionMatrix(trainPred, 
++     trainClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.train"]] <- confusionMatrix(trainPred, ''    trainClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 4 )
+		 =================
+
+> br0[["confusion.train"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   53737  1820
+   claim       132  1614
+                                          
+               Accuracy : 0.9659          
+                 95% CI : (0.9644, 0.9674)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.6073          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.47001         
+            Specificity : 0.99755         
+         Pos Pred Value : 0.92440         
+         Neg Pred Value : 0.96724         
+             Prevalence : 0.05993         
+         Detection Rate : 0.02817         
+   Detection Prevalence : 0.03047         
+      Balanced Accuracy : 0.73378         
+                                          
+       'Positive' Class : claim           
+                                          
+ .. after 'expression(br0[["confusion.train"]])'
+
+>>>> eval(expression_nr. 5 )
+		 =================
+
+> ppl2 <- ppl0[rownames(trainDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(trainDescr), ])'
+
+>>>> eval(expression_nr. 6 )
+		 =================
+
+> ppl2[["predicted"]] <- trainPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- trainPred)'
+
+>>>> eval(expression_nr. 7 )
+		 =================
+
+> ppl2[["actual"]] <- trainClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- trainClass)'
+
+>>>> eval(expression_nr. 8 )
+		 =================
+
+> br0[["train.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["train.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 9 )
+		 =================
+
+> testPred <- predict(fit1, testDescr)
+curr.fun: symbol <-
+ .. after 'expression(testPred <- predict(fit1, testDescr))'
+
+>>>> eval(expression_nr. 10 )
+		 =================
+
+> postResample(testPred, testClass)
+curr.fun: symbol postResample
+ Accuracy     Kappa 
+0.9651183 0.5987895 
+ .. after 'expression(postResample(testPred, testClass))'
+
+>>>> eval(expression_nr. 11 )
+		 =================
+
+> br0[["confusion.test"]] <- confusionMatrix(testPred, 
++     testClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.test"]] <- confusionMatrix(testPred, ''    testClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 12 )
+		 =================
+
+> br0[["confusion.test"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   16041   548
+   claim        49   477
+                                          
+               Accuracy : 0.9651          
+                 95% CI : (0.9623, 0.9678)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5988          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.46537         
+            Specificity : 0.99695         
+         Pos Pred Value : 0.90684         
+         Neg Pred Value : 0.96697         
+             Prevalence : 0.05989         
+         Detection Rate : 0.02787         
+   Detection Prevalence : 0.03073         
+      Balanced Accuracy : 0.73116         
+                                          
+       'Positive' Class : claim           
+                                          
+ .. after 'expression(br0[["confusion.test"]])'
+
+>>>> eval(expression_nr. 13 )
+		 =================
+
+> ppl2 <- ppl0[rownames(testDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(testDescr), ])'
+
+>>>> eval(expression_nr. 14 )
+		 =================
+
+> ppl2[["predicted"]] <- testPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- testPred)'
+
+>>>> eval(expression_nr. 15 )
+		 =================
+
+> ppl2[["actual"]] <- testClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- testClass)'
+
+>>>> eval(expression_nr. 16 )
+		 =================
+
+> br0[["test.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["test.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 17 )
+		 =================
+
+> nvars <- floor(length(colnames(trainDescr)) * 2/3)
+curr.fun: symbol <-
+ .. after 'expression(nvars <- floor(length(colnames(trainDescr)) * 2/3))'
+
+>>>> eval(expression_nr. 18 )
+		 =================
+
+> jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), 
++     width = 1024, height = 768)
+curr.fun: symbol jpeg
+ .. after 'expression(jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), ''    width = 1024, height = 768))'
+
+>>>> eval(expression_nr. 19 )
+		 =================
+
+> modelImp <- varImp(fit1, scale = FALSE)
+curr.fun: symbol <-
+ .. after 'expression(modelImp <- varImp(fit1, scale = FALSE))'
+
+>>>> eval(expression_nr. 20 )
+		 =================
+
+> plot(modelImp, top = min(dim(modelImp$importance)[1], 
++     nvars))
+curr.fun: symbol plot
+ .. after 'expression(plot(modelImp, top = min(dim(modelImp$importance)[1], ''    nvars)))'
+
+>>>> eval(expression_nr. 21 )
+		 =================
+
+> x.p <- predict(fit1, testDescr, type = "prob")[2]
+curr.fun: symbol <-
+ .. after 'expression(x.p <- predict(fit1, testDescr, type = "prob")[2])'
+
+>>>> eval(expression_nr. 22 )
+		 =================
+
+> test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], 
++     Obs = testClass)
+curr.fun: symbol <-
+ .. after 'expression(test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], ''    Obs = testClass))'
+
+>>>> eval(expression_nr. 23 )
+		 =================
+
+> test.roc <- roc(Obs ~ true0, test.df)
+curr.fun: symbol <-
+ .. after 'expression(test.roc <- roc(Obs ~ true0, test.df))'
+
+>>>> eval(expression_nr. 24 )
+		 =================
+
+> densityplot(~test.df$true0, groups = test.df$Obs, 
++     auto.key = TRUE)
+curr.fun: symbol densityplot
+ .. after 'expression(densityplot(~test.df$true0, groups = test.df$Obs, ''    auto.key = TRUE))'
+
+>>>> eval(expression_nr. 25 )
+		 =================
+
+> plot.roc(test.roc)
+curr.fun: symbol plot.roc
+ .. after 'expression(plot.roc(test.roc))'
+
+>>>> eval(expression_nr. 26 )
+		 =================
+
+> dev.off()
+curr.fun: symbol dev.off
+null device 
+          1 
+ .. after 'expression(dev.off())'
+
+>>>> eval(expression_nr. 27 )
+		 =================
+
+> br0[["model.importance"]] <- modelImp
+curr.fun: symbol <-
+ .. after 'expression(br0[["model.importance"]] <- modelImp)'
+
+>>>> eval(expression_nr. 28 )
+		 =================
+
+> if (fit1$method == "gbm") {
++     stopifnot(any(names(fit1$control) == "seeds"))
++ }
+curr.fun: symbol if
+ .. after 'expression(if (fit1$method == "gbm") {''    stopifnot(any(names(fit1$control) == "seeds"))''})'
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   53737  1820
+   claim       132  1614
+                                          
+               Accuracy : 0.9659          
+                 95% CI : (0.9644, 0.9674)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.6073          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.47001         
+            Specificity : 0.99755         
+         Pos Pred Value : 0.92440         
+         Neg Pred Value : 0.96724         
+             Prevalence : 0.05993         
+         Detection Rate : 0.02817         
+   Detection Prevalence : 0.03047         
+      Balanced Accuracy : 0.73378         
+                                          
+       'Positive' Class : claim           
+                                          
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   16041   548
+   claim        49   477
+                                          
+               Accuracy : 0.9651          
+                 95% CI : (0.9623, 0.9678)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5988          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.46537         
+            Specificity : 0.99695         
+         Pos Pred Value : 0.90684         
+         Neg Pred Value : 0.96697         
+             Prevalence : 0.05989         
+         Detection Rate : 0.02787         
+   Detection Prevalence : 0.03073         
+      Balanced Accuracy : 0.73116         
+                                          
+       'Positive' Class : claim           
+                                          
+mv ppl7.dat xroadsc-7.dat
+Rscript br9.R xroadsc-7.dat
+Loading required package: lattice
+Loading required package: ggplot2
+Registered S3 methods overwritten by 'tibble':
+  method     from  
+  format.tbl pillar
+  print.tbl  pillar
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Type 'citation("pROC")' for a citation.
+
+Attaching package: 'pROC'
+
+The following objects are masked from 'package:stats':
+
+    cov, smooth, var
+
+Loaded gbm 2.1.5
+Loading required package: grid
+Registered S3 method overwritten by 'xts':
+  method     from
+  as.zoo.xts zoo 
+Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+[1] "source: ../cache/out/xsamples1.csv"
+[1] 74418   123
+trainClass
+   noclaim      claim 
+0.94007295 0.05992705 
+[1] 57303   123
+testClass
+   noclaim      claim 
+0.94011101 0.05988899 
+[1] 17115   123
+Warning messages:
+1: In load(system.file("models", "models.RData", package = "caret")) :
+  strings not representable in native encoding will be translated to UTF-8
+2: In train.default(trainDescr, trainClass, method = "gbm", trControl = fitControl,  :
+  The metric "Accuracy" was not in the result set. ROC will be used instead.
+Stochastic Gradient Boosting 
+
+57303 samples
+  123 predictor
+    2 classes: 'noclaim', 'claim' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold, repeated 5 times) 
+Summary of sample sizes: 45842, 45842, 45843, 45842, 45843, 45842, ... 
+Addtional sampling using up-sampling
+
+Resampling results across tuning parameters:
+
+  interaction.depth  n.trees  ROC        Sens       Spec     
+  1                   10      0.8351243  0.8977911  0.5116314
+  1                   20      0.8697358  0.7904474  0.7419889
+  1                   30      0.8808954  0.7860700  0.7732036
+  1                   40      0.8867918  0.7848374  0.7881196
+  1                   50      0.8924939  0.7861553  0.7949899
+  1                   60      0.8956091  0.7861256  0.7981345
+  1                   70      0.8976322  0.7882493  0.8009888
+  1                   80      0.8991363  0.7898866  0.8020370
+  1                   90      0.9011937  0.7916539  0.8043088
+  1                  100      0.9039571  0.7943753  0.8080957
+  1                  110      0.9070679  0.7966029  0.8176472
+  1                  120      0.9096946  0.7962577  0.8279552
+  1                  130      0.9119815  0.7971821  0.8331974
+  1                  140      0.9138887  0.7975200  0.8382641
+  1                  150      0.9156914  0.7983033  0.8425165
+  1                  160      0.9172431  0.7977316  0.8460689
+  1                  170      0.9188462  0.7993392  0.8487478
+  1                  180      0.9202207  0.7998070  0.8518938
+  1                  190      0.9216163  0.8006423  0.8549234
+  1                  200      0.9227885  0.8017970  0.8565537
+  2                   10      0.8692748  0.6685740  0.8686062
+  2                   20      0.8928606  0.7532571  0.8256237
+  2                   30      0.9010375  0.7842693  0.8128703
+  2                   40      0.9095497  0.7936402  0.8297624
+  2                   50      0.9167810  0.7952774  0.8481081
+  2                   60      0.9219926  0.8002005  0.8564965
+  2                   70      0.9259520  0.8033674  0.8629025
+  2                   80      0.9299834  0.8079155  0.8683192
+  2                   90      0.9328155  0.8114463  0.8714648
+  2                  100      0.9353088  0.8168297  0.8708827
+  2                  110      0.9375275  0.8216302  0.8722211
+  2                  120      0.9392854  0.8253838  0.8722205
+  2                  130      0.9409910  0.8292376  0.8725127
+  2                  140      0.9426065  0.8340456  0.8735604
+  2                  150      0.9439899  0.8380702  0.8735597
+  2                  160      0.9452634  0.8415304  0.8740829
+  2                  170      0.9464277  0.8451614  0.8732100
+  2                  180      0.9474902  0.8475227  0.8744332
+  2                  190      0.9484309  0.8505449  0.8736177
+  2                  200      0.9493996  0.8530212  0.8746662
+  3                   10      0.8969906  0.7065319  0.8884648
+  3                   20      0.9085429  0.7821121  0.8351765
+  3                   30      0.9173572  0.7951438  0.8456629
+  3                   40      0.9245805  0.8027883  0.8577767
+  3                   50      0.9302212  0.8100391  0.8667459
+  3                   60      0.9348872  0.8159572  0.8707061
+  3                   70      0.9384155  0.8238653  0.8726864
+  3                   80      0.9411939  0.8301063  0.8730945
+  3                   90      0.9435814  0.8366630  0.8739108
+  3                  100      0.9458667  0.8424623  0.8750751
+  3                  110      0.9478512  0.8483580  0.8739102
+  3                  120      0.9496552  0.8530249  0.8747843
+  3                  130      0.9509844  0.8572017  0.8748425
+  3                  140      0.9520213  0.8614008  0.8753087
+  3                  150      0.9530257  0.8642633  0.8758327
+  3                  160      0.9539153  0.8670404  0.8774050
+  3                  170      0.9547789  0.8697618  0.8780464
+  3                  180      0.9555068  0.8721788  0.8776968
+  3                  190      0.9561049  0.8747666  0.8772309
+  3                  200      0.9566741  0.8768791  0.8774643
+
+Tuning parameter 'shrinkage' was held constant at a value of 0.1
+
+Tuning parameter 'n.minobsinnode' was held constant at a value of 20
+ROC was used to select the optimal model using the largest value.
+The final values used for the model were n.trees = 200, interaction.depth =
+ 3, shrinkage = 0.1 and n.minobsinnode = 20.
+'envir' chosen:<environment: R_GlobalEnv>
+encoding = "native.enc" chosen
+--> parsed 28 expressions; now eval(.)ing them:
+
+>>>> eval(expression_nr. 1 )
+		 =================
+
+> trainPred <- predict(fit1, trainDescr)
+curr.fun: symbol <-
+ .. after 'expression(trainPred <- predict(fit1, trainDescr))'
+
+>>>> eval(expression_nr. 2 )
+		 =================
+
+> postResample(trainPred, trainClass)
+curr.fun: symbol postResample
+ Accuracy     Kappa 
+0.8785927 0.4216296 
+ .. after 'expression(postResample(trainPred, trainClass))'
+
+>>>> eval(expression_nr. 3 )
+		 =================
+
+> br0[["confusion.train"]] <- confusionMatrix(trainPred, 
++     trainClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.train"]] <- confusionMatrix(trainPred, ''    trainClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 4 )
+		 =================
+
+> br0[["confusion.train"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   47225   313
+   claim      6644  3121
+                                          
+               Accuracy : 0.8786          
+                 95% CI : (0.8759, 0.8813)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : 1               
+                                          
+                  Kappa : 0.4216          
+                                          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.90885         
+            Specificity : 0.87666         
+         Pos Pred Value : 0.31961         
+         Neg Pred Value : 0.99342         
+             Prevalence : 0.05993         
+         Detection Rate : 0.05446         
+   Detection Prevalence : 0.17041         
+      Balanced Accuracy : 0.89276         
+                                          
+       'Positive' Class : claim           
+                                          
+ .. after 'expression(br0[["confusion.train"]])'
+
+>>>> eval(expression_nr. 5 )
+		 =================
+
+> ppl2 <- ppl0[rownames(trainDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(trainDescr), ])'
+
+>>>> eval(expression_nr. 6 )
+		 =================
+
+> ppl2[["predicted"]] <- trainPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- trainPred)'
+
+>>>> eval(expression_nr. 7 )
+		 =================
+
+> ppl2[["actual"]] <- trainClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- trainClass)'
+
+>>>> eval(expression_nr. 8 )
+		 =================
+
+> br0[["train.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["train.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 9 )
+		 =================
+
+> testPred <- predict(fit1, testDescr)
+curr.fun: symbol <-
+ .. after 'expression(testPred <- predict(fit1, testDescr))'
+
+>>>> eval(expression_nr. 10 )
+		 =================
+
+> postResample(testPred, testClass)
+curr.fun: symbol postResample
+ Accuracy     Kappa 
+0.8774759 0.4138601 
+ .. after 'expression(postResample(testPred, testClass))'
+
+>>>> eval(expression_nr. 11 )
+		 =================
+
+> br0[["confusion.test"]] <- confusionMatrix(testPred, 
++     testClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.test"]] <- confusionMatrix(testPred, ''    testClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 12 )
+		 =================
+
+> br0[["confusion.test"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   14104   111
+   claim      1986   914
+                                          
+               Accuracy : 0.8775          
+                 95% CI : (0.8725, 0.8824)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : 1               
+                                          
+                  Kappa : 0.4139          
+                                          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.89171         
+            Specificity : 0.87657         
+         Pos Pred Value : 0.31517         
+         Neg Pred Value : 0.99219         
+             Prevalence : 0.05989         
+         Detection Rate : 0.05340         
+   Detection Prevalence : 0.16944         
+      Balanced Accuracy : 0.88414         
+                                          
+       'Positive' Class : claim           
+                                          
+ .. after 'expression(br0[["confusion.test"]])'
+
+>>>> eval(expression_nr. 13 )
+		 =================
+
+> ppl2 <- ppl0[rownames(testDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(testDescr), ])'
+
+>>>> eval(expression_nr. 14 )
+		 =================
+
+> ppl2[["predicted"]] <- testPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- testPred)'
+
+>>>> eval(expression_nr. 15 )
+		 =================
+
+> ppl2[["actual"]] <- testClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- testClass)'
+
+>>>> eval(expression_nr. 16 )
+		 =================
+
+> br0[["test.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["test.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 17 )
+		 =================
+
+> nvars <- floor(length(colnames(trainDescr)) * 2/3)
+curr.fun: symbol <-
+ .. after 'expression(nvars <- floor(length(colnames(trainDescr)) * 2/3))'
+
+>>>> eval(expression_nr. 18 )
+		 =================
+
+> jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), 
++     width = 1024, height = 768)
+curr.fun: symbol jpeg
+ .. after 'expression(jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), ''    width = 1024, height = 768))'
+
+>>>> eval(expression_nr. 19 )
+		 =================
+
+> modelImp <- varImp(fit1, scale = FALSE)
+curr.fun: symbol <-
+ .. after 'expression(modelImp <- varImp(fit1, scale = FALSE))'
+
+>>>> eval(expression_nr. 20 )
+		 =================
+
+> plot(modelImp, top = min(dim(modelImp$importance)[1], 
++     nvars))
+curr.fun: symbol plot
+ .. after 'expression(plot(modelImp, top = min(dim(modelImp$importance)[1], ''    nvars)))'
+
+>>>> eval(expression_nr. 21 )
+		 =================
+
+> x.p <- predict(fit1, testDescr, type = "prob")[2]
+curr.fun: symbol <-
+ .. after 'expression(x.p <- predict(fit1, testDescr, type = "prob")[2])'
+
+>>>> eval(expression_nr. 22 )
+		 =================
+
+> test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], 
++     Obs = testClass)
+curr.fun: symbol <-
+ .. after 'expression(test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], ''    Obs = testClass))'
+
+>>>> eval(expression_nr. 23 )
+		 =================
+
+> test.roc <- roc(Obs ~ true0, test.df)
+curr.fun: symbol <-
+ .. after 'expression(test.roc <- roc(Obs ~ true0, test.df))'
+
+>>>> eval(expression_nr. 24 )
+		 =================
+
+> densityplot(~test.df$true0, groups = test.df$Obs, 
++     auto.key = TRUE)
+curr.fun: symbol densityplot
+ .. after 'expression(densityplot(~test.df$true0, groups = test.df$Obs, ''    auto.key = TRUE))'
+
+>>>> eval(expression_nr. 25 )
+		 =================
+
+> plot.roc(test.roc)
+curr.fun: symbol plot.roc
+ .. after 'expression(plot.roc(test.roc))'
+
+>>>> eval(expression_nr. 26 )
+		 =================
+
+> dev.off()
+curr.fun: symbol dev.off
+null device 
+          1 
+ .. after 'expression(dev.off())'
+
+>>>> eval(expression_nr. 27 )
+		 =================
+
+> br0[["model.importance"]] <- modelImp
+curr.fun: symbol <-
+ .. after 'expression(br0[["model.importance"]] <- modelImp)'
+
+>>>> eval(expression_nr. 28 )
+		 =================
+
+> if (fit1$method == "gbm") {
++     stopifnot(any(names(fit1$control) == "seeds"))
++ }
+curr.fun: symbol if
+ .. after 'expression(if (fit1$method == "gbm") {''    stopifnot(any(names(fit1$control) == "seeds"))''})'
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   47225   313
+   claim      6644  3121
+                                          
+               Accuracy : 0.8786          
+                 95% CI : (0.8759, 0.8813)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : 1               
+                                          
+                  Kappa : 0.4216          
+                                          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.90885         
+            Specificity : 0.87666         
+         Pos Pred Value : 0.31961         
+         Neg Pred Value : 0.99342         
+             Prevalence : 0.05993         
+         Detection Rate : 0.05446         
+   Detection Prevalence : 0.17041         
+      Balanced Accuracy : 0.89276         
+                                          
+       'Positive' Class : claim           
+                                          
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   14104   111
+   claim      1986   914
+                                          
+               Accuracy : 0.8775          
+                 95% CI : (0.8725, 0.8824)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : 1               
+                                          
+                  Kappa : 0.4139          
+                                          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.89171         
+            Specificity : 0.87657         
+         Pos Pred Value : 0.31517         
+         Neg Pred Value : 0.99219         
+             Prevalence : 0.05989         
+         Detection Rate : 0.05340         
+   Detection Prevalence : 0.16944         
+      Balanced Accuracy : 0.88414         
+                                          
+       'Positive' Class : claim           
+                                          
+mv ppl9.dat xroadsc-9.dat
