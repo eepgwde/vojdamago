@@ -29,7 +29,7 @@ url: "https://eepgwde.github.io" # the base hostname & protocol for your site, e
 
 # This is set by GitHub
 baseurl: /vojdamago # the subpath of your site, e.g. /blog
-xbase: "/vojdamago/" 
+xbase: "/vojdamago" 
 
 twitter_username: jekyllrb
 github_username:  eepgwde

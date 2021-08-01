@@ -59,7 +59,7 @@ Clearly there is a very pronounced seasonality here.
 
 <p class="photo-gallery">
     <figure>
-      <img src="/assets/images/e2c/ncas1-001.jpeg" alt="Seasonality claims">
+      <img src="{{ site.xbase }}/assets/images/e2c/ncas1-001.jpeg" alt="Seasonality claims">
       <figcaption>Seasonality of <em>claims</em></figcaption>
     </figure>
 </p>
