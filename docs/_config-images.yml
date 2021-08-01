@@ -1,19 +1,19 @@
 defaults:
   - 
     scope:
-      path: "assets/images/a2d/*.jpeg"
+      path: "/assets/images/a2d/*.jpeg"
     values:
       image: true
 
   - 
     scope:
-      path: "assets/images/e2c/*.jpeg"
+      path: "/assets/images/e2c/*.jpeg"
     values:
       image: true
 
   - 
     scope:
-      path: "assets/images/br/*.jpeg"
+      path: "/assets/images/br/*.jpeg"
     values:
       image: true
 
