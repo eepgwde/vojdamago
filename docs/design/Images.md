@@ -4,7 +4,7 @@
   {% for myimage in image_files %}
     <li>
     <figure>
-      <img class="{{ myimage.path }}" src="{{ myimage.path }}" alt="Alt: {{ myimage.path }}">
+      <img src="{{ myimage.path }}" alt="{{ myimage.path }}">
       <figcaption>{{ myimage.path }}</figcaption>
     </figure>
     </li>

@@ -53,3 +53,22 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+defaults:
+  - 
+    scope:
+      path: "assets/images/a2d/*.jpeg"
+    values:
+      image: true
+
+  - 
+    scope:
+      path: "assets/images/e2c/*.jpeg"
+    values:
+      image: true
+
+  - 
+    scope:
+      path: "assets/images/br/*.jpeg"
+    values:
+      image: true
+
