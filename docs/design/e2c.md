@@ -76,7 +76,7 @@ compared. With that, the most accurate model proves to be this.
 
 <p class="photo-gallery">
     <figure>
-      <img src="/assets/images/e2c/hcc3-002.jpeg" alt="GAM model">
+      <img src="{{ site.xbase }}/assets/images/e2c/hcc3-002.jpeg" alt="GAM model">
       <figcaption>GAM Model <em>claims</em></figcaption>
     </figure>
 </p>
@@ -87,15 +87,15 @@ the business that can be expected.
 
 <p class="photo-gallery">
     <figure>
-      <img src="/assets/images/e2c/hcc3-007.jpeg" alt="GAM predictor">
+      <img src="{{ site.xbase }}/assets/images/e2c/hcc3-007.jpeg" alt="GAM predictor">
       <figcaption>Predictions using the GAM Model <em>claims</em></figcaption>
     </figure>
 </p>
 
 A log file of the R evaluations can be viewed
-[here](/assets/images/e2c/hcc3.txt)
+[here]({{ site.xbase }}/assets/images/e2c/hcc3.txt)
 
-A correlation diagram can be viewed [here](/assets/images/e2c/hcc5-005.jpeg).
+A correlation diagram can be viewed [here]({{ site.xbase }}/assets/images/e2c/hcc5-005.jpeg).
 There are a lot of different metrics here, those prefixed with *d* are
 differences between the last period and the current one. These metrics should
 indicate if the business is overloaded from the last period.
