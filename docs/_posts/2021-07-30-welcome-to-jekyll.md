@@ -6,6 +6,17 @@ categories: jekyll update
 ---
 This is for the site maintainers - it is only useful if you want to rebuild the site.
 
+Jekyll is very useful because it is easy to prototype GitHub pages locally, but GitHub change
+the site.baseurl to be the project id. Unfortunately, site.baseurl is not accessible as a
+site variable using Liquid, so another site.baseurl variable has been added - site.xbase.
+
+In \_config-local.yml - site.xbase is set to "" in the GitHub \_config.yml it is 
+set to /vojdamago. Every URL has to be qualified in this way and all URLs you prefix it with 
+have to be absolute, or, in other words, must start with "/".
+
+There is a useful page for viewing all the images (Images.md) - this only works on the local
+installation.
+
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 Jekyll requires blog post files to be named according to the following format:
