@@ -23,8 +23,13 @@ email: walter.eaves@bigfoot.com
 description: 
   Data science project using Python, q/kdb+ and R for root-cause analysis of damage
   done to vehicles by roads using 7 years of operational data.
-baseurl: "" # the subpath of your site, e.g. /blog
+
 url: "https://eepgwde.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+# these two change for local use
+baseurl: "" # the subpath of your site, e.g. /blog
+xbase: ""
+
 twitter_username: jekyllrb
 github_username:  eepgwde
 
@@ -54,3 +59,4 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - .#*
+  - vojdamago/

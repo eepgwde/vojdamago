@@ -2,6 +2,7 @@
 layout: page
 title: KPI
 permalink: /analyses/e2c
+xbase: /vojdamago/
 kpipath: /assets/images/e2c/hcc5t-001.jpeg
 kpicaption: "Key Performance Indicators: log scale"
 ---
@@ -9,6 +10,10 @@ kpicaption: "Key Performance Indicators: log scale"
 {::comment}
 This text is completely ignored by kramdown - a comment in the text.
 {{ page.kpipath }}
+- separator -
+{{ page.xbase }}
+- separator -
+{{ site.xbase }}
 {:/comment}
 
 # Asset Management
@@ -23,7 +28,7 @@ the assets.
 
 <p class="photo-gallery">
     <figure>
-      <img src="{{ page.kpipath }}" alt="{{ page.kpipath }}">
+      <img src="{{ site.xbase }}{{ page.kpipath }}" alt="{{ page.kpipath }}">
       <figcaption>{{ page.kpicaption }}</figcaption>
     </figure>
 </p>

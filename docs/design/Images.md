@@ -4,7 +4,7 @@
   {% for myimage in image_files %}
     <li>
     <figure>
-      <img src="{{ myimage.path }}" alt="{{ myimage.path }}">
+      <img src="{{ site.xbase }}/{{ myimage.path }}" alt="{{ myimage.path }}">
       <figcaption>{{ myimage.path }}</figcaption>
     </figure>
     </li>
