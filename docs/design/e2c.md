@@ -52,6 +52,10 @@ causes of these.
 One can also the *enqrs* lags *enqs*, and that *action1* does not have such a
 defined lag.
 
+A data dictionary is available for all the characteristics and metrics, but it
+is very extensive. For the purposes of exposition, those that are used will be
+explained. 
+
 ## Seasonality
 
 Clearly there is a very pronounced seasonality here. 
@@ -94,7 +98,7 @@ the business that can be expected.
 A log file of the R evaluations can be viewed
 [here]({{ site.xbase }}/assets/images/e2c/hcc3.txt)
 
-A correlation diagram can be viewed [here]({{ site.xbase }}/assets/images/e2c/hcc5-005.jpeg)
+A correlation diagram can be viewed [here]({{ site.xbase }}/assets/images/e2c/hcc5-005.jpeg).
 There are a lot of different metrics here, those prefixed with *d* are
 differences between the last period and the current one. These metrics should
 indicate if the business is overloaded from the last period.
