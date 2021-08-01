@@ -1,3 +1,7 @@
+{::comment}
+This doesn't work at GitHub
+{:/comment}
+
 {% assign image_files = site.static_files | where: "image", true %}
 
 <ul class="photo-gallery">

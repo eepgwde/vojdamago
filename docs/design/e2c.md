@@ -2,18 +2,17 @@
 layout: page
 title: KPI
 permalink: /analyses/e2c
-xbase: /vojdamago/
 kpipath: /assets/images/e2c/hcc5t-001.jpeg
 kpicaption: "Key Performance Indicators: log scale"
 ---
 
 {::comment}
 This text is completely ignored by kramdown - a comment in the text.
-{{ page.kpipath }}
+This is not accessible: site.baseurl {{ site.baseurl }}
 - separator -
-{{ page.xbase }}
+site.xbase: {{ site.xbase }}
 - separator -
-{{ site.xbase }}
+page.kpipath: {{ page.kpipath }}
 {:/comment}
 
 # Asset Management
@@ -96,7 +95,6 @@ A log file of the R evaluations can be viewed
 [here]({{ site.xbase }}/assets/images/e2c/hcc3.txt)
 
 A correlation diagram can be viewed [here]({{ site.xbase }}/assets/images/e2c/hcc5-005.jpeg)
-A correlation diagram can be viewed <a href="{{ site.xbase }}/assets/images/e2c/hcc5-005.jpeg">here</a>.
 There are a lot of different metrics here, those prefixed with *d* are
 differences between the last period and the current one. These metrics should
 indicate if the business is overloaded from the last period.
