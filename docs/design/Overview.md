@@ -3,12 +3,10 @@ layout: page
 title: Overview
 permalink: /overview/
 ---
-# Overview
+# The Carriageway Damage Project
 
 This is the web-site for a software project that uses Python, R and q/kdb+
 to investigate the root-causes of road damage done to vehicles over 7 years.
-
-# The Carriageway Damage Project
 
 ## Summary
 

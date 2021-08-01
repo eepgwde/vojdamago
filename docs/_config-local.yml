@@ -33,6 +33,25 @@ theme: minima
 plugins:
   - jekyll-feed
 
+defaults:
+  - 
+    scope:
+      path: "assets/a2d/*.jpeg"
+    values:
+      image: true
+
+  - 
+    scope:
+      path: "assets/e2c/*.jpeg"
+    values:
+      image: true
+
+  - 
+    scope:
+      path: "assets/br/*.jpeg"
+    values:
+      image: true
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
