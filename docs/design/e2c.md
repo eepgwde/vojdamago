@@ -27,7 +27,7 @@ the assets.
 
 <p class="photo-gallery">
     <figure>
-      <img src="{{ site.xbase }}{{ page.kpipath }}" alt="{{ page.kpipath }}">
+      <img src="{{ page.kpipath | relative_url }}" alt="{{ page.kpipath }}">
       <figcaption>{{ page.kpicaption }}</figcaption>
     </figure>
 </p>
@@ -62,7 +62,7 @@ Clearly there is a very pronounced seasonality here.
 
 <p class="photo-gallery">
     <figure>
-      <img src="{{ site.xbase }}/assets/images/e2c/ncas1-001.jpeg" alt="Seasonality claims">
+      <img src="{{ "/assets/images/e2c/ncas1-001.jpeg" | relative_url }}" alt="Seasonality claims">
       <figcaption>Seasonality of <em>claims</em></figcaption>
     </figure>
 </p>
@@ -79,7 +79,7 @@ compared. With that, the most accurate model proves to be this.
 
 <p class="photo-gallery">
     <figure>
-      <img src="{{ site.xbase }}/assets/images/e2c/hcc3-002.jpeg" alt="GAM model">
+      <img src="{{ "/assets/images/e2c/hcc3-002.jpeg" | relative_url }}" alt="GAM model">
       <figcaption>GAM Model <em>claims</em></figcaption>
     </figure>
 </p>
@@ -90,15 +90,15 @@ the business that can be expected.
 
 <p class="photo-gallery">
     <figure>
-      <img src="{{ site.xbase }}/assets/images/e2c/hcc3-007.jpeg" alt="GAM predictor">
+      <img src="{{ "/assets/images/e2c/hcc3-007.jpeg" | relative_url }}" alt="GAM predictor">
       <figcaption>Predictions using the GAM Model <em>claims</em></figcaption>
     </figure>
 </p>
 
 A log file of the R evaluations can be viewed
-[here]({{ site.xbase }}/assets/images/e2c/hcc3.txt)
+[here]({{ "/assets/images/e2c/hcc3.txt" | relative_url }})
 
-A correlation diagram can be viewed [here]({{ site.xbase }}/assets/images/e2c/hcc5-005.jpeg).
+A correlation diagram can be viewed [here]({{ "/assets/images/e2c/hcc5-005.jpeg" | relative_url }}).
 There are a lot of different metrics here, those prefixed with *d* are
 differences between the last period and the current one. These metrics should
 indicate if the business is overloaded from the last period.

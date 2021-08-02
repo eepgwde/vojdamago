@@ -62,19 +62,19 @@ plugins:
 defaults:
   - 
     scope:
-      path: "/vojdamago/assets/images/a2d/*.jpeg"
+      path: "assets/images/a2d/*.jpeg"
     values:
       image: true
 
   - 
     scope:
-      path: "/vojdamago/assets/images/e2c/*.jpeg"
+      path: "assets/images/e2c/*.jpeg"
     values:
       image: true
 
   - 
     scope:
-      path: "/vojdamago/assets/images/br/*.jpeg"
+      path: "assets/images/br/*.jpeg"
     values:
       image: true
 
