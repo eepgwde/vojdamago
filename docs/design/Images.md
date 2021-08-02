@@ -1,11 +1,12 @@
-{::comment}
-This doesn't work at GitHub
+{% assign image_files = site.static_files | where: "image", true %}
 
-{{ site.static_files }}
+{::comment}
+
+site.static_files: {{ site.static_files }}
+
+image_files: {{ image_files }}
 
 {:/comment}
-
-{% assign image_files = site.static_files | where: "image", true %}
 
 <ul class="photo-gallery">
   {% for myimage in image_files %}
