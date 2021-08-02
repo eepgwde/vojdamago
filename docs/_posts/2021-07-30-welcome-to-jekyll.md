@@ -19,6 +19,10 @@ It is used like this:
 
 Don't escape the internal quotation mark.
 
+This particular installation has a custom *header.html* file in includes. It is
+a verbatim copy of the theme's with an extra sort on *navigation_weight* added
+for the navigation bar.
+
 There is a useful page for viewing all the images (Images.md) - and Images.html
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.

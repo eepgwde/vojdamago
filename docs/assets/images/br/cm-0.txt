@@ -1,0 +1,26 @@
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   16041   548
+   claim        49   477
+                                          
+               Accuracy : 0.9651          
+                 95% CI : (0.9623, 0.9678)
+    No Information Rate : 0.9401          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5988          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.46537         
+            Specificity : 0.99695         
+         Pos Pred Value : 0.90684         
+         Neg Pred Value : 0.96697         
+             Prevalence : 0.05989         
+         Detection Rate : 0.02787         
+   Detection Prevalence : 0.03073         
+      Balanced Accuracy : 0.73116         
+                                          
+       'Positive' Class : claim           

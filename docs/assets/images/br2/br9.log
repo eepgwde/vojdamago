@@ -1,0 +1,1468 @@
+Rscript br00.R ../../../../../cache/out/xsamples5.csv
+Rscript br0.R
+Rscript br1.R ppl0.dat xroadsc cwy0
+mv ppl1.dat xroadsc-cwy0.dat
+Rscript br3.R xroadsc
+mv ppl3.dat xroadsc-3.dat
+Rscript br4.R xroadsc-3.dat
+mv ppl4.dat xroadsc-4.dat
+Rscript br5.R xroadsc-4.dat
+mv ppl5.dat xroadsc-5.dat
+Rscript br7.R xroadsc-5.dat
+mv ppl7.dat xroadsc-7.dat
+Rscript br9.R xroadsc-7.dat
+mv ppl9.dat xroadsc-9.dat
+Rscript br00.R ../../../../../cache/out/xsamples5.csv
+Rscript br0.R
+Loading required package: zoo
+
+Attaching package: 'zoo'
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+[1] 43455   187
+   nnulls       c0
+1      37     lsoa
+2    1749     enq0
+3   41706   claim0
+4   16012   ddate0
+5    1749   ddate1
+6      84 emethod1
+7      84 priority
+8      84 response
+9      84 estatus0
+10     37   ncars0
+11     37   ncars1
+12     37   ncars2
+13     37   ncars3
+14     37   ncars4
+15     37  ncars00
+16     37   tcars0
+17     37    tage0
+18     37    tage1
+19     37    tage2
+20     37    tage3
+21     37    tage4
+22     37   tage00
+23     37    mage0
+24     37    mage1
+25     37    mage2
+26     37    mage3
+27     37    mage4
+28     37   mage00
+29     37    fage0
+30     37    fage1
+31     37    fage2
+32     37    fage3
+33     37    fage4
+34     37   fage00
+35  42645       ln
+36  42645    lreds
+37  42645  lambers
+38  42645  lgreens
+39  42645       rn
+40  42645    rreds
+41  42645  rambers
+42  42645  rgreens
+   nnulls       c0
+1      84 emethod1
+2      84 priority
+3      84 response
+4      84 estatus0
+5      37   ncars0
+6      37   ncars1
+7      37   ncars2
+8      37   ncars3
+9      37   ncars4
+10     37  ncars00
+11     37   tcars0
+12     37    tage0
+13     37    tage1
+14     37    tage2
+15     37    tage3
+16     37    tage4
+17     37   tage00
+18     37    mage0
+19     37    mage1
+20     37    mage2
+21     37    mage3
+22     37    mage4
+23     37   mage00
+24     37    fage0
+25     37    fage1
+26     37    fage2
+27     37    fage3
+28     37    fage4
+29     37   fage00
+30  42645       ln
+31  42645    lreds
+32  42645  lambers
+33  42645  lgreens
+34  42645       rn
+35  42645    rreds
+36  42645  rambers
+37  42645  rgreens
+ [1] "ncars0"  "ncars1"  "ncars2"  "ncars3"  "ncars4"  "ncars00" "tcars0" 
+ [8] "tage0"   "tage1"   "tage2"   "tage3"   "tage4"   "tage00"  "mage0"  
+[15] "mage1"   "mage2"   "mage3"   "mage4"   "mage00"  "fage0"   "fage1"  
+[22] "fage2"   "fage3"   "fage4"   "fage00" 
+[1] "here"
+   nnulls       c0
+1      83 emethod1
+2      83 priority
+3      83 response
+4      83 estatus0
+5   42608       ln
+6   42608    lreds
+7   42608  lambers
+8   42608  lgreens
+9   42608       rn
+10  42608    rreds
+11  42608  rambers
+12  42608  rgreens
+[1] "ln"      "lreds"   "lambers" "lgreens" "rn"      "rreds"   "rambers"
+[8] "rgreens"
+[1] "xroadsc"
+[1] nnulls
+<0 rows> (or 0-length row.names)
+   isclm0
+pri FALSE  TRUE
+  2 26546   781
+  3  7410   520
+  4     2     0
+  5  2958   168
+  6   406     9
+  7  3621   187
+       isclm0
+iscls   FALSE  TRUE
+  FALSE 30874  1105
+  TRUE  10069   560
+   isclm0
+pri FALSE TRUE
+  2   821   53
+  3  2263  143
+  5  2958  168
+  6   406    9
+  7  3621  187
+      isclm0
+iscls  FALSE  TRUE
+  TRUE 10069   560
+[1] nnulls
+<0 rows> (or 0-length row.names)
+            isclm0
+outcome1     FALSE TRUE
+  noaction       0    0
+  repudiated  1349    0
+  settled        0  316
+Rscript br1.R ppl0.dat xroadsc cwy0
+         used (Mb) gc trigger (Mb) max used (Mb)
+Ncells  87185  4.7     350000 18.7   221609 11.9
+Vcells 179828  1.4     786432  6.0   596882  4.6
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+[1] "cwy0"
+[1] 42608   163
+       hipr
+isclm0  FALSE  TRUE
+  FALSE 28788 12155
+  TRUE   1231   434
+Call:
+rpart(formula = fmla, data = ppl1, method = "class", control = fit0[["control"]])
+  n= 42608 
+
+            CP nsplit rel error xerror       xstd
+1 0.0001501502      0 1.0000000      1 0.02402355
+2 0.0000500000      8 0.9987988      1 0.02402355
+
+Variable importance
+mtraffic     area distance      pri   isdist    iscls    width issingle 
+      25       23       16       12       12        6        2        1 
+   lanes   lanes2  isround 
+       1        1        1 
+
+Node number 1: 42608 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.03907717  P(node) =1
+    class counts: 40943  1665
+   probabilities: 0.961 0.039 
+  left son=2 (18388 obs) right son=3 (24220 obs)
+  Primary splits:
+      mtraffic < 1050     to the left,  improve=19.0524800, (0 missing)
+      distance < 448.5    to the left,  improve=17.9617200, (0 missing)
+      isdist   < 0.5      to the left,  improve=16.8029100, (0 missing)
+      pri      < 2.5      to the left,  improve=16.7927900, (0 missing)
+      area     < 4761.855 to the left,  improve=15.6551300, (0 missing)
+      iscls    < 0.5      to the left,  improve= 5.2455780, (0 missing)
+      pri2     < 2.5      to the left,  improve= 5.2455780, (0 missing)
+      width    < 1.165    to the right, improve= 3.5034080, (0 missing)
+      rh0      < 3        to the left,  improve= 1.9025400, (0 missing)
+      spdlimit < 35       to the left,  improve= 1.3019620, (0 missing)
+      surftype splits as  LLLLRL,       improve= 1.0719240, (0 missing)
+      isdual   < 0.5      to the left,  improve= 0.5146539, (0 missing)
+      lanes2   < 1.5      to the left,  improve= 0.4433910, (0 missing)
+  Surrogate splits:
+      isdist   < 0.5      to the left,  agree=0.785, adj=0.503, (0 split)
+      pri      < 2.5      to the left,  agree=0.785, adj=0.503, (0 split)
+      area     < 4504.175 to the left,  agree=0.700, adj=0.305, (0 split)
+      distance < 394.5    to the left,  agree=0.683, adj=0.266, (0 split)
+      iscls    < 0.5      to the left,  agree=0.671, adj=0.238, (0 split)
+
+Node number 2: 18388 observations
+  predicted class=noclaim  expected loss=0.02191647  P(node) =0.4315621
+    class counts: 17985   403
+   probabilities: 0.978 0.022 
+
+Node number 3: 24220 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.0521057  P(node) =0.5684379
+    class counts: 22958  1262
+   probabilities: 0.948 0.052 
+  left son=6 (8493 obs) right son=7 (15727 obs)
+  Primary splits:
+      distance < 448.5    to the left,  improve=5.8985730, (0 missing)
+      width    < 1.225    to the right, improve=5.8645850, (0 missing)
+      area     < 4983.93  to the left,  improve=4.2973950, (0 missing)
+      mtraffic < 9750     to the left,  improve=3.1098030, (0 missing)
+      isdist   < 0.5      to the left,  improve=2.7420060, (0 missing)
+      pri      < 2.5      to the left,  improve=2.7420060, (0 missing)
+      isround  < 0.5      to the right, improve=1.0427530, (0 missing)
+      lanes2   < 1.5      to the left,  improve=0.9906023, (0 missing)
+      lanes    < 1.5      to the left,  improve=0.8368571, (0 missing)
+      rh0      < 6        to the right, improve=0.6295551, (0 missing)
+      surftype splits as  LLLLRL,       improve=0.5685248, (0 missing)
+      issingle < 0.5      to the left,  improve=0.5497252, (0 missing)
+      spdlimit < 45       to the right, improve=0.4853352, (0 missing)
+  Surrogate splits:
+      area     < 4509.87  to the left,  agree=0.933, adj=0.808, (0 split)
+      issingle < 0.5      to the left,  agree=0.711, adj=0.177, (0 split)
+      lanes    < 1.5      to the left,  agree=0.686, adj=0.103, (0 split)
+      lanes2   < 1.5      to the left,  agree=0.684, adj=0.099, (0 split)
+      isround  < 0.5      to the right, agree=0.678, adj=0.081, (0 split)
+
+Node number 6: 8493 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.03708937  P(node) =0.1993288
+    class counts:  8178   315
+   probabilities: 0.963 0.037 
+  left son=12 (7060 obs) right son=13 (1433 obs)
+  Primary splits:
+      width    < 13.225   to the left,  improve=0.72994700, (0 missing)
+      area     < 4019.425 to the left,  improve=0.65605110, (0 missing)
+      isdist   < 0.5      to the left,  improve=0.44033220, (0 missing)
+      pri      < 2.5      to the left,  improve=0.44033220, (0 missing)
+      mtraffic < 2250     to the left,  improve=0.37017500, (0 missing)
+      distance < 117.5    to the left,  improve=0.32051610, (0 missing)
+      isround  < 0.5      to the right, improve=0.19742110, (0 missing)
+      lanes2   < 1.5      to the left,  improve=0.19064650, (0 missing)
+      surftype splits as  LLRLRL,       improve=0.17410050, (0 missing)
+      rh0      < 6        to the right, improve=0.14202830, (0 missing)
+      spdlimit < 45       to the right, improve=0.11762750, (0 missing)
+      lanes    < 1.5      to the left,  improve=0.11673230, (0 missing)
+      isslip   < 0.5      to the left,  improve=0.09230299, (0 missing)
+  Surrogate splits:
+      area     < 5266.84  to the left,  agree=0.887, adj=0.331, (0 split)
+      lanes    < 2.5      to the left,  agree=0.837, adj=0.036, (0 split)
+      lanes2   < 2.5      to the left,  agree=0.837, adj=0.032, (0 split)
+      surftype splits as  LLLLRR,       agree=0.834, adj=0.018, (0 split)
+      distance < 12.5     to the right, agree=0.832, adj=0.001, (0 split)
+
+Node number 7: 15727 observations
+  predicted class=noclaim  expected loss=0.06021492  P(node) =0.3691091
+    class counts: 14780   947
+   probabilities: 0.940 0.060 
+
+Node number 12: 7060 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.03413598  P(node) =0.1656966
+    class counts:  6819   241
+   probabilities: 0.966 0.034 
+  left son=24 (6658 obs) right son=25 (402 obs)
+  Primary splits:
+      width    < 7.25     to the right, improve=0.45405820, (0 missing)
+      surftype splits as  LLRLRL,       improve=0.45191900, (0 missing)
+      mtraffic < 1150     to the right, improve=0.37189960, (0 missing)
+      area     < 63.42    to the right, improve=0.23082910, (0 missing)
+      isdist   < 0.5      to the left,  improve=0.17485210, (0 missing)
+      pri      < 2.5      to the left,  improve=0.17485210, (0 missing)
+      distance < 117.5    to the left,  improve=0.16145700, (0 missing)
+      lanes    < 2.5      to the left,  improve=0.13225020, (0 missing)
+      isslip   < 0.5      to the left,  improve=0.11752110, (0 missing)
+      pri2     < 4.5      to the right, improve=0.11420000, (0 missing)
+      rh0      < 4.5      to the right, improve=0.11420000, (0 missing)
+      lanes2   < 1.5      to the left,  improve=0.08893502, (0 missing)
+      isround  < 0.5      to the right, improve=0.08635404, (0 missing)
+  Surrogate splits:
+      area     < 204.77   to the right, agree=0.955, adj=0.204, (0 split)
+      isslip   < 0.5      to the left,  agree=0.947, adj=0.075, (0 split)
+      surftype splits as  LLLRLL,       agree=0.947, adj=0.065, (0 split)
+      distance < 26       to the right, agree=0.944, adj=0.017, (0 split)
+      rh0      < 0.5      to the right, agree=0.943, adj=0.007, (0 split)
+
+Node number 13: 1433 observations
+  predicted class=noclaim  expected loss=0.05163992  P(node) =0.03363218
+    class counts:  1359    74
+   probabilities: 0.948 0.052 
+
+Node number 24: 6658 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.03274257  P(node) =0.1562617
+    class counts:  6440   218
+   probabilities: 0.967 0.033 
+  left son=48 (6606 obs) right son=49 (52 obs)
+  Primary splits:
+      mtraffic < 1150     to the right, improve=0.42147480, (0 missing)
+      width    < 11.225   to the left,  improve=0.29449640, (0 missing)
+      surftype splits as  LLRLRL,       improve=0.25539220, (0 missing)
+      area     < 348.57   to the right, improve=0.22501630, (0 missing)
+      distance < 48.5     to the right, improve=0.19676800, (0 missing)
+      lanes    < 2.5      to the left,  improve=0.16993170, (0 missing)
+      isdist   < 0.5      to the left,  improve=0.16740660, (0 missing)
+      pri      < 2.5      to the left,  improve=0.16740660, (0 missing)
+      spdlimit < 45       to the right, improve=0.10102150, (0 missing)
+      isround  < 0.5      to the right, improve=0.09099614, (0 missing)
+      lanes2   < 2.5      to the left,  improve=0.07455676, (0 missing)
+      pri2     < 4.5      to the right, improve=0.06874106, (0 missing)
+      rh0      < 4.5      to the right, improve=0.06874106, (0 missing)
+
+Node number 25: 402 observations
+  predicted class=noclaim  expected loss=0.05721393  P(node) =0.009434848
+    class counts:   379    23
+   probabilities: 0.943 0.057 
+
+Node number 48: 6606 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.03224342  P(node) =0.1550413
+    class counts:  6393   213
+   probabilities: 0.968 0.032 
+  left son=96 (4394 obs) right son=97 (2212 obs)
+  Primary splits:
+      width    < 11.225   to the left,  improve=0.33410320, (0 missing)
+      surftype splits as  LLRLRL,       improve=0.25939900, (0 missing)
+      area     < 348.57   to the right, improve=0.22980850, (0 missing)
+      isdist   < 0.5      to the left,  improve=0.22391370, (0 missing)
+      pri      < 2.5      to the left,  improve=0.22391370, (0 missing)
+      distance < 48.5     to the right, improve=0.20288560, (0 missing)
+      lanes    < 2.5      to the left,  improve=0.17147730, (0 missing)
+      mtraffic < 2250     to the left,  improve=0.13341650, (0 missing)
+      spdlimit < 45       to the right, improve=0.09570509, (0 missing)
+      isround  < 0.5      to the right, improve=0.08002920, (0 missing)
+      lanes2   < 2.5      to the left,  improve=0.07584284, (0 missing)
+      pri2     < 4.5      to the right, improve=0.05613312, (0 missing)
+      rh0      < 4.5      to the right, improve=0.05613312, (0 missing)
+  Surrogate splits:
+      area     < 4595.83  to the left,  agree=0.696, adj=0.094, (0 split)
+      pri      < 6.5      to the left,  agree=0.674, adj=0.025, (0 split)
+      spdlimit < 25       to the right, agree=0.670, adj=0.014, (0 split)
+      surftype splits as  LLLRLR,       agree=0.667, adj=0.006, (0 split)
+      distance < 23       to the right, agree=0.667, adj=0.004, (0 split)
+
+Node number 49: 52 observations
+  predicted class=noclaim  expected loss=0.09615385  P(node) =0.001220428
+    class counts:    47     5
+   probabilities: 0.904 0.096 
+
+Node number 96: 4394 observations
+  predicted class=noclaim  expected loss=0.02867547  P(node) =0.1031262
+    class counts:  4268   126
+   probabilities: 0.971 0.029 
+
+Node number 97: 2212 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.03933092  P(node) =0.05191513
+    class counts:  2125    87
+   probabilities: 0.961 0.039 
+  left son=194 (1356 obs) right son=195 (856 obs)
+  Primary splits:
+      area     < 2588.98  to the right, improve=0.78295990, (0 missing)
+      distance < 216.5    to the right, improve=0.71039720, (0 missing)
+      mtraffic < 1300     to the right, improve=0.49302170, (0 missing)
+      width    < 11.26    to the right, improve=0.45205560, (0 missing)
+      rh0      < 3        to the right, improve=0.30848040, (0 missing)
+      pri      < 4        to the right, improve=0.28328250, (0 missing)
+      iscls    < 0.5      to the right, improve=0.24627850, (0 missing)
+      pri2     < 2.5      to the right, improve=0.24627850, (0 missing)
+      isoneway < 0.5      to the left,  improve=0.13776990, (0 missing)
+      spdlimit < 35       to the right, improve=0.07343534, (0 missing)
+      surftype splits as  RLRRLL,       improve=0.03732862, (0 missing)
+      isdist   < 0.5      to the right, improve=0.03552229, (0 missing)
+      issingle < 0.5      to the right, improve=0.02764857, (0 missing)
+  Surrogate splits:
+      distance < 216.5    to the right, agree=0.961, adj=0.900, (0 split)
+      isoneway < 0.5      to the left,  agree=0.680, adj=0.173, (0 split)
+      lanes    < 1.5      to the right, agree=0.674, adj=0.158, (0 split)
+      lanes2   < 1.5      to the right, agree=0.666, adj=0.137, (0 split)
+      issingle < 0.5      to the right, agree=0.665, adj=0.133, (0 split)
+
+Node number 194: 1356 observations
+  predicted class=noclaim  expected loss=0.02876106  P(node) =0.03182501
+    class counts:  1317    39
+   probabilities: 0.971 0.029 
+
+Node number 195: 856 observations,    complexity param=0.0001501502
+  predicted class=noclaim  expected loss=0.05607477  P(node) =0.02009012
+    class counts:   808    48
+   probabilities: 0.944 0.056 
+  left son=390 (844 obs) right son=391 (12 obs)
+  Primary splits:
+      area     < 2581.44  to the left,  improve=6.76690100, (0 missing)
+      distance < 215      to the left,  improve=2.91370600, (0 missing)
+      iscls    < 0.5      to the right, improve=0.80783740, (0 missing)
+      pri2     < 2.5      to the right, improve=0.80783740, (0 missing)
+      mtraffic < 1350     to the right, improve=0.76255410, (0 missing)
+      width    < 11.275   to the right, improve=0.51265190, (0 missing)
+      pri      < 4        to the right, improve=0.42705670, (0 missing)
+      rh0      < 3        to the right, improve=0.42705670, (0 missing)
+      isdist   < 0.5      to the right, improve=0.30324580, (0 missing)
+      isdual   < 0.5      to the right, improve=0.29169930, (0 missing)
+      spdlimit < 35       to the right, improve=0.10316370, (0 missing)
+      lanes2   < 1.5      to the left,  improve=0.10187030, (0 missing)
+      isoneway < 0.5      to the left,  improve=0.07066646, (0 missing)
+  Surrogate splits:
+      distance < 215      to the left,  agree=0.987, adj=0.083, (0 split)
+
+Node number 390: 844 observations
+  predicted class=noclaim  expected loss=0.0485782  P(node) =0.01980849
+    class counts:   803    41
+   probabilities: 0.951 0.049 
+
+Node number 391: 12 observations
+  predicted class=claim    expected loss=0.4166667  P(node) =0.0002816373
+    class counts:     5     7
+   probabilities: 0.417 0.583 
+
+
+Classification tree:
+rpart(formula = fmla, data = ppl1, method = "class", control = fit0[["control"]])
+
+Variables actually used in tree construction:
+[1] area     distance mtraffic width   
+
+Root node error: 1665/42608 = 0.039077
+
+n= 42608 
+
+          CP nsplit rel error xerror     xstd
+1 0.00015015      0    1.0000      1 0.024024
+2 0.00005000      8    0.9988      1 0.024024
+null device 
+          1 
+mv ppl1.dat xroadsc-cwy0.dat
+Rscript br3.R xroadsc
+Loading required package: lattice
+Loading required package: ggplot2
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Loading required package: zoo
+
+Attaching package: 'zoo'
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+[1] 42608   163
+[1] nnulls
+<0 rows> (or 0-length row.names)
+Calculating 158 means for centering
+Calculating 158 standard deviations for scaling
+Warning in preProcess.default(df0, verbose = TRUE, na.remove = TRUE, method = method0,  :
+  These variables have zero variances: isshared, isurban, a0Xisshared, smplwtf90, ssmplwtf90, ssmplriskf90
+[1] nnulls
+<0 rows> (or 0-length row.names)
+         N NZV
+cwy0    20  10
+cwy1    18   7
+poi      6   5
+bworks  24  14
+fworks  24  13
+weather 12   0
+lsoa    28   0
+mv ppl3.dat xroadsc-3.dat
+Rscript br4.R xroadsc-3.dat
+Loading required package: lattice
+Loading required package: ggplot2
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Loading required package: zoo
+
+Attaching package: 'zoo'
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+[1] 42608   158
+  [1] "isclm0"        "emethod1"      "mm"            "tmax"         
+  [5] "tmin"          "af"            "rain"          "sun"          
+  [9] "ssn"           "tmax0"         "tmin0"         "af0"          
+ [13] "rain0"         "sun0"          "ssn0"          "ncars0"       
+ [17] "ncars1"        "ncars2"        "ncars3"        "ncars4"       
+ [21] "ncars00"       "tcars0"        "imd"           "imdk"         
+ [25] "wealthk"       "tage0"         "tage1"         "tage2"        
+ [29] "tage3"         "tage4"         "tage00"        "mage0"        
+ [33] "mage1"         "mage2"         "mage3"         "mage4"        
+ [37] "mage00"        "fage0"         "fage1"         "fage2"        
+ [41] "fage3"         "fage4"         "fage00"        "distance"     
+ [45] "width"         "area"          "isdist"        "pri"          
+ [49] "iscls"         "pri2"          "isslip"        "issingle"     
+ [53] "isoneway"      "isround"       "lanes"         "rh0"          
+ [57] "mtraffic"      "spdlimit"      "nassets"       "a0Xisdist"    
+ [61] "a0Xpri"        "a0Xiscls"      "a0Xpri2"       "a0Xissingle"  
+ [65] "a0Xrh0"        "a0Xdistance"   "a0Xwidth"      "a0Xarea"      
+ [69] "a0Xisisolated" "nbus"          "nhospital"     "nhotel"       
+ [73] "nrail"         "nschool"       "nsupermkt"     "smplb30"      
+ [77] "smplwtb30"     "smplriskb30"   "ssmplb30"      "ssmplwtb30"   
+ [81] "ssmplriskb30"  "smplb90"       "smplwtb90"     "smplriskb90"  
+ [85] "ssmplb90"      "ssmplwtb90"    "ssmplriskb90"  "smplwtf30"    
+ [89] "smplriskf30"   "ssmplf30"      "ssmplwtf30"    "ssmplriskf30" 
+ [93] "smplf90"       "smplriskf90"   "ssmplf90"      "statusb30"    
+ [97] "dfctb30"       "dfctrfrb30"    "dfctinspctb30" "dfctactionb30"
+[101] "dfctcatb30"    "dfctriskb30"   "prmtTb30"      "prmtb30"      
+[105] "prmtwcatb30"   "prmtddtb30"    "prmtriskb30"   "statusb90"    
+[109] "dfctb90"       "dfctrfrb90"    "dfctinspctb90" "dfctactionb90"
+[113] "dfctcatb90"    "dfctriskb90"   "prmtTb90"      "prmtb90"      
+[117] "prmtwcatb90"   "prmtddtb90"    "prmtriskb90"   "statusf30"    
+[121] "dfctf30"       "dfctrfrf30"    "dfctinspctf30" "dfctactionf30"
+[125] "dfctcatf30"    "dfctriskf30"   "prmtTf30"      "prmtf30"      
+[129] "prmtwcatf30"   "prmtddtf30"    "prmtriskf30"   "statusf90"    
+[133] "dfctf90"       "dfctrfrf90"    "dfctinspctf90" "dfctactionf90"
+[137] "dfctcatf90"    "dfctriskf90"   "prmtTf90"      "prmtf90"      
+[141] "prmtwcatf90"   "prmtddtf90"    "prmtriskf90"  
+mv ppl4.dat xroadsc-4.dat
+Rscript br5.R xroadsc-4.dat
+Loading required package: lattice
+Loading required package: ggplot2
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Loading required package: zoo
+
+Attaching package: 'zoo'
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+[1] 41118   143
+  [1] "isclm0"        "emethod1"      "mm"            "tmin"         
+  [5] "af"            "rain"          "sun"           "ssn"          
+  [9] "af0"           "rain0"         "ssn0"          "ncars0"       
+ [13] "ncars1"        "ncars2"        "ncars3"        "imd"          
+ [17] "wealthk"       "tage0"         "tage3"         "tage4"        
+ [21] "tage00"        "mage0"         "mage1"         "mage2"        
+ [25] "fage1"         "fage2"         "fage4"         "distance"     
+ [29] "width"         "isdist"        "iscls"         "isslip"       
+ [33] "issingle"      "isoneway"      "isround"       "lanes"        
+ [37] "rh0"           "mtraffic"      "spdlimit"      "nassets"      
+ [41] "a0Xisdist"     "a0Xiscls"      "a0Xissingle"   "a0Xisisolated"
+ [45] "nbus"          "nhospital"     "nhotel"        "nrail"        
+ [49] "nschool"       "nsupermkt"     "smplb30"       "smplwtb30"    
+ [53] "smplriskb30"   "ssmplb30"      "ssmplwtb30"    "ssmplriskb30" 
+ [57] "smplb90"       "smplwtb90"     "smplriskb90"   "ssmplb90"     
+ [61] "ssmplwtb90"    "ssmplriskb90"  "smplwtf30"     "smplriskf30"  
+ [65] "ssmplf30"      "ssmplwtf30"    "ssmplriskf30"  "smplf90"      
+ [69] "smplriskf90"   "ssmplf90"      "statusb30"     "dfctb30"      
+ [73] "dfctrfrb30"    "dfctactionb30" "dfctcatb30"    "dfctriskb30"  
+ [77] "prmtTb30"      "prmtb30"       "prmtwcatb30"   "prmtddtb30"   
+ [81] "prmtriskb30"   "statusb90"     "dfctb90"       "dfctrfrb90"   
+ [85] "dfctactionb90" "dfctcatb90"    "dfctriskb90"   "prmtTb90"     
+ [89] "prmtwcatb90"   "prmtddtb90"    "prmtriskb90"   "statusf30"    
+ [93] "dfctf30"       "dfctrfrf30"    "dfctactionf30" "dfctcatf30"   
+ [97] "dfctriskf30"   "prmtTf30"      "prmtf30"       "prmtwcatf30"  
+[101] "prmtddtf30"    "prmtriskf30"   "statusf90"     "dfctf90"      
+[105] "dfctrfrf90"    "dfctcatf90"    "dfctriskf90"   "prmtTf90"     
+[109] "prmtwcatf90"   "prmtddtf90"    "prmtriskf90"  
+null device 
+          1 
+mv ppl5.dat xroadsc-5.dat
+Rscript br7.R xroadsc-5.dat
+Loading required package: lattice
+Loading required package: ggplot2
+Type 'citation("pROC")' for a citation.
+
+Attaching package: 'pROC'
+
+The following objects are masked from 'package:stats':
+
+    cov, smooth, var
+
+Loading required package: survival
+
+Attaching package: 'survival'
+
+The following object is masked from 'package:caret':
+
+    cluster
+
+Loading required package: splines
+Loading required package: parallel
+Loaded gbm 2.1.1
+Loading required package: foreach
+Loading required package: iterators
+[1] 41118   111
+[1] "source: ../../../../../cache/out/xsamples5.csv"
+trainClass
+   noclaim      claim 
+0.96074158 0.03925842 
+[1] 31662   110
+testClass
+   noclaim      claim 
+0.96076565 0.03923435 
+[1] 9456  110
+Loading required package: plyr
+Warning message:
+In train.default(trainDescr, trainClass, method = "gbm", trControl = fitControl,  :
+  The metric "Kappa" was not in the result set. ROC will be used instead.
+Stochastic Gradient Boosting 
+
+31662 samples
+  110 predictor
+    2 classes: 'noclaim', 'claim' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold, repeated 5 times) 
+Summary of sample sizes: 25329, 25329, 25330, 25330, 25330, 25329, ... 
+Resampling results across tuning parameters:
+
+  interaction.depth  n.trees  ROC        Sens       Spec        
+  1                   10      0.6754971  1.0000000  0.0000000000
+  1                   20      0.6910566  1.0000000  0.0000000000
+  1                   30      0.6954617  1.0000000  0.0000000000
+  1                   40      0.6973692  1.0000000  0.0000000000
+  1                   50      0.6980895  1.0000000  0.0000000000
+  1                   60      0.6995927  0.9999934  0.0004825755
+  1                   70      0.7003817  0.9999803  0.0012890271
+  1                   80      0.7012454  0.9999671  0.0019328929
+  1                   90      0.7018541  0.9999671  0.0025761109
+  1                  100      0.7027257  0.9999540  0.0030580386
+  1                  110      0.7033449  0.9999343  0.0037012566
+  1                  120      0.7043186  0.9999014  0.0045051172
+  1                  130      0.7048499  0.9998948  0.0054715637
+  1                  140      0.7054382  0.9998948  0.0061167250
+  1                  150      0.7056937  0.9999080  0.0064393056
+  1                  160      0.7064641  0.9998817  0.0069225288
+  1                  170      0.7071736  0.9998817  0.0072438140
+  1                  180      0.7082912  0.9998291  0.0086915404
+  1                  190      0.7086761  0.9998488  0.0090154165
+  1                  200      0.7090585  0.9998356  0.0090154165
+  2                   10      0.6857606  1.0000000  0.0000000000
+  2                   20      0.6982183  0.9999934  0.0004838710
+  2                   30      0.7018270  0.9999080  0.0028986915
+  2                   40      0.7054760  0.9998554  0.0066018914
+  2                   50      0.7072342  0.9997567  0.0093367016
+  2                   60      0.7096524  0.9996910  0.0127134344
+  2                   70      0.7107191  0.9997502  0.0106218422
+  2                   80      0.7118123  0.9996055  0.0128727814
+  2                   90      0.7128503  0.9996384  0.0139979272
+  2                  100      0.7138142  0.9995661  0.0139998704
+  2                  110      0.7148514  0.9994937  0.0168972665
+  2                  120      0.7157455  0.9995266  0.0168979142
+  2                  130      0.7171228  0.9995135  0.0196314289
+  2                  140      0.7182636  0.9994609  0.0197901283
+  2                  150      0.7188038  0.9994346  0.0193107916
+  2                  160      0.7196033  0.9993688  0.0201152999
+  2                  170      0.7204503  0.9993491  0.0205978754
+  2                  180      0.7211191  0.9993031  0.0233339811
+  2                  190      0.7222237  0.9993294  0.0249410545
+  2                  200      0.7230011  0.9993491  0.0234933282
+  3                   10      0.6901338  0.9999408  0.0014477264
+  3                   20      0.7003928  0.9997502  0.0057941443
+  3                   30      0.7056001  0.9996318  0.0099766809
+  3                   40      0.7091587  0.9995463  0.0135211815
+  3                   50      0.7122903  0.9995529  0.0157734162
+  3                   60      0.7150353  0.9994937  0.0180256510
+  3                   70      0.7171922  0.9994083  0.0177030703
+  3                   80      0.7191536  0.9993622  0.0196327244
+  3                   90      0.7209393  0.9992899  0.0201178909
+  3                  100      0.7226158  0.9992373  0.0204372328
+  3                  110      0.7234302  0.9991584  0.0226920586
+  3                  120      0.7248037  0.9991584  0.0241417282
+  3                  130      0.7265390  0.9991387  0.0254242778
+  3                  140      0.7272811  0.9990401  0.0265513668
+  3                  150      0.7279866  0.9990269  0.0283242648
+  3                  160      0.7282963  0.9989809  0.0299319860
+  3                  170      0.7287629  0.9989349  0.0297694002
+  3                  180      0.7289087  0.9989612  0.0315397072
+  3                  190      0.7294833  0.9989152  0.0328261433
+  3                  200      0.7298625  0.9988231  0.0328248478
+
+Tuning parameter 'shrinkage' was held constant at a value of 0.1
+
+Tuning parameter 'n.minobsinnode' was held constant at a value of 20
+ROC was used to select the optimal model using  the largest value.
+The final values used for the model were n.trees = 200, interaction.depth =
+ 3, shrinkage = 0.1 and n.minobsinnode = 20. 
+'envir' chosen:<environment: R_GlobalEnv>
+encoding = "native.enc" chosen
+--> parsed 28 expressions; now eval(.)ing them:
+
+>>>> eval(expression_nr. 1 )
+                 =================
+
+> trainPred <- predict(fit1, trainDescr)
+curr.fun: symbol <-
+ .. after 'expression(trainPred <- predict(fit1, trainDescr))'
+
+>>>> eval(expression_nr. 2 )
+                 =================
+
+> postResample(trainPred, trainClass)
+curr.fun: symbol postResample
+  Accuracy      Kappa 
+0.96181543 0.07403213 
+ .. after 'expression(postResample(trainPred, trainClass))'
+
+>>>> eval(expression_nr. 3 )
+                 =================
+
+> br0[["confusion.train"]] <- confusionMatrix(trainPred, 
++     trainClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.train"]] <- confusionMatrix(trainPred, ''    trainClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 4 )
+                 =================
+
+> br0[["confusion.train"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   30402  1192
+   claim        17    51
+                                          
+               Accuracy : 0.9618          
+                 95% CI : (0.9596, 0.9639)
+    No Information Rate : 0.9607          
+    P-Value [Acc > NIR] : 0.1662          
+                                          
+                  Kappa : 0.074           
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.041030        
+            Specificity : 0.999441        
+         Pos Pred Value : 0.750000        
+         Neg Pred Value : 0.962271        
+             Prevalence : 0.039258        
+         Detection Rate : 0.001611        
+   Detection Prevalence : 0.002148        
+      Balanced Accuracy : 0.520235        
+                                          
+       'Positive' Class : claim           
+                                          
+ .. after 'expression(br0[["confusion.train"]])'
+
+>>>> eval(expression_nr. 5 )
+                 =================
+
+> ppl2 <- ppl0[rownames(trainDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(trainDescr), ])'
+
+>>>> eval(expression_nr. 6 )
+                 =================
+
+> ppl2[["predicted"]] <- trainPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- trainPred)'
+
+>>>> eval(expression_nr. 7 )
+                 =================
+
+> ppl2[["actual"]] <- trainClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- trainClass)'
+
+>>>> eval(expression_nr. 8 )
+                 =================
+
+> br0[["train.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["train.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 9 )
+                 =================
+
+> testPred <- predict(fit1, testDescr)
+curr.fun: symbol <-
+ .. after 'expression(testPred <- predict(fit1, testDescr))'
+
+>>>> eval(expression_nr. 10 )
+                 =================
+
+> postResample(testPred, testClass)
+curr.fun: symbol postResample
+  Accuracy      Kappa 
+0.96097716 0.04340827 
+ .. after 'expression(postResample(testPred, testClass))'
+
+>>>> eval(expression_nr. 11 )
+                 =================
+
+> br0[["confusion.test"]] <- confusionMatrix(testPred, 
++     testClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.test"]] <- confusionMatrix(testPred, ''    testClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 12 )
+                 =================
+
+> br0[["confusion.test"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim    9078   362
+   claim         7     9
+                                          
+               Accuracy : 0.961           
+                 95% CI : (0.9569, 0.9648)
+    No Information Rate : 0.9608          
+    P-Value [Acc > NIR] : 0.4716          
+                                          
+                  Kappa : 0.0434          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.0242588       
+            Specificity : 0.9992295       
+         Pos Pred Value : 0.5625000       
+         Neg Pred Value : 0.9616525       
+             Prevalence : 0.0392343       
+         Detection Rate : 0.0009518       
+   Detection Prevalence : 0.0016920       
+      Balanced Accuracy : 0.5117441       
+                                          
+       'Positive' Class : claim           
+                                          
+ .. after 'expression(br0[["confusion.test"]])'
+
+>>>> eval(expression_nr. 13 )
+                 =================
+
+> ppl2 <- ppl0[rownames(testDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(testDescr), ])'
+
+>>>> eval(expression_nr. 14 )
+                 =================
+
+> ppl2[["predicted"]] <- testPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- testPred)'
+
+>>>> eval(expression_nr. 15 )
+                 =================
+
+> ppl2[["actual"]] <- testClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- testClass)'
+
+>>>> eval(expression_nr. 16 )
+                 =================
+
+> br0[["test.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["test.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 17 )
+                 =================
+
+> nvars <- floor(length(colnames(trainDescr)) * 2/3)
+curr.fun: symbol <-
+ .. after 'expression(nvars <- floor(length(colnames(trainDescr)) * 2/3))'
+
+>>>> eval(expression_nr. 18 )
+                 =================
+
+> jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), 
++     width = 1024, height = 768)
+curr.fun: symbol jpeg
+ .. after 'expression(jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), ''    width = 1024, height = 768))'
+
+>>>> eval(expression_nr. 19 )
+                 =================
+
+> modelImp <- varImp(fit1, scale = FALSE)
+curr.fun: symbol <-
+ .. after 'expression(modelImp <- varImp(fit1, scale = FALSE))'
+
+>>>> eval(expression_nr. 20 )
+                 =================
+
+> plot(modelImp, top = min(dim(modelImp$importance)[1], 
++     nvars))
+curr.fun: symbol plot
+ .. after 'expression(plot(modelImp, top = min(dim(modelImp$importance)[1], ''    nvars)))'
+
+>>>> eval(expression_nr. 21 )
+                 =================
+
+> x.p <- predict(fit1, testDescr, type = "prob")[2]
+curr.fun: symbol <-
+ .. after 'expression(x.p <- predict(fit1, testDescr, type = "prob")[2])'
+
+>>>> eval(expression_nr. 22 )
+                 =================
+
+> test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], 
++     Obs = testClass)
+curr.fun: symbol <-
+ .. after 'expression(test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], ''    Obs = testClass))'
+
+>>>> eval(expression_nr. 23 )
+                 =================
+
+> test.roc <- roc(Obs ~ true0, test.df)
+curr.fun: symbol <-
+ .. after 'expression(test.roc <- roc(Obs ~ true0, test.df))'
+
+>>>> eval(expression_nr. 24 )
+                 =================
+
+> densityplot(~test.df$true0, groups = test.df$Obs, 
++     auto.key = TRUE)
+curr.fun: symbol densityplot
+ .. after 'expression(densityplot(~test.df$true0, groups = test.df$Obs, ''    auto.key = TRUE))'
+
+>>>> eval(expression_nr. 25 )
+                 =================
+
+> plot.roc(test.roc)
+curr.fun: symbol plot.roc
+
+Call:
+roc.formula(formula = Obs ~ true0, data = test.df)
+
+Data: true0 in 9085 controls (Obs noclaim) < 371 cases (Obs claim).
+Area under the curve: 0.7336
+ .. after 'expression(plot.roc(test.roc))'
+
+>>>> eval(expression_nr. 26 )
+                 =================
+
+> dev.off()
+curr.fun: symbol dev.off
+null device 
+          1 
+ .. after 'expression(dev.off())'
+
+>>>> eval(expression_nr. 27 )
+                 =================
+
+> br0[["model.importance"]] <- modelImp
+curr.fun: symbol <-
+ .. after 'expression(br0[["model.importance"]] <- modelImp)'
+
+>>>> eval(expression_nr. 28 )
+                 =================
+
+> if (fit1$method == "gbm") {
++     stopifnot(any(names(fit1$control) == "seeds"))
++ }
+curr.fun: symbol if
+ .. after 'expression(if (fit1$method == "gbm") {''    stopifnot(any(names(fit1$control) == "seeds"))''})'
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   30402  1192
+   claim        17    51
+                                          
+               Accuracy : 0.9618          
+                 95% CI : (0.9596, 0.9639)
+    No Information Rate : 0.9607          
+    P-Value [Acc > NIR] : 0.1662          
+                                          
+                  Kappa : 0.074           
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.041030        
+            Specificity : 0.999441        
+         Pos Pred Value : 0.750000        
+         Neg Pred Value : 0.962271        
+             Prevalence : 0.039258        
+         Detection Rate : 0.001611        
+   Detection Prevalence : 0.002148        
+      Balanced Accuracy : 0.520235        
+                                          
+       'Positive' Class : claim           
+                                          
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim    9078   362
+   claim         7     9
+                                          
+               Accuracy : 0.961           
+                 95% CI : (0.9569, 0.9648)
+    No Information Rate : 0.9608          
+    P-Value [Acc > NIR] : 0.4716          
+                                          
+                  Kappa : 0.0434          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.0242588       
+            Specificity : 0.9992295       
+         Pos Pred Value : 0.5625000       
+         Neg Pred Value : 0.9616525       
+             Prevalence : 0.0392343       
+         Detection Rate : 0.0009518       
+   Detection Prevalence : 0.0016920       
+      Balanced Accuracy : 0.5117441       
+                                          
+       'Positive' Class : claim           
+                                          
+mv ppl7.dat xroadsc-7.dat
+Rscript br9.R xroadsc-7.dat
+Loading required package: lattice
+Loading required package: ggplot2
+Type 'citation("pROC")' for a citation.
+
+Attaching package: 'pROC'
+
+The following objects are masked from 'package:stats':
+
+    cov, smooth, var
+
+Loading required package: survival
+
+Attaching package: 'survival'
+
+The following object is masked from 'package:caret':
+
+    cluster
+
+Loading required package: splines
+Loading required package: parallel
+Loaded gbm 2.1.1
+Loading required package: methods
+Loading required package: grid
+Loading required package: foreach
+Loading required package: iterators
+[1] "source: ../../../../../cache/out/xsamples5.csv"
+[1] 41118   110
+trainClass
+   noclaim      claim 
+0.96074158 0.03925842 
+[1] 31662   110
+testClass
+   noclaim      claim 
+0.96076565 0.03923435 
+[1] 9456  110
+Loading required package: plyr
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:DMwR':
+
+    join
+
+Warning message:
+In train.default(trainDescr, trainClass, method = "gbm", trControl = fitControl,  :
+  The metric "Accuracy" was not in the result set. ROC will be used instead.
+Stochastic Gradient Boosting 
+
+31662 samples
+  110 predictor
+    2 classes: 'noclaim', 'claim' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold, repeated 5 times) 
+Summary of sample sizes: 25329, 25329, 25330, 25330, 25330, 25329, ... 
+Addtional sampling using up-sampling
+
+Resampling results across tuning parameters:
+
+  interaction.depth  n.trees  ROC        Sens       Spec     
+  1                   10      0.6887465  0.5715572  0.6889707
+  1                   20      0.6970564  0.5918008  0.6854476
+  1                   30      0.7007911  0.6014794  0.6746755
+  1                   40      0.7039351  0.6095533  0.6783709
+  1                   50      0.7057146  0.6122028  0.6782077
+  1                   60      0.7069810  0.6165751  0.6761213
+  1                   70      0.7080160  0.6212433  0.6772483
+  1                   80      0.7092662  0.6244782  0.6764451
+  1                   90      0.7101911  0.6268517  0.6737084
+  1                  100      0.7111924  0.6299878  0.6733890
+  1                  110      0.7120721  0.6336500  0.6721000
+  1                  120      0.7131831  0.6365429  0.6701684
+  1                  130      0.7140029  0.6398500  0.6700078
+  1                  140      0.7146030  0.6420066  0.6672678
+  1                  150      0.7154942  0.6439001  0.6661355
+  1                  160      0.7160151  0.6462079  0.6624355
+  1                  170      0.7165529  0.6479043  0.6614743
+  1                  180      0.7170075  0.6496006  0.6576163
+  1                  190      0.7173237  0.6516519  0.6582608
+  1                  200      0.7182027  0.6537888  0.6563266
+  2                   10      0.6963278  0.6040238  0.6640465
+  2                   20      0.7032607  0.6146619  0.6633988
+  2                   30      0.7093068  0.6224796  0.6719322
+  2                   40      0.7123747  0.6324930  0.6682336
+  2                   50      0.7152914  0.6397715  0.6679149
+  2                   60      0.7182664  0.6471878  0.6638872
+  2                   70      0.7206964  0.6543214  0.6585782
+  2                   80      0.7225849  0.6593183  0.6592156
+  2                   90      0.7243357  0.6632566  0.6542337
+  2                  100      0.7259126  0.6680694  0.6527873
+  2                  110      0.7272230  0.6727112  0.6484422
+  2                  120      0.7281581  0.6773004  0.6434525
+  2                  130      0.7287627  0.6811139  0.6410390
+  2                  140      0.7297438  0.6848483  0.6374977
+  2                  150      0.7302262  0.6887341  0.6318675
+  2                  160      0.7311808  0.6924029  0.6302585
+  2                  170      0.7316335  0.6946186  0.6294501
+  2                  180      0.7321242  0.6978336  0.6251095
+  2                  190      0.7324321  0.7011210  0.6225347
+  2                  200      0.7328732  0.7039943  0.6209269
+  3                   10      0.6991510  0.6184753  0.6559988
+  3                   20      0.7100180  0.6220326  0.6735503
+  3                   30      0.7175930  0.6395084  0.6737142
+  3                   40      0.7221955  0.6494627  0.6685575
+  3                   50      0.7247969  0.6590290  0.6635685
+  3                   60      0.7266114  0.6675960  0.6572937
+  3                   70      0.7283925  0.6742234  0.6514995
+  3                   80      0.7299360  0.6809363  0.6458712
+  3                   90      0.7310599  0.6880699  0.6423261
+  3                  100      0.7320524  0.6926855  0.6368526
+  3                  110      0.7330987  0.6985371  0.6281636
+  3                  120      0.7339694  0.7038890  0.6231753
+  3                  130      0.7348582  0.7085834  0.6191540
+  3                  140      0.7350464  0.7146322  0.6138489
+  3                  150      0.7354435  0.7181169  0.6115967
+  3                  160      0.7361332  0.7228376  0.6070922
+  3                  170      0.7365778  0.7270652  0.6003336
+  3                  180      0.7370747  0.7306748  0.5993659
+  3                  190      0.7374676  0.7341924  0.5972684
+  3                  200      0.7376098  0.7372563  0.5935685
+
+Tuning parameter 'shrinkage' was held constant at a value of 0.1
+
+Tuning parameter 'n.minobsinnode' was held constant at a value of 20
+ROC was used to select the optimal model using  the largest value.
+The final values used for the model were n.trees = 200, interaction.depth =
+ 3, shrinkage = 0.1 and n.minobsinnode = 20. 
+'envir' chosen:<environment: R_GlobalEnv>
+encoding = "native.enc" chosen
+--> parsed 28 expressions; now eval(.)ing them:
+
+>>>> eval(expression_nr. 1 )
+                 =================
+
+> trainPred <- predict(fit1, trainDescr)
+curr.fun: symbol <-
+ .. after 'expression(trainPred <- predict(fit1, trainDescr))'
+
+>>>> eval(expression_nr. 2 )
+                 =================
+
+> postResample(trainPred, trainClass)
+curr.fun: symbol postResample
+ Accuracy     Kappa 
+0.7388984 0.1294049 
+ .. after 'expression(postResample(trainPred, trainClass))'
+
+>>>> eval(expression_nr. 3 )
+                 =================
+
+> br0[["confusion.train"]] <- confusionMatrix(trainPred, 
++     trainClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.train"]] <- confusionMatrix(trainPred, ''    trainClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 4 )
+                 =================
+
+> br0[["confusion.train"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   22429   277
+   claim      7990   966
+                                         
+               Accuracy : 0.7389         
+                 95% CI : (0.734, 0.7437)
+    No Information Rate : 0.9607         
+    P-Value [Acc > NIR] : 1              
+                                         
+                  Kappa : 0.1294         
+ Mcnemar's Test P-Value : <2e-16         
+                                         
+            Sensitivity : 0.77715        
+            Specificity : 0.73734        
+         Pos Pred Value : 0.10786        
+         Neg Pred Value : 0.98780        
+             Prevalence : 0.03926        
+         Detection Rate : 0.03051        
+   Detection Prevalence : 0.28286        
+      Balanced Accuracy : 0.75724        
+                                         
+       'Positive' Class : claim          
+                                         
+ .. after 'expression(br0[["confusion.train"]])'
+
+>>>> eval(expression_nr. 5 )
+                 =================
+
+> ppl2 <- ppl0[rownames(trainDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(trainDescr), ])'
+
+>>>> eval(expression_nr. 6 )
+                 =================
+
+> ppl2[["predicted"]] <- trainPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- trainPred)'
+
+>>>> eval(expression_nr. 7 )
+                 =================
+
+> ppl2[["actual"]] <- trainClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- trainClass)'
+
+>>>> eval(expression_nr. 8 )
+                 =================
+
+> br0[["train.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["train.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 9 )
+                 =================
+
+> testPred <- predict(fit1, testDescr)
+curr.fun: symbol <-
+ .. after 'expression(testPred <- predict(fit1, testDescr))'
+
+>>>> eval(expression_nr. 10 )
+                 =================
+
+> postResample(testPred, testClass)
+curr.fun: symbol postResample
+  Accuracy      Kappa 
+0.72927242 0.08846526 
+ .. after 'expression(postResample(testPred, testClass))'
+
+>>>> eval(expression_nr. 11 )
+                 =================
+
+> br0[["confusion.test"]] <- confusionMatrix(testPred, 
++     testClass, positive = br0[["outcomen0"]])
+curr.fun: symbol <-
+ .. after 'expression(br0[["confusion.test"]] <- confusionMatrix(testPred, ''    testClass, positive = br0[["outcomen0"]]))'
+
+>>>> eval(expression_nr. 12 )
+                 =================
+
+> br0[["confusion.test"]]
+curr.fun: symbol [[
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim    6668   143
+   claim      2417   228
+                                          
+               Accuracy : 0.7293          
+                 95% CI : (0.7202, 0.7382)
+    No Information Rate : 0.9608          
+    P-Value [Acc > NIR] : 1               
+                                          
+                  Kappa : 0.0885          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.61456         
+            Specificity : 0.73396         
+         Pos Pred Value : 0.08620         
+         Neg Pred Value : 0.97900         
+             Prevalence : 0.03923         
+         Detection Rate : 0.02411         
+   Detection Prevalence : 0.27972         
+      Balanced Accuracy : 0.67426         
+                                          
+       'Positive' Class : claim           
+                                          
+ .. after 'expression(br0[["confusion.test"]])'
+
+>>>> eval(expression_nr. 13 )
+                 =================
+
+> ppl2 <- ppl0[rownames(testDescr), ]
+curr.fun: symbol <-
+ .. after 'expression(ppl2 <- ppl0[rownames(testDescr), ])'
+
+>>>> eval(expression_nr. 14 )
+                 =================
+
+> ppl2[["predicted"]] <- testPred
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["predicted"]] <- testPred)'
+
+>>>> eval(expression_nr. 15 )
+                 =================
+
+> ppl2[["actual"]] <- testClass
+curr.fun: symbol <-
+ .. after 'expression(ppl2[["actual"]] <- testClass)'
+
+>>>> eval(expression_nr. 16 )
+                 =================
+
+> br0[["test.results"]] <- ppl2
+curr.fun: symbol <-
+ .. after 'expression(br0[["test.results"]] <- ppl2)'
+
+>>>> eval(expression_nr. 17 )
+                 =================
+
+> nvars <- floor(length(colnames(trainDescr)) * 2/3)
+curr.fun: symbol <-
+ .. after 'expression(nvars <- floor(length(colnames(trainDescr)) * 2/3))'
+
+>>>> eval(expression_nr. 18 )
+                 =================
+
+> jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), 
++     width = 1024, height = 768)
+curr.fun: symbol jpeg
+ .. after 'expression(jpeg(filename = paste(scls0, "%03d.jpeg", sep = ""), ''    width = 1024, height = 768))'
+
+>>>> eval(expression_nr. 19 )
+                 =================
+
+> modelImp <- varImp(fit1, scale = FALSE)
+curr.fun: symbol <-
+ .. after 'expression(modelImp <- varImp(fit1, scale = FALSE))'
+
+>>>> eval(expression_nr. 20 )
+                 =================
+
+> plot(modelImp, top = min(dim(modelImp$importance)[1], 
++     nvars))
+curr.fun: symbol plot
+ .. after 'expression(plot(modelImp, top = min(dim(modelImp$importance)[1], ''    nvars)))'
+
+>>>> eval(expression_nr. 21 )
+                 =================
+
+> x.p <- predict(fit1, testDescr, type = "prob")[2]
+curr.fun: symbol <-
+ .. after 'expression(x.p <- predict(fit1, testDescr, type = "prob")[2])'
+
+>>>> eval(expression_nr. 22 )
+                 =================
+
+> test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], 
++     Obs = testClass)
+curr.fun: symbol <-
+ .. after 'expression(test.df <- data.frame(true0 = x.p[[br0[["outcomen0"]]]], ''    Obs = testClass))'
+
+>>>> eval(expression_nr. 23 )
+                 =================
+
+> test.roc <- roc(Obs ~ true0, test.df)
+curr.fun: symbol <-
+ .. after 'expression(test.roc <- roc(Obs ~ true0, test.df))'
+
+>>>> eval(expression_nr. 24 )
+                 =================
+
+> densityplot(~test.df$true0, groups = test.df$Obs, 
++     auto.key = TRUE)
+curr.fun: symbol densityplot
+ .. after 'expression(densityplot(~test.df$true0, groups = test.df$Obs, ''    auto.key = TRUE))'
+
+>>>> eval(expression_nr. 25 )
+                 =================
+
+> plot.roc(test.roc)
+curr.fun: symbol plot.roc
+
+Call:
+roc.formula(formula = Obs ~ true0, data = test.df)
+
+Data: true0 in 9085 controls (Obs noclaim) < 371 cases (Obs claim).
+Area under the curve: 0.737
+ .. after 'expression(plot.roc(test.roc))'
+
+>>>> eval(expression_nr. 26 )
+                 =================
+
+> dev.off()
+curr.fun: symbol dev.off
+null device 
+          1 
+ .. after 'expression(dev.off())'
+
+>>>> eval(expression_nr. 27 )
+                 =================
+
+> br0[["model.importance"]] <- modelImp
+curr.fun: symbol <-
+ .. after 'expression(br0[["model.importance"]] <- modelImp)'
+
+>>>> eval(expression_nr. 28 )
+                 =================
+
+> if (fit1$method == "gbm") {
++     stopifnot(any(names(fit1$control) == "seeds"))
++ }
+curr.fun: symbol if
+ .. after 'expression(if (fit1$method == "gbm") {''    stopifnot(any(names(fit1$control) == "seeds"))''})'
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim   22429   277
+   claim      7990   966
+                                         
+               Accuracy : 0.7389         
+                 95% CI : (0.734, 0.7437)
+    No Information Rate : 0.9607         
+    P-Value [Acc > NIR] : 1              
+                                         
+                  Kappa : 0.1294         
+ Mcnemar's Test P-Value : <2e-16         
+                                         
+            Sensitivity : 0.77715        
+            Specificity : 0.73734        
+         Pos Pred Value : 0.10786        
+         Neg Pred Value : 0.98780        
+             Prevalence : 0.03926        
+         Detection Rate : 0.03051        
+   Detection Prevalence : 0.28286        
+      Balanced Accuracy : 0.75724        
+                                         
+       'Positive' Class : claim          
+                                         
+Confusion Matrix and Statistics
+
+          Reference
+Prediction noclaim claim
+   noclaim    6668   143
+   claim      2417   228
+                                          
+               Accuracy : 0.7293          
+                 95% CI : (0.7202, 0.7382)
+    No Information Rate : 0.9608          
+    P-Value [Acc > NIR] : 1               
+                                          
+                  Kappa : 0.0885          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.61456         
+            Specificity : 0.73396         
+         Pos Pred Value : 0.08620         
+         Neg Pred Value : 0.97900         
+             Prevalence : 0.03923         
+         Detection Rate : 0.02411         
+   Detection Prevalence : 0.27972         
+      Balanced Accuracy : 0.67426         
+                                          
+       'Positive' Class : claim           
+                                          
+mv ppl9.dat xroadsc-9.dat

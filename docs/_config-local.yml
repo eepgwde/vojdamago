@@ -24,11 +24,11 @@ description:
   Data science project using Python, q/kdb+ and R for root-cause analysis of damage
   done to vehicles by roads using 7 years of operational data.
 
-url: "https://eepgwde.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://localhost:4000" 
+# the base hostname & protocol for your site, e.g. http://example.com
 
-# these two change for local use
+# This is changed for local use
 baseurl: "" # the subpath of your site, e.g. /blog
-xbase: ""
 
 twitter_username: jekyllrb
 github_username:  eepgwde
@@ -60,4 +60,28 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - .#*
-  - vojdamago/
+
+defaults:
+  - 
+    scope:
+      path: "assets/images/a2d/*.jpeg"
+    values:
+      image: true
+
+  - 
+    scope:
+      path: "assets/images/e2c/*.jpeg"
+    values:
+      image: true
+
+  - 
+    scope:
+      path: "assets/images/br/*.jpeg"
+    values:
+      image: true
+
+  - 
+    scope:
+      path: "assets/images/br2/*.jpeg"
+    values:
+      image: true
