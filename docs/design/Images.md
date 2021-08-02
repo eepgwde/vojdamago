@@ -2,9 +2,9 @@
 
 {::comment}
 
-site.static_files: {{ site.static_files }}
+This does work on GitHub.
 
-image_files: {{ image_files }}
+site.static_files: {{ site.static_files }}
 
 {:/comment}
 

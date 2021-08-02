@@ -17,7 +17,7 @@ What can give rise to disproportionately more claims?
 
 <p class="photo-gallery">
     <figure>
-      <img src="{{ site.xbase }}/assets/images/br/xroadsc-cwy0-003.jpeg" alt="Road Characteristics">
+      <img src="{{ "/assets/images/br/xroadsc-cwy0-003.jpeg" | relative_url }}" alt="Road Characteristics">
       <figcaption>Road Characteristics against claims: recursive partitions</figcaption>
     </figure>
 </p>
@@ -48,7 +48,7 @@ was used for a cluster diagram.
 
 <p class="photo-gallery">
     <figure>
-      <img src="{{ site.xbase }}/assets/images/br/rp2-002.jpeg" alt="Claims cluster against repair history">
+      <img src="{{ "/assets/images/br/rp2-002.jpeg" | relative_url }}" alt="Claims cluster against repair history">
       <figcaption>Clustering of claims around repair history</figcaption>
     </figure>
 </p>
@@ -56,7 +56,8 @@ was used for a cluster diagram.
 The dataset here is constrained to just *claims* on rural tarmac roads. This
 proves to be just 520 in all - about one fifth of the total.
 
-The clusters are separated with [contingency tables]({{ site.xbase }}/assets/images/br/rp2.txt).
+The clusters are separated with 
+[contingency tables]({{ "/assets/images/br/rp2.txt" | relative_url }}).
 
  - road priority is key factor: classes 2 and 3 are Local Distributor and Local Access roads.
  - one cluster of roads (cluster 4, with 75 assets) had no prior maintenance history
