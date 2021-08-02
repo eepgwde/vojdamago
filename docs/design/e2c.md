@@ -2,6 +2,7 @@
 layout: page
 title: KPI
 permalink: /analyses/e2c
+navigation_weight: 2
 kpipath: /assets/images/e2c/hcc5t-001.jpeg
 kpicaption: "Key Performance Indicators: log scale"
 ---

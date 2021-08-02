@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Characteristics
-permalink: /analyses/rp/
-navigation_weight: 3
+title: Predictor
+permalink: /analyses/br
+navigation_weight: 4
 ---
 
-# Asset Characteristics
+# Predictor
 
 In this section, the characteristics of the roads are assessed against the claims. 
 

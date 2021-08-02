@@ -2,6 +2,7 @@
 layout: page
 title: Overview
 permalink: /overview/
+navigation_weight: 1
 ---
 # The Carriageway Damage Project
 
