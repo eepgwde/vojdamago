@@ -9,9 +9,12 @@ navigation_weight: 1
 This is the web-site for a software project that uses Python, R and q/kdb+
 to investigate the root-causes of road damage done to vehicles over 7 years.
 
+This document describes the build system. The analyses carried out is described
+in more detail within dedicated pages.
+
 ## Summary
 
-This has a complete project that loads data from a set of CSV and XLS
+This is a complete project that loads data from a set of CSV and XLS
 files. This system uses Python and q/kdb for the pre-processing and some of
 the feature engineering.
 
@@ -22,9 +25,12 @@ It then uses GNU-R for the analysis; there are three forms of analysis:
  - Time-series analysis of Key Performance Indicators using the Generalized
    Additive Method.
 
- - A fault prediction classifier using operational features.
+ - A fault Predictor (a classifier) that uses asset and operation features.
 
  - Regression analysis to predict Mean Time Between Failure for carriageways
+ 
+Other analyses are carried out - recursive partition trees, cluster analysis -
+on the assets. There are also some statistical tests to test assertions.
 
 ## Extraction
 
@@ -122,10 +128,11 @@ The dstr.mk file is included by bldr.mk and produces a distribution Zip file.
 The three pieces of analysis are then run from these directory:
 
  - e2c is the time-series analysis 
+ - rp is the asset characteristics partition trees
  - br is the fault prediction classifier
  - a2d is the regression analysis 
 
-### Time-series
+### KPI - Time-series
 
 This uses GAM to evaluate differently constructed models.
 
@@ -133,9 +140,30 @@ This uses GAM to evaluate differently constructed models.
  make -C e2c -f e2c.mk all
 ```
 
-### Fault Prediction
+### Characteristics - Recursive Partition Trees
 
 This performs some recursive partition tree analysis.
+
+```
+ make -C br -f rp.mk all
+```
+
+### Predictor - Fault Prediction
+
+This performs a long process for training a classifier, imputation, and training a classifier with SMOTE.
+
+```
+ make -C br -f br.mk all
+```
+
+### MTBF - Effective Ages
+
+This trains a mathematical model for many different classes of road and
+generates an effective age for each class.
+
+```
+ make -C a2d -f a2d.mk all
+```
 
 ## Notes
 
@@ -145,5 +173,3 @@ This is a log of the modifications I've had to make.
 
 This failed to produce xncas1.csv and xncas1w.csv. Tracing back to
 samples1.q and then samples1c.q. .dfct.status1 didn't exist. Re-ran dfct1.q
-
-

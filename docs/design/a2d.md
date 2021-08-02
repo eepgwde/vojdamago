@@ -1,22 +1,15 @@
 ---
 layout: page
-title: KPI
-permalink: /analyses/e2c
-navigation_weight: 2
-kpipath: /assets/images/e2c/hcc5t-001.jpeg
-kpicaption: "Key Performance Indicators: log scale"
+title: MTBF
+permalink: /analyses/a2d
+navigation_weight: 5
 ---
 
 {::comment}
 This text is completely ignored by kramdown - a comment in the text.
-This is not accessible: site.baseurl {{ site.baseurl }}
-- separator -
-site.xbase: {{ site.xbase }}
-- separator -
-page.kpipath: {{ page.kpipath }}
 {:/comment}
 
-# Asset Management
+# Mean Time Between Failures
 
 In this section, the Key Performance Indicators of the business are observed
 over time and seasonality effects are quantified.
