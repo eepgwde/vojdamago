@@ -171,7 +171,7 @@ predictors. (A well-known example would be the mistake often made in a loan
 application process predictor: the outcome variable would be "Loan Granted", but
 there may be another variable "LV", which is overlooked and does not have a
 clear definition in the data dictionary and proves to be *Loan Value* and is only
-ever non-zero when "Loan Granted" is true. A careless designer might not pick up
+ever non-zero when "Loan Granted" is true. A careless designer might not pick uvp
 the correlation between the outcome variable and the prescient variable.)
 
 These repair metrics were quite complicated in design. The operation was either
@@ -190,12 +190,25 @@ road inspected or repaired in some way within 60 days and no work is carried out
 subsequent to the enquiry, then, given how claim records are constructed, it
 would be very likely that a claim will result.
 
-For the Predictor both the look-backward and look-forward variants of the repair
-activity were used.
+Both the Predictor and the Imputer will use both the look-backward and
+look-forward variants of the repair activity were used. When the Predictor is
+reasonably accurate, the dataset with all the prescient metrics can be used to
+develop an Imputer.
 
-For the Imputer only the look-backward variant was available, with a simplified
-form of the look-forward variant: number of days to next scheduled resurfacing -
-the prmt variable set.
+When a fault is reported on a road the prescient variable should report some
+activity for the road in the future. 
+
+ - For enquiry records that are not *claims*, they have had a priority code
+   assigned manually; there will be some activity recorded in the prescient
+   features.
+
+ - For enquiry records that are *claims*, they will not have a priority. Their
+   prescient variables will almost certainly show there was little or no
+   activity for that road.
+   
+In all other features, if a set of roads with no claims have a neighbour that is
+a road with a claim, the neighbour will be given an imputed priority that is the
+same as its neighbours.
 
 ## Prototyping
 
@@ -214,130 +227,147 @@ Predictor.
 
 # The Imputer
 
-As noted above, one does usually use the same dataset for imputation as for
-classification because it can introduce confirmation bias. 
+As noted above, one does not usually use the same dataset for imputation as for
+classification because it can introduce confirmation bias.
 
-The Imputer does not use these fields or metrics:
-
- - claim : the most obvious way to introduce more confirmation bias would be to
-   introduce the outcome variable.
+The Imputer does not use the *claim* field because it is implicit. The records
+that need an imputed priority are the claim records. The imputer also uses the
+look-forward metrics, because these should be the only features that differ
+between the roads that have claims and those that do not, because they were
+repaired in the future.
    
- - look-forward metrics : these would not be available to an operational
-   classifier *except* for the Permit fields.
-   
-The Imputer does use the look-backward repair metrics.
-
 The imputation process was a *k-nearest neighbours*. This is notoriously slow,
 so with a great deal of trial and error, a great many features were removed. The
 core set that produced a reasonable Imputer proved to be the repair metrics, the
 permits, most of the road characteristics (long, narrow, urban, local-road,
-traffic and so on) and a few socio-demographic features, family size for
-example.
+traffic and so on) and a few socio-demographic features, number of cars per
+household proved to more accurate.
+
+Once the imputations for priority have been made, the Predictor should be more
+accurate. The Predictor is then run without the prescient variables and the
+priority feature should dominate because it is now a proxy for the prescient
+features.
 
 # The Predictor
 
-As noted above, the Predictor is used to validate the design of the repair
-metrics and the Imputer. This makes demands on the classification algorithm. It
-will be a supervised technique: the dataset can be split into training and test.
-And, because the dataset is very imbalanced, an upsampling method will be
-needed.
+The Predictor is used to validate the design of the repair metrics and the
+Imputer. This makes demands on the classification algorithm. It will be a
+supervised technique: the dataset can be split into training and test. And,
+because the dataset is very imbalanced, an upsampling method will be needed.
+
+When the Predictor is sufficiently accurate, the prescient features can be
+removed from the dataset and the imputed priority should act as a proxy for
+them.
 
 ## Classification Algorithm - GBM
 
-An algorithm is needed that can quickly evaluate if a feature is dominating and
-that dominant feature should be one of the repair metrics and the priority
-assigned to the enquiry.
+An algorithm is needed that can quickly evaluate if a feature is dominating and,
+it is argued, the dominant features should be the repair metrics and the
+priority assigned to the enquiry.
 
-This means that aggregation algorithms should be avoided. In particular, do not
-use Random Forest, because it aggregates across different random sub-spaces of
-features, it can lessen the importance of metrics.
+A classification algorithm that uses aggregation should be avoided. In
+particular, do not use Random Forest, because it aggregates across different
+random sub-spaces of features, it can lessen the importance of the key metrics.
 
 This implementation made use of a Gradient Boosted Method, which can be thought
 of as a succession of recursive partitions which are pursued until no
 noticeable change in response is observed. If a small sub-set of metrics are
 dominating, then this will quickly become evident.
 
-Another feature of GBM is that it quickly spots *prescient variables*.
+The important feature of GBM is that it quickly prioritizes the *prescient
+variables*. 
 
 ## Upsampling Method - SMOTE
 
 This is an imbalanced dataset, less than 1% of the dataset were settled claims.
-This was increased by adding the *repudiations*, those claims there were applied
-for but not settled. These were mostly lack of evidence rebuttals and there were
-some fraudulent claims. The *repudiations* proved to have sufficiently similar
-characteristics to the settled claims, so they could be used as part of postive
-outcome dataset. This brought the positive percentage to 5%.
+This was increased by adding the *repudiation* records, those claims that were
+applied for but not settled. These were mostly rebuttals that lacked evidence
+and the claimant chose not to pursue the claim. There were some fraudulent
+claims as well. The *repudiation* records proved to have sufficiently similar
+characteristics to the settled claims, so they could be used as part of positive
+outcome dataset. So records with *repudiation* and *claim* were both made part
+of the positive outcome set and this increased the percentage to 5%.
 
-Adding the repudiations was an example of upsampling. A more subtle example of
-which is SMOTE - the Synthetic Minority Over-sampling TechniquE. This creates
+Adding the repudiations is an example of upsampling. A deduction method is to
+use SMOTE - the Synthetic Minority Over-sampling TechniquE. This creates
 new records in the minority group, by introducing synthetic neighbours to
 existing records. These have minor variations in their feature values. 
 
 # Results
 
-Firstly, the improvement in the Predictor with only upsampling will be shown.
-Then the Imputer is added to the system and that improvement will be seen.
+Firstly, the Predictor with no upsampling and prescient features is shown. Then
+the improvement in the Predictor with only upsampling will be shown. Then the
+Imputer's results are added to the claim records, the prescient features are
+removed, and the accuracy of that system can be compared to the system with
+prescient records and no imputations.
 
 ## Predictor - no imputation
 
-### No upsampling
+### No SMOTE upsampling
 
-This is the variable importance plot for the basic Predictor. 
+This is the variable importance plot for the basic Predictor with the
+*repudiation* records included, but no SMOTE.
 
 ![Predictor]({{ "/assets/images/br/xroadsc-5-ml-001.jpeg" | relative_url }})
 
 Although it appears that one measure dominates all the others, *smplriskbC1* it
 will be seen that its contribution is relatively small - in the scale, it is
-only 2500.
+only 2500. The *priority* field is still an important predictor even though it
+has partial coverage: the *claim* records were given the minimum value, the 60
+day pool. All of the important variables are repair metrics.
 
-Another useful insight can be gained from the density plots.
+The density plots show how confused the system is and the smaller number of
+*claim* records.
 
 ![Density plot]({{ "/assets/images/br/xroadsc-5-ml-002.jpeg" | relative_url }})
 
-It can be seen from this how confused the system is. Most of the *noclaim*
-records can be discriminated, but the *claim* records, the cyan coloured entries
-off to the right are scattered all through the distribution.
+Most of the *noclaim* records can be discriminated, but the *claim* records, the
+cyan coloured entries off to the right are scattered all through the
+distribution.
 
 The [confusion matrix]({{ "/assets/images/br/cm-0.txt" | relative_url }}) is
 very poor. It displays the beginner's trap for unbalanced datasets - the
 accuracy is very high and the sensitivity is very poor.
 
-### With upsampling
+### With SMOTE upsampling
 
-This is the variable importance plot for the basic Predictor with upsampling.
+This is the variable importance plot for the basic Predictor with SMOTE
+upsampling.
 
 ![Predictor]({{ "/assets/images/br/xroadsc-7-up-001.jpeg" | relative_url }})
 
 The same measure dominates, *smplriskbC1* but it can now be seen to be more
 important: the scaled value, is now 20000.
 
-This can be seen in the density plot, although it is also confused, the
-confusion appears later.
+The density plot shows the records are now balanced - a huge number of synthetic
+records in the minority group have been added. The confusion appears midway
+through the distribution.
 
 ![Density plot]({{ "/assets/images/br/xroadsc-7-up-002.jpeg" | relative_url }})
 
 The [confusion matrix]({{ "/assets/images/br/cm-1.txt" | relative_url }}) is
-much improved, it shows nearly 80% sensitivity. It also has the characteristic
+much improved, it shows nearly 90% sensitivity. It also has the characteristic
 of upsampled systems that the false positives greatly outnumber the true
 positives. In this case, by a factor of two.
 
-#### Predictive System with Upsampling and a Prescient Variable
+#### Summary: Predictor with Upsampling and Prescience
 
-This system predicts well because it has prescient variables within it. It
+This system predicts well because it has prescient features within it. It
 should be the case that these would dominate, but see the discussion later for
 an explanation.
 
 It is hoped that the Imputer can give us comparable performance but without the
-prescient variables - the imputed priority should now dominate.
+prescient features - the imputed priority should then dominate.
 
-## Predictor - with imputation of priority
+## Predictor - with Upsampling and Imputation
 
 This shows the importance of the imputed priority variable. Note: there are
 still prescient variables in the dataset, but only one *smplf30* is important. 
 
 ![Predictor]({{ "/assets/images/br2/xroadsc-7-up-001-X.jpeg" | relative_url }})
 
-The density plot appears to be just as distinct as that with the prescient variables.
+The density plot is not as distinct as that with prescient features, there is a
+huge overlap between the densities.
 
 ![Density plot]({{ "/assets/images/br2/xroadsc-7-up-002.jpeg" | relative_url }})
 
@@ -345,5 +375,167 @@ The [confusion matrix]({{ "/assets/images/br2/cm-1.txt" | relative_url }}) is
 not as good as the system with prescient variables, with only 60% sensitivity.
 The number of false positives is now over 10 times greater than the true positives.
 
+# Summary
+
+What has been demonstrated here, is that there exists a prioritization scheme that
+can more accurately predict if a repair will result in an insurance claim. To do
+that, a reasonably accurate Predictor has developed that uses an Imputer to give
+a better priority to *claim* records.
+
+This means there should be a better way of prioritizing faults, so this would be
+a useful innovation for the business and it should add a facility to its fault
+reporting system that generates a priority using this machine classification:
+there would then be two priorities: a manual-priority, assigned by a human
+operator, and a machine-priority generated by an algorithm.
+
+There are some issues with this:
+
+ - The Imputer uses the manual priorities assigned for *noclaim* records. There
+   will be mistakes in classification here; this can be refined over successive
+   iterations, using a recursive method: in the next iteration, the
+   manual-priority and the last machine-priority will both be recorded
+   and used by the imputation process.
+   
+ - A more difficult issue is that as much as one-fifth of the *repudiation* and
+   *claim* records had no defect or repair history other than the *repudiation*
+   or *claim* itself. This proved to be something of an anomaly in the dataset:
+   one of the best predictors for a claim was that it had no history. This
+   explains the importance of the *smpl* variable in the predictor. This
+   variable was a counter for the number of times faults were recorded against a
+   road. If the value was one, it was an orphan road and would almost certainly
+   cause a claim, because the only records for orphan roads were *claim* ones.
+
+It is quite difficult to deal with the orphan road issue. A possible method
+might be to add more samples of orphan roads that do not result in a claim. This
+would reduce the importance of *smpl* variable for prediction.
+
+When these results were presented to the business, they explained that their
+fault system was reactive - they only inspected faults as they were reported. It
+was argued that they should instigate a more proactive system that generated
+inspection requests for the many orphan roads.
+
+The business said that they had a programme of resurfacing roads that used a
+mathematical model for the wear and tear a road might be subject to. This
+generated an alert in the resurfacing programme.
+
+Because of this insight into their operations, a further statistical study was
+undertaken. Given the mathematical model, could it be adjusted using observed
+repairs to calculate an effective age for the road. This would be an input to a
+Mean-Time-Between-Failures that would decide which roads should be prioritized
+for inspection and resurfacing. This is the final study in this project.
+
 # Discussion
 
+## The Prescient Features Method
+
+The method used here is not a conventional one. Rather than just build
+a predictor for classification, this Predictor has been used to
+evaluate how effective an imputation process can be. And that
+imputation process demonstrates that a better classification system
+can be found for the business.
+
+The Predictor was developed by giving it prescient features in the dataset; that
+is, features that know the future history of a fault report. These prescient
+features used some combination of other features: in this case, a weighted
+combination of inspections, defects and repairs. Once it was clear that the
+prescient features determined the performance of the Predictor, they were
+removed from the feature set and the imputed value acted as a proxy for them.
+
+### Caveats
+
+In this implementation, it has not been possible to follow the method as
+described. The prescient features were left in and it was seen that the imputed
+priority dominated.
+
+It was noted that there was a problem with orphan roads and it needed to
+addressed directly. This involved the MTBF model to provide information on these
+orphan roads.
+
+## Other Points
+
+### Repudiations and False Positives
+
+The decision to use the *repudiations* to reduce the imbalance in the dataset
+was important but did need to be assessed by making other checks that *claims*
+and *repudiations* were sufficiently similar.
+
+The use of SMOTE has an effect of increasing the false positives the Predictor
+reports: s much as ten-fold. Within the business model, False positives are not
+particularly bad. If one compares the cost of 10 inspections with the cost of an
+insurance claim, then these false alarms are a small price to pay.
+
+### What the Predictor also revealed - Unimportant Features
+
+The variable importance charts for the Predictor listed a huge number of
+features: distances from points-of-interest, socio-demographic factors as well
+as the road characteristics. None of these proved to be important when it came
+the propensity for a road to be the subject of a claim.
+
+There was some ad-hoc investigation: the roads in suburban areas with families
+and more than one car were marginally more likely to be the subject of a claim,
+but there were no *magic bullets*, so often data scientists like to believe
+there is an underlying dynamic in a system that has not been discovered.
+
+In this project, it became apparent that the orphan roads were key. The
+management was preoccupied with maintaining the major carriageways with high
+traffic loads, but most insurance claims originated on local roads. This reveal
+
+### Praxis: knowing the dataset
+
+#### Data Science and Decision Science
+
+In this project, it has been seen how analysis of results from machine learning
+have been used to enhance a business' operations. A better classification
+algorithm was developed.
+
+A classifier is very often all that a business needs. In finance, one needs a
+value for a portfolio: so one develops a quantitative parametric model for every
+instrument in a portfolio and then one uses a parametric probabilistic method to
+combine the instruments and so value it: a VaR method for example.
+
+For many businesses, a quantitative accounting valuation is not needed. A
+classification is sufficient. Stock traders only need to know whether to Buy,
+Sell, Hold or Short. In this project, it was only necessary to priotize work to
+be carried out: today or tomorrow, within a week, within a month and sometime in
+the next year.
+
+Classifiers are easily generated with shallow machine-learning methods and form
+a useful tool in Decision Science.
+
+#### Balancing Datasets with non-positive Orphans
+
+Shallow learning methods - supervised classification methods - do provide
+insight into the dynamics of a dataset. The issues with upsampling and orphan
+roads in this project was another unusual challenge. Imbalanced datasets are the
+norm: and one needs good insights and methods to work with them.
+
+In this project, the issue with orphan roads was tested with a smaller dataset.
+The claims records and a randomly selected set of smaller roads, the claim field
+was removed and replaced with a field *randomly selected*. Needless to say, the
+Predictor was very poor.
+
+So a more balanced dataset would have been all the roads managed by the business
+with most roads being given an annual event that states *uninspected*.
+
+#### Data Science is an Art
+
+There are people who believe that data science can be a simple process of
+putting in all the data one can find, turning the handle on some computational
+machine and getting results. This is simply not so. For example, beginners'
+mistakes are often to include dates and database identifiers and to hope they
+will all drop out in the analysis.
+
+It is important to understand the data dictionary and eliminate uninformative
+features. If a set of features are highly correlated, only one core feature is
+needed. 
+
+Lots of new business metrics need to be added. One cannot rely on a Principal
+Component Analysis to generate a metric that weights inspections, repairs,
+resurfacing all in one. Metrics have to be designed that enhance business
+knowledge and so can be used by the classification algorithm: time windows are
+very useful, a time-decaying weight on events is a common design.
+
+It is also important to be a scientist. Posing questions of the dataset and
+testing them with other simpler statistical methods.
+
+But in the end it is an art, intuitons and ideas have to be made real.
