@@ -11,104 +11,122 @@ This text is completely ignored by kramdown - a comment in the text.
 
 # Mean Time Between Failures
 
-In this section, the Key Performance Indicators of the business are observed
-over time and seasonality effects are quantified.
+In the previous section, it was explained that there is a resurfacing schedule
+for roads. This is based on a [mathematical
+model](https://documents.worldbank.org/en/publication/documents-reports/documentdetail/793271468171847482/fourth-highway-development-and-management-model-hdm-4-road-use-costs-model-documentation)
+maintained by the World Bank.
 
-## Operational Activity
+This is an illustrative diagram of the time behaviour of a road
 
-The business being investigated is an asset management one. The carriageways are
-the assets.
+![Alligator Cracking]({{ "/assets/images/a2d/road-pf-curve.jpg" | relative_url }})
 
-<p class="photo-gallery">
-    <figure>
-      <img src="{{ page.kpipath | relative_url }}" alt="{{ page.kpipath }}">
-      <figcaption>{{ page.kpicaption }}</figcaption>
-    </figure>
-</p>
+Underpinning this curve is a mathematical function which has a family of curves
+that look like this with different parameters.
 
-From this chart, there is a funnel of actions in the business' operations
+![Decay function]({{ "/assets/images/a2d/pf-curve2.jpg" | relative_url }})
 
- - The assets have faults reported about them, *enqs*
- - Some action is taken as a result, *action1*, usually at least an inspection
-   is carried out.
- - Some have a remedial action undertaken, *enqrs*
- 
-At the same time, there are assets that give rise to legal action against the
-business.
- 
- - There are claims against the business most of which are repudiated - called *repudns*
- - But some are successful, the *claims*
- 
-Of course, these *repudns* and *claims* are dated at the time the damage occurs.
-The *claims* are a subset of *repudns*. The challenge is to find what are the
-causes of these.
+This parametric function depends principally on the traffic and usually a road
+surface is calibrated to it in the laboratory. This produces reference tables
+that are road surfaces can be tested against. 
 
-One can also the *enqrs* lags *enqs*, and that *action1* does not have such a
-defined lag.
+Most roads last much longer than their reference model would suggest. In fact,
+individual roads need to be calibrated to produce a function that gives a useful
+estimate of when damage becomes imminent.
 
-A data dictionary is available for all the characteristics and metrics, but it
-is very extensive. For the purposes of exposition, those that are used will be
-explained. 
+## Hazard Function 
 
-## Seasonality
+This function is a hazard function that operates latitudinally. A number of
+plausible factors are added that it is hoped the machine learning algorithm can
+adjust for us.
 
-Clearly there is a very pronounced seasonality here. 
+### Static Factors
 
-<p class="photo-gallery">
-    <figure>
-      <img src="{{ "/assets/images/e2c/ncas1-001.jpeg" | relative_url }}" alt="Seasonality claims">
-      <figcaption>Seasonality of <em>claims</em></figcaption>
-    </figure>
-</p>
+These are characteristics in particular the model traffic. This parameter is the
+estimate of the traffic that the road will face in a day. Other characteristics
+are:
 
-The *enqs* and other KPIs show a similar decomposition. It should be added that
-there was a change in operational policy in 2015. This explains the change in
-the underlying trend.
+  - road priority – in particular, local and non-local, but also slip road,
+    distributor road and so on.
+  
+and some scaling factors that attempt to refine the model traffic
 
-This can be investigated using the [Generalized Additive
-Method](https://en.wikipedia.org/wiki/Generalized_additive_model). A variety of
-models were tested and their [coefficient of
-determination](https://en.wikipedia.org/wiki/Coefficient_of_determination)
-compared. With that, the most accurate model proves to be this.
+  - scaling factors: the total cars in the neighbourhood
+  - the area of the road relative to the area of all roads in the geographic
+  area. 
+  
+### Dynamic Factors
 
-<p class="photo-gallery">
-    <figure>
-      <img src="{{ "/assets/images/e2c/hcc3-002.jpeg" | relative_url }}" alt="GAM model">
-      <figcaption>GAM Model <em>claims</em></figcaption>
-    </figure>
-</p>
+The other factors are derived from the number of defects. The more defects a
+road has reported for it, the more this indicates it has degraded.
 
-It has as its independent factors: the maximum and minimum temperatures, the
-month of the year and the amount of rain. It can be used to predict the load on
-the business that can be expected.
+Cumulative sum of defects – as each defect arrives, we increment a count of the
+total number of defects (dfcts). This indicates the degree of Hazard.
 
-<p class="photo-gallery">
-    <figure>
-      <img src="{{ "/assets/images/e2c/hcc3-007.jpeg" | relative_url }}" alt="GAM predictor">
-      <figcaption>Predictions using the GAM Model <em>claims</em></figcaption>
-    </figure>
-</p>
+Days since last defect was reported (ddays1). This indicates the frequency of Hazard.
 
-Many of the intermediate results for this analysis can be seen in the 
-[plots]({{ "/assets/images/e2c/Rplots.pdf" | relative_url }}) file.
+Wear Metrics: the longitudinal degradation metric (wear1) and the latitudinal
+load metric (wear3). These are calculated each time a Defect occurs.
 
-A log file of the R evaluations can be viewed
-[here]({{ "/assets/images/e2c/hcc3.txt" | relative_url }})
+Weather metrics: we add a mean minimum temperature for the coldest seasons over
+the lifetime of the asset up the Defect (tmin). And we add a mean minimum
+temperature for the month of the Defect (tmin0).
 
-A correlation diagram can be viewed [here]({{ "/assets/images/e2c/hcc5-005.jpeg" | relative_url }}).
-There are a lot of different metrics here, those prefixed with *d* are
-differences between the last period and the current one. These metrics should
-indicate if the business is overloaded from the last period.
+## Road Histories
 
-### Discussion
+The dynamic factors produce these plots of the history of a road.
 
-The seasons are significant, not just because of the change in weather, they
-also change daylight hours that people have to drive in. The most accurate model
-used the month of the year as well as temperatures and rain. The month of the
-year is probably a proxy for daylight hours.
+![Selected Road Histories]({{ "/assets/images/a2d/hcc3-001.jpeg" | relative_url }})
 
-Of course, the weather cannot be changed. This analysis can be used to partition
-the events: it might prove useful to conduct further analysis on the summer
-months separately from the winter months.
+The most defective road is has 57 defects over 9 years. The least defective road
+is a typical local road: only one real defect over 10 years. (Every asset starts
+with a defect added by the system.) For the busier roads, flat parts of the
+defect lifetime curves are usually correlated to summer periods. Short steep
+rises are typical of the winter months. It should be the case, that the hazard
+rate increases toward the end of the asset’s life and the number of defects will
+increase.
 
-In the next analysis, the characteristics of the assets are evaluated with the claims.
+All the road histories start at the same time. A road is older than another if
+was resurfaced before the other. It is hoped that clustering will take place and
+that local roads will display wear patterns that are typical of low traffic
+roads and that distributor roads will show a different pattern.
+
+Here is a larger selection. There are clusters appearing.
+
+![Large selection]({{ "/assets/images/a2d/hcc3-002.jpeg" | relative_url }})
+
+A cluster diagram partitions mostly on road type and model traffic.
+
+![Clustering]({{ "/assets/images/a2d/hcc3-008.jpeg" | relative_url }})
+
+## Health Metrics
+
+For the roads that do have substantial repair histories, a Generalized Additive
+Method regression function is generated; this uses as its inputs the *wear*
+metrics given above.
+
+Each road then has a effective age calculated for it using the GAM function and
+this is recorded and charted. 
+
+![Effective Age]({{ "/assets/images/a2d/hcc3-014.jpeg" | relative_url }})
+
+In this chart, each defect has a horizontal error bar and is calculated as
+(actual – health), so the error bar is plotting the estimated number of days
+since resurfacing. If it extends to the left, the asset is effectively younger
+and should last longer and to the right indicates it is effectively older and is
+not going to last as long.
+
+The chart is surprisingly optimistic for the local roads - these are the ones
+that are lower down on the chart. Because they have relatively infrequent
+defects reported, the roads appear to be younger.
+
+It is also possible with this GAM function to estimate when the next defect
+might occur: the Mean Time Between Failures.
+
+# Summary
+
+These health metrics are calibrated against the events recorded in the field.
+
+The MTBF can be used as an additional feature for a classification system.
+
+The MTBF can also be used to generate inspection requests. Roads that are close
+to reporting a defect using the MTBF can be scheduled for an inspection. 
