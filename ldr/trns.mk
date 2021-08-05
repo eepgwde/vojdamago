@@ -18,7 +18,7 @@ all:: $(X_SRCS)
 
 # sources for X_EXTS1 and X_EXTS0
 
-X_CSVS0 ?= fcia CWY-inventory FWY-inventory CWY-enquiries RCI-A RCI-BC defects claims $(X_EXTS0)
+X_CSVS0 ?= fcia CWY-inventory FWY-inventory CWY-enquiries RCI-A RCI-BC defects claims claims0 $(X_EXTS0)
 
 # X_EXTS3 - pre-process a CSV or XLS
 X_CSVS1 ?= $(addprefix $(X_BASE)/in/, $(addsuffix .csv, $(X_CSVS0)))
@@ -149,7 +149,7 @@ $(X_BASE)/in/poi.csv: $(X_BASE)/bak/poi.csv
 
 ## Re-use earlier data.
 
-$(X_BASE)/in/claims0.csv : $(X_BASE)/bak/claims0.xlsx
+$(X_BASE)/in/claims0.csv : $(X_BASE)/bak/claims0.xls
 	clm0.py $+ $@
 
 clean::

@@ -143,6 +143,12 @@ This is a log of the modifications I've had to make.
 This failed to produce xncas1.csv and xncas1w.csv. Tracing back to
 samples1.q and then samples1c.q. .dfct.status1 didn't exist. Re-ran dfct1.q
 
+## Journal
+
+New installation and bldr/tables0.q has an error
+
+rp.mk and br.mk work
+
 
 ### This file's Emacs file variables
 
