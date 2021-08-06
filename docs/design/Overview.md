@@ -12,6 +12,9 @@ to investigate the root-causes of road damage done to vehicles over 7 years.
 This document describes the build system. The analyses carried out is described
 in more detail within dedicated pages.
 
+The analytic work is generally applicable to many systems that perform asset
+management. The emphasis is to improve the scheduling of the business' operations.
+
 ## Summary
 
 This is a complete project that loads data from a set of CSV and XLS
@@ -23,11 +26,16 @@ The source data is for highways and insurance claims for faults on the highways.
 It then uses GNU-R for the analysis; there are three forms of analysis:
 
  - Time-series analysis of Key Performance Indicators using the Generalized
-   Additive Method.
+   Additive Method. This provides a predictor that estimates repairs given
+   environmental factors.
 
- - A fault Predictor (a classifier) that uses asset and operation features.
+ - A fault Predictor (a classifier) that uses asset and operation features and
+   is used to improve the design of an Imputer. This Imputer is then used
+   operationally to classify asset maintenance priority.
 
  - Regression analysis to predict Mean Time Between Failure for carriageways
+   that gives an effective lifetime for a road that can be used operationally to
+   provide maintenance schedules.
  
 Other analyses are carried out - recursive partition trees, cluster analysis -
 on the assets. There are also some statistical tests to test assertions.
