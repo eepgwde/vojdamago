@@ -12,7 +12,7 @@ X_R = Rscript
 
 T_DIR ?= /cache/incoming/hcc
 
-H_ = $(TOP)/hcc
+H_ = $(TOP)/hcc_
 
 all: hcc3.Rout 
 

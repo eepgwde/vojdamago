@@ -29,16 +29,15 @@ select count i by src from .samples.dts
 
 // Build enq2
 // The key to cwy0 is direct. aid0 is just in case.
-enq2: select enq0, claim0:`, cwy0:`, aid0:`, date0:`date$enquirytime0, src0:`enq, isclm0:0b from enq1 where (`date$enquirytime0) within .samples.dts0
+// Note, if you get trouble here (you cannot assign to enq2) you probably have a
+// corrupted sym file in kdb 
 
-/
+enq2: select enq0, claim0:`, cwy0:`, aid0:`, date0:`date$enquirytime0, src0:`enq, isclm0:0b from enq1 where (`date$enquirytime0) within .samples.dts0
 
 // enq1 only
 
-update ddate0: (`date$enq0.followupdate0) - date0 from `enq2;
-update ddate1: (`date$enq0.loggeddate0) - date0 from `enq2;
-
-\
+// update ddate0: (`date$enq0.followupdate0) - date0 from `enq2;
+// update ddate1: (`date$enq0.loggeddate0) - date0 from `enq2;
 
 clm2: select enq0:`, claim0, cwy0:`, aid0:`, date0:lossdate, src0:`clm, isclm0:1b from clm1 where lossdate within .samples.dts0
 
@@ -379,9 +378,15 @@ c0: c0 except `ddate0`ddate1
 a00: a01: a10: x0: x1: x2: ()
 delete a00, a01, a10, x0, x1, x2 from `.;
 
-// Only if the imputes0 table exists do this
+// Only if the imputes1 table exists do this
 // note: you need to use R to impute the smpl0 enquiry stata
-samples1: $[any { x like "imputes0" } each string tables `.; 1!(0!samples1) lj imputes0; samples1]
+// and to load the new set, you have to overwrite the base set in imputes1
+// using install-local in ldr.mk
+
+samples1: $[any { x like "imputes1" } each string tables `.; 1!(0!samples1) lj imputes1; samples1]
+
+// These are the imputed records
+select from samples1 where smpl0 in raze value flip key imputes1
 
 // Add enquiry history
 // I'm going to re-use (in advance) the .samples.dfcts and .samples.prmts dictionaries.
@@ -428,6 +433,7 @@ count .samples.prmt
 
 \
 
+
 // smpls and ssmpls: Iterate over the history windows
 // re-use the .samples.dfcts and .samples.prmts dictionaries
 // smpls is for each asset; ssmpls for each site-id for each asset.
@@ -436,10 +442,9 @@ count .samples.prmt
 
 { .tmp.n0: x; .sys.qreloader enlist "samples1f.q"; .samples.prmts[first .tmp.n0]: .samples.prmt } each catx0
 
-
 /
 
-// Test
+// Test - check .tmp.samples1
 
 .tmp.samples1: samples1
 .tmp.n0: first .samples.cat1b
@@ -515,7 +520,6 @@ count .samples.prmt
 
 { .tmp.n0: x; .sys.qreloader enlist "samples1b.q"; .samples.prmts[first .tmp.n0]: .samples.prmt } each catx0
 
-
 // Do some aggregation and imputing
 // store the fields changed, 
 .samples.dfctimputes: ()!()
@@ -523,10 +527,9 @@ count .samples.prmt
 // Load defects status
 `.dfct set get `:./wsdfct;
 
-
 /
 
-// Test
+// Test - TODO: missing status2
 
 .tmp.n0: first .samples.cat1b
 
@@ -541,7 +544,6 @@ count .samples.prmt
 samples1: .tmp.samples1
 
 delete samples1 from `.tmp;
-
 
 // cleanup
 .samples.dfcts: samples.prmts: .samples.dfct: .samples.prmt: ()

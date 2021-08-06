@@ -319,13 +319,12 @@ dfctstatus: 0!`n xdesc select n:count i by statuscode, statusname, superseded, s
 priresp0: select claims:count i by priority, response from samples1 where isclm0
 .csv.t2csv[`priresp0];
 
+
 // Are the defects histories consistent across the years.
 
 `.samples set get `:./wssamples ; 
 
 days0: .samples.catx0[;0]
-
-// TODO: the following fails because there is no dfctbC1
 
 // Many claims have no prior history as referrals
 

@@ -52,7 +52,7 @@ X_RPTS3 = $(addprefix $(X_BASE)/out/, $(X_RPTS2))
 all:: $(X_DEST)/samples1
 
 
-$(X_DEST)/samples1: samples1.q $(wildcard samples1?.q) $(X_DEST)/wsdcover 
+$(X_DEST)/samples1: samples1.q $(wildcard samples1?.q) $(X_DEST)/wsdcover $(X_DEST)/imputes1
 	Qp -load "$(X_DEST) samples1.q"
 
 clean::

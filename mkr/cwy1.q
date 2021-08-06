@@ -22,6 +22,8 @@ cwy0: delete said from update aid00:`$first said by i from update said: { "/" vs
 cwy0: cwy0 lj .cwy.speeds
 cwy0: cwy0 lj .cwy.mtraffic
 
+1 string count cwy0
+
 // TODO
 // Types. There is a network hierarchies file too.
 // Also bus routes by the central_asset_id in mail recently.

@@ -38,7 +38,7 @@ X_EXTS1 ?= cwy fwy rcia rcib dfct enq clm
 X_EXTS2 ?= cars pop income imd tcars fwylsoa cwylsoa 
 
 ### CSV needs prep
-X_EXTS3 ?= poi workscwy0 workscwy2 dfctcwy weather permits luton traffic0 salting 
+X_EXTS3 ?= poi workscwy0 workscwy2 dfctcwy weather permits luton traffic0 salting imputes0
 
 # Lost: fwyenq0
 

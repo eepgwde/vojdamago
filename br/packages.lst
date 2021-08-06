@@ -1,3 +1,5 @@
+These are loaded via conda now
+
 DMwR
 MASS
 caret
@@ -15,4 +17,13 @@ rpart
 rpart.plot
 zoo
 RANN
+
+==
+
+These must be installed into conda using the gensim R
+
+Rweaves1
+RANN 
+
+
 

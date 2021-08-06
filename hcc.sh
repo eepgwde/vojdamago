@@ -4,6 +4,51 @@ X_EMACS=emacs
 
 T_DIR=/cache/incoming/hcc
 
+_ncpus () { 
+    local var=NPROCESSORS_ONLN;
+    [[ $OSTYPE == *linux* ]] && var=_$var;
+    local n=$( getconf $var 2>/dev/null );
+    printf %s ${n:-1}
+}
+
+d_make () {
+    test $# -ge 1 || return 1
+    local e_cmd=$1
+    shift
+
+    e_args="$@"
+
+    if [ $d_count -le 0 ]
+    then	
+	    d_count=$(_ncpus)  
+    fi	
+
+    echo ncpus : $d_count > $verbose
+
+    case $e_cmd in
+	build)
+	  $nodo make $e_args -f top.mk distclean
+	  $FUNCNAME all $e_args 
+	  $FUNCNAME bldr install $e_args
+	  ;;
+	load)
+	  $nodo rm -rf cache/csvdb
+	  $nodo rm -rf cache/out/*
+	  $FUNCNAME all $e_args 
+	  $FUNCNAME bldr install $e_args
+	  ;;
+	all)
+	  $nodo make $e_args -f top.mk all-local
+	  $nodo make $e_args -j $d_count -f top.mk all
+	  ;;
+	analyze)
+	  $nodo make $e_args -f analyze.mk all
+	  ;;
+	*)
+	  $nodo make -C $e_cmd -f ${e_cmd}.mk $e_args 
+	  ;;
+    esac
+}
 
 d_ln0 () {
     : ${d_dir:=$T_DIR/Uploaded\ Data}

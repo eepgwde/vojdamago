@@ -2,6 +2,15 @@
 ##
 ## Make the derivative tables
 
+## Do we or don't we have imputed values from R.
+## Assume that we do. And they are a CSV file in cache/in
+
+## I copied out/ximputes0.csv to in/imputes0.csv
+## and it is loaded as imputes0 by ldr.mk
+
+## A new imputes can be loaded as imputes2. It overwrites imputes1 and
+## the bldr stage has to re-run
+
 TOP = ..
 
 include $(TOP)/ldr/defs.mk
@@ -10,7 +19,7 @@ include $(TOP)/ldr/defs.mk
 xPWD := $(shell pwd)
 
 ## Make derivative tables
-X_DERIVS ?= rci1 rci1rag ftre cwy0 enq1 clm1 traffic1 traffic2 weather1 lsoa2ward salting1 salting2 lsoa1 imd2ward imd1 pop1 pop1w cars1 cars1w permit1 permit2 poi1 usrn2aid dfct1 dfct2 cwy2 dfctcwy1 wrk1
+X_DERIVS ?= rci1 rci1rag ftre cwy0 enq1 clm1 traffic1 traffic2 weather1 lsoa2ward salting1 salting2 lsoa1 imd2ward imd1 pop1 pop1w cars1 cars1w permit1 permit2 poi1 usrn2aid dfct1 dfct2 cwy2 dfctcwy1 wrk1 imputes1
 
 ## TODO dfct1 samples1 
 
@@ -18,7 +27,11 @@ X_DERIVS1 = $(addprefix $(X_DEST)/, $(X_DERIVS) )
 
 all:: all-local $(X_DERIVS1)
 
+install-local: $(addprefix $(X_DEST)/, imputes2)
+
 ## Install references
+## Also we have the imputes - these are now in the archive and can be used in
+## the first pass. 
 
 X_CSVS = $(wildcard *.csv)
 X_CSVS1 = $(addprefix $(X_BASE)/in/, $(X_CSVS))
@@ -34,9 +47,6 @@ all-local: $(X_DEST)/hcc.q $(X_CSVS1)
 
 $(X_DEST)/hcc.q: hcc.q
 	if ! test -L $@; then cd $(X_DEST); ln -s $(xPWD)/hcc.q .; fi
-
-$(X_DEST)/imputes0: attic/imputes0
-	if ! test -L $@; then cd $(X_DEST); ln -s $(xPWD)/attic/imputes0 .; fi
 
 $(X_BASE)/in/%.csv: %.csv
 	if ! test -L $@; then cd $(X_BASE)/in; ln -s $(xPWD)/$< . ; fi
@@ -100,7 +110,11 @@ $(X_DEST)/dfctcwy1: dfctcwy1.q $(X_DEST)/ftre
 $(X_DEST)/wrk1: wrk1.q $(X_DEST)/ftre $(X_DEST)/usrn2aid
 	Qp -load "$(X_DEST) wrk1.q"
 
+$(X_DEST)/imputes1: imputes1.q $(X_DEST/imputes0)
+	Qp -load "$(X_DEST) imputes1.q"
 
+$(X_DEST)/imputes2: imputes2.q 
+	Qp -load "$(X_DEST) imputes2.q"
 
 clean::
 	rm -f $(X_SUPPORT)

@@ -47,6 +47,11 @@ endef
 $(X_BASE)/in/traffic0.csv : $(X_BASE)/bak/abc-0.csv
 	cp $< $@
 
+# These should come from R but are provided as a backup
+
+$(X_BASE)/in/imputes0.csv : $(X_BASE)/bak/ximputes0.csv
+	cp $< $@
+
 # Straight copies
 
 $(foreach file0,$(notdir $(X_CSVS2)), $(eval $(call GOAL_template,$(file0))))

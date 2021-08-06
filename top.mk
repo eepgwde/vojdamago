@@ -7,6 +7,11 @@ $(3)::
 	$(MAKE) MAKEFLAGS="$(MAKEFLAGS)" -C $(2) -f $(2).mk $(1)
 endef
 
+define GOALJ_template =
+$(3):: 
+	+$(MAKE) MAKEFLAGS="$(MAKEFLAGS)" -C $(2) -f $(2).mk $(1)
+endef
+
 ## Set up the links to the remote data.
 
 all:: all-local
@@ -17,6 +22,9 @@ dirs0::
 	if ! test -d cache/bak; then mkdir -p cache/bak; fi
 	if ! test -d cache/out; then mkdir -p cache/out; fi
 	if ! test -d cache/in; then mkdir -p cache/in; fi
+
+distclean:
+	-$(RM) -rf cache/bak cache/out cache/in cache/csvdb
 
 dirs1::
 	test -d cache/bak
@@ -35,12 +43,17 @@ archive/local/links.afio: cache/bak
 
 all:: dirs1
 
-
-SUBDIRS = trns ldr mkr bldr
-RSUBDIRS = $(shell echo $(SUBDIRS) | xargs -n1 | tac | xargs)
+# Only the initial transform stage can be paralleled, the kdb operations update
+# the sym file 
+# The other stages mkr and bldr make tables too.
+SUBDIRSJ = trns
+SUBDIRS = ldr mkr bldr
+RSUBDIRS = $(shell echo $(SUBDIRSJ) $(SUBDIRS) | xargs -n1 | tac | xargs)
 
 ## all and clean
 ## convert, load, then make derivatives, and samples
+
+$(foreach x0,$(SUBDIRSJ), $(eval $(call GOALJ_template,all,$(x0),all)))
 
 $(foreach x0,$(SUBDIRS), $(eval $(call GOAL_template,all,$(x0),all)))
 

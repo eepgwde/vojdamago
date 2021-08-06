@@ -3,6 +3,9 @@
 
 // For viewing final files.
 
+`.dfct set get `:./wsdfct
+
+// `.samples set get `:./wssamples
 
 \
 

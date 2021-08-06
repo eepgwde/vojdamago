@@ -7,18 +7,13 @@ $(3)::
 	$(MAKE) MAKEFLAGS="$(MAKEFLAGS)" -C $(2) -f $(2).mk $(1)
 endef
 
-## Set up the links to the remote data.
-
 all:: all-local
 
 all-local:: dirs1 
 
+# we should need no more than the output files from bldr/ install
 dirs1::
-	test -d cache/bak
 	test -d cache/out
-	test -d cache/in
-
-## Install my links.
 
 all:: dirs1
 
@@ -45,11 +40,3 @@ $(foreach x0,$(lastword $(SUBDIRS)), $(eval $(call GOAL_template,install,$(x0),i
 
 $(foreach x0,$(firstword $(RSUBDIRS)), $(eval $(call GOAL_template,clean,$(x0),uninstall)))
 
-view3:
-	echo $(lastword $(SUBDIRS))
-
-
-## dist
-## generate final CSV files
-
-$(foreach x0,bldr, $(eval $(call GOAL_template,install,$(x0),dist)))

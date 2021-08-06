@@ -67,7 +67,7 @@ save `:./dfctcwy1
 
 // Save the error workspace for reference.
 
-`:./wsdfct set get `.dfctcwy
+`:./wsdfctcwy set get `.dfctcwy
 
 // And load it again like this.
 // `.dfctcwy set get `:./csvdb/wsdfct

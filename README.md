@@ -138,17 +138,32 @@ This performs some recursive partition tree analysis.
 
 This is a log of the modifications I've had to make.
 
-### dfct fields
+## Journal
+
+### dev: Dealing with imputations
+
+I've taken ximputes0.csv and made it part of the archive. 
+It is now loaded as imputes0 which is updated to imputes1
+
+It is possible to load a new imputes1 with ldr.mk install-local
+
+### fault found: wsdfct was being overwritten 
+
+I had copied dfctcwy1.q from dfct1.q and left the instruction to overwrite
+wsdfct with the contents of dfctcwy
+
+### fault: dfct fields
 
 This failed to produce xncas1.csv and xncas1w.csv. Tracing back to
-samples1.q and then samples1c.q. .dfct.status1 didn't exist. Re-ran dfct1.q
+samples1.q and then samples1c.q. .dfct.status1 didn't exist. 
 
-## Journal
+Re-ran dfct1.q and it is working again.
+
+### fault: tables0.q fails
 
 New installation and bldr/tables0.q has an error
 
-rp.mk and br.mk work
-
+rp.mk and br.mk do work
 
 ### This file's Emacs file variables
 
