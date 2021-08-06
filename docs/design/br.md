@@ -39,21 +39,28 @@ the static information; *future* is a set of metrics for future histories;
 The Historical Predictor is produced from off-line historical analysis and is
 then used to produce the intermediate result, *claim1* the predicted outcome.
 
- claim0 are the outcomes
- claim1 = HPredict(future *union* enquiry *union* priority)
+```
+claim0 are the outcomes
+
+claim1 = HPredict(future *union* enquiry *union* priority)
+```
 
 This output then acts as a proxy for the future histories and is used to produce
 the Imputer, which is used live: the *priority* attribute would be the
 operator's live evaluation and this is used to impute a new priority,
 *priority1*.
- 
- priority1 = Impute(enquiry *difference* future *union* claim1 *union* priority)
- 
+
+```
+priority1 = Impute(enquiry *difference* future *union* claim1 *union* priority)
+```
+
 And this imputed value would be used operationally.
 
 The Imputer can be calibrated off-line with this process
- 
- claim2 = CPredict(enquiry *difference* future *union* priority1 *union* priority )
+
+```
+claim2 = CPredict(enquiry *difference* future *union* priority1 *union* priority )
+```
 
 And optimize the accuracy of *claim2* by means of *priority1* which can be
 controlled with Impute() and also by the engineering of *future*.
@@ -70,6 +77,7 @@ production.
 It would operate in the following way, given a new enquiry, the HPredictor
 generates its claim/noclaim response, the Imputer uses this to impute its values
 from the record using that claim/noclaim response and the resulting priority and
+
 response attributes are given to the new enquiry record.
 
 Before moving on to discuss the metrics and the model used, the dataset is have
