@@ -14,10 +14,11 @@ SHELL := /bin/bash
 T_DIR ?= /cache/incoming/hcc
 
 ## Can be set by callers, we use 
-TOP ?= $(shell if test -L $(PWD); then echo ../../../../.. ; else echo ..; fi)
+# TOP ?= $(shell if test -L $(PWD); then echo ../../../../.. ; else echo ..; fi)
+
+TOP ?= ..
 
 ## A helper script uses my m_ arrangement.
-# H_ = $(TOP)/hcc_
 H_ = $(TOP)/hcc
 
 X_BASE ?= $(TOP)/cache

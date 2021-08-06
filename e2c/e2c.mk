@@ -10,8 +10,6 @@ S_FILE ?= $(TOP)/cache/out/xncas1.csv
 
 X_R = Rscript
 
-T_DIR ?= /cache/incoming/hcc
-
 H_ = $(TOP)/hcc
 
 all: hcc3.Rout hcc4.Rout hcc5.Rout hcc5.check xncas3.csv

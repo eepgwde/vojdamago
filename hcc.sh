@@ -1,8 +1,7 @@
-test -f ~/etc/csv.sh && . ~/etc/csv.sh
-
 X_EMACS=emacs
 
-T_DIR=/cache/incoming/hcc
+# This is the archive directory.
+: ${T_DIR:=/home/build/1/archive/hcc}
 
 _ncpus () { 
     local var=NPROCESSORS_ONLN;
