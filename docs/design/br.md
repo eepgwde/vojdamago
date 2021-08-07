@@ -5,24 +5,72 @@ permalink: /analyses/br
 navigation_weight: 4
 ---
 
-# Predictor and Imputer
+# Business in Operation
 
-In this section, a Predictor is developed that would allow the business to
-prioritize inspections and repairs for the roads. It will be seen that an
-Imputer is also needed for a key operational field.
+It should not be forgotten that this business needs tools to improve its
+operation: it is not enough for an analyst to state that all the work is
+seasonally driven; or to state that most insurance claims come from suburban
+areas. The analyst must design metrics that reflect operational activity and use
+those to design classification tools that can help decide the operational actions
+of the business.
 
-It will become clear that the Imputer is the most important innovation. The
-Predictor is used to improve the design of the Imputer. It should not be
-forgotten that the business needs tools to improve its operation: it is not
-enough for an analyst to state that all the work is seasonally driven; or to
-state that most insurance claims come from suburban areas. The analyst must
-design metrics that reflect operational activity and to design classification
-tools that can prioritize the actions of the business.
+# Predictors and Imputer
 
-For the business, they expect the Predictor to show that if the correct priority
-is assigned to a fault report and if it is investigated and remedied in time, it
-will not result in an insurance claim and, conversely, if the wrong priority is
-assigned or no work is done, then it will result in a claim.
+In this section, some Predictors are developed that report whether a given
+enquiry would result in a subsequent insurance claim or not. This in itself is
+not a useful tool for the business. It is used to calibrate an Imputer for the
+key operational fields: priority and response.
+
+The first Predictor is called the Historical Predictor and it is denoted the
+HPredictor. A second Predictor is called the Calibrating Predictor and is
+denoted CPredictor.
+
+The method is this: an historical analysis is carried out that uses future
+histories to produce the HPredictor and this should be very accurate. This
+HPredictor is then used to produce a claim/noclaim output and which replaces the
+observed claim/noclaim decision in the dataset. The future histories are then
+removed from this dataset and an Imputer is generated that uses the HPredictor's
+claim/noclaim field.
+
+Functionally, this is the system. *claim0* are the original outcomes; the input
+is *enquiry* record, a fault report, which, for convenience also includes all
+the static information; *future* is a set of metrics for future histories;
+
+The Historical Predictor is produced from off-line historical analysis and is
+then used to produce the intermediate result, *claim1* the predicted outcome.
+
+ claim0 are the outcomes
+ claim1 = HPredict(future *union* enquiry *union* priority)
+
+This output then acts as a proxy for the future histories and is used to produce
+the Imputer, which is used live: the *priority* attribute would be the
+operator's live evaluation and this is used to impute a new priority,
+*priority1*.
+ 
+ priority1 = Impute(enquiry *difference* future *union* claim1 *union* priority)
+ 
+And this imputed value would be used operationally.
+
+The Imputer can be calibrated off-line with this process
+ 
+ claim2 = CPredict(enquiry *difference* future *union* priority1 *union* priority )
+
+And optimize the accuracy of *claim2* by means of *priority1* which can be
+controlled with Impute() and also by the engineering of *future*.
+
+The key fields - priority and response - are then imputed and placed in the
+dataset. The future histories are removed and the original claim/noclaim results
+in restored.
+
+Then with the imputed priority and response attributes, the CPredictor is
+generated and its accuracy is assessed. If this CPredictor proves to be accurate
+enough, it justifies the design of the Imputer and this Imputer can be used in
+production.
+
+It would operate in the following way, given a new enquiry, the HPredictor
+generates its claim/noclaim response, the Imputer uses this to impute its values
+from the record using that claim/noclaim response and the resulting priority and
+response attributes are given to the new enquiry record.
 
 Before moving on to discuss the metrics and the model used, the dataset is have
 enquiry records that are fault reports for roads and there are insurance claim

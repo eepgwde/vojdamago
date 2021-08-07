@@ -1,0 +1,7 @@
+hcc3,"ps-wear1 ps-wear3 ps-ddays1 ps-dfcts1 ps-tmin ps-tmin0 ps-dtmin0-",poisson,log,R-sq.(adj),=,0.916,Deviance,explained,=,94%,R^2,0.915939,GCV,35.69818,AIC,229770.8,BIC,230183.4,
+hcc3,"cc-wear1 cc-wear3 cc-ddays1 cc-dfcts1 cc-tmin cc-tmin0 cc-dtmin0-",poisson,log,R-sq.(adj),=,0.906,Deviance,explained,=,92.5%,R^2,0.9062423,GCV,44.93164,AIC,276418.2,BIC,276787.7,
+hcc3,"cc-wear1 cc-wear3 cc-ddays1 cc-dfcts1 cc-tmin cc-tmin0-",poisson,log,R-sq.(adj),=,0.924,Deviance,explained,=,94.5%,R^2,0.9244428,GCV,32.25302,AIC,212365.9,BIC,212719,
+hcc3,"te-wear1wear3 te-wear1ddays1-",poisson,log,R-sq.(adj),=,0.91,Deviance,explained,=,93.4%,R^2,0.9097441,GCV,38.95887,AIC,246243.8,BIC,246530.9,
+hcc3,"te-wear1wear3 te-wear1ddays1-",poisson,log,R-sq.(adj),=,0.914,Deviance,explained,=,93.9%,R^2,0.9141213,GCV,35.9972,AIC,231281.4,BIC,231567.6,
+hcc3,"te-wear1wear3 te-wear1ddays1 te-wear1dfcts1-",poisson,log,R-sq.(adj),=,0.88,Deviance,explained,=,91.3%,R^2,0.8796365,GCV,51.84448,AIC,311341.9,BIC,311602.8,
+hcc3,"te-wear1wear1 te-wear1wear3 te-wear1ddays1-",poisson,log,R-sq.(adj),=,0.913,Deviance,explained,=,93.2%,R^2,0.9132484,GCV,40.6801,AIC,254939.4,BIC,255336.6,
