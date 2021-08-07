@@ -1,13 +1,13 @@
 ## weaves
 ##
 ## Data simplification
-## Herts Carriageways. Samples as git tag v1.5-samples1
+## H??? Carriageways. 
 
 ## Get started with a load and save to binary.
 
 x.args = commandArgs(trailingOnly=TRUE)
 
-tgt0 <- "/misc/build/0/hcc/cache/out/xsamples1.csv"
+tgt0 <- "../cache/out/xsamples1.csv"
 if (length(x.args) >= 1) {
     tgt0 <- x.args[1]
 }

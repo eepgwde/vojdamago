@@ -251,9 +251,6 @@ appear to work.
 
 br8 takes such a long-time now. I'll check on k1.
 
-**
-
-
 ** This file's Emacs file variables
 
 [  Local Variables: ]
