@@ -39,10 +39,13 @@ the static information; *future* is a set of metrics for future histories;
 The Historical Predictor is produced from off-line historical analysis and is
 then used to produce the intermediate result, *claim1* the predicted outcome.
 
-```
-claim0 are the outcomes
+*claim0* are the outcomes.
 
+
+```
 claim1 = HPredict(future *union* enquiry *union* priority)
+
+Accuracy(claim1, claim0)
 ```
 
 This output then acts as a proxy for the future histories and is used to produce
@@ -56,39 +59,40 @@ priority1 = Impute(enquiry *difference* future *union* claim1 *union* priority)
 
 And this imputed value would be used operationally.
 
-The Imputer can be calibrated off-line with this process
+The Imputer can be calibrated off-line with this process, it can use either
+*claim0* or *claim1*
 
 ```
 claim2 = CPredict(enquiry *difference* future *union* priority1 *union* priority )
+
+Accuracy(claim2, claim0) or Accuracy(claim1, claim0)
 ```
 
 And optimize the accuracy of *claim2* by means of *priority1* which can be
 controlled with Impute() and also by the engineering of *future*.
 
-The key fields - priority and response - are then imputed and placed in the
-dataset. The future histories are removed and the original claim/noclaim results
-in restored.
+To restate as prose: 
+
+An Historical Predictor is used to produce an Imputer for the key fields,
+priority and response. The future histories are removed and the original
+claim/noclaim results are restored.
 
 Then with the imputed priority and response attributes, the CPredictor is
 generated and its accuracy is assessed. If this CPredictor proves to be accurate
 enough, it justifies the design of the Imputer and this Imputer can be used in
 production.
 
-It would operate in the following way, given a new enquiry, the HPredictor
-generates its claim/noclaim response, the Imputer uses this to impute its values
-from the record using that claim/noclaim response and the resulting priority and
+That is process to be used in the design of the Imputer. The following are the
+implementation details for this project. 
 
-response attributes are given to the new enquiry record.
-
-Before moving on to discuss the metrics and the model used, the dataset is have
-enquiry records that are fault reports for roads and there are insurance claim
-reports that need to be integrated into the dataset.
+The dataset is to have enquiry records that are fault reports for roads and
+there are insurance claim reports that need to be integrated into this dataset.
 
 ## Designing a Training dataset - Claims are transformed to Enquiry Records
 
-The fault reports (known as *enquiry* records) are used as the dataset for the
-classifier and a boolean field is added to indicate if the fault resulted in a
-claim or not.
+The fault reports (known as *enquiry* records) are used as the event dataset for
+the classifier and a boolean field is added to indicate if the fault resulted in
+a claim or not.
 
 When a fault report is made, a priority is assigned to it for further action.
 This is a human operator action - given the nature of the damage reported and
@@ -98,14 +102,15 @@ recommendations given in an operations manual.
 Practically all the records in the *enquiry* records did not result in a claim
 being made, so the *claim* field was reset to *false*.
 
-The *claim* records were then augmented with any deducible information and added to
-the dataset - they would have their *claim* field set to *true*. Unfortunately,
-these records were incomplete in that they did not have a priority value. It
-would have been very difficult to have these claim records classified by hand -
-there were just over 4000 claims in the past 7 years.
+The *claim* records were then augmented with any deducible information and added
+to the dataset - they would have their *claim* field set to *true*.
+Unfortunately, these records were incomplete in that they did not have the
+operational priority or response values. It would have been very difficult to
+have these claim records classified by hand - there were just over 4000 claims
+in the past 7 years.
 
-Therefore operational priority of the claim record had to be imputed. There were
-two subsets of claim records:
+Therefore the operational priority of the claim record had to be imputed. There
+were two subsets of claim records:
 
  - For those few claims records that were preceded by a fault report, they were
    assigned the same priority as the preceding fault report. Only 300 or so of the
